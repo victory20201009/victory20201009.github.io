@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-Lottery" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/10/14/Lottery/" class="article-date">
+  <time class="dt-published" datetime="2022-10-14T14:08:14.000Z" itemprop="datePublished">2022-10-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/10/14/Lottery/">Lottery</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/10/14/Lottery/" data-id="cl98kfp3o0006t12w7g8m9qxh" data-title="Lottery" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-enhanced-heap" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/10/10/enhanced-heap/" class="article-date">
+  <time class="dt-published" datetime="2022-10-10T14:44:54.000Z" itemprop="datePublished">2022-10-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>►<a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>►<a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%A0%86/">堆</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/10/10/enhanced-heap/">堆</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <!-- toc -->
+
+<ul>
+<li><a href="#1-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D">1. 数据结构介绍</a></li>
+<li><a href="#2-%E7%AE%97%E6%B3%95">2. 算法</a></li>
+<li><a href="#3-%E4%BB%A3%E7%A0%81">3. 代码</a></li>
+</ul>
+<!-- tocstop -->
+
+<h1><span id="1-数据结构介绍">1. 数据结构介绍</span></h1><p>要求实现一种堆数据结构，具有如下操作：</p>
+<ol>
+<li>可以动态添加元素</li>
+<li>可以修改给定元素</li>
+<li>可以动态删除元素，可以删除指定位置的元素，以及删除给定的元素</li>
+<li>获取堆顶元素</li>
+<li>弹出堆顶</li>
+<li>获取堆中的元素个数</li>
+<li>用户可以指定比较策略</li>
+</ol>
+<h1><span id="2-算法">2. 算法</span></h1><ul>
+<li>对于可以动态增删元素，可以使用动态数组ArrayList来实现；</li>
+<li>如果需要对给定的元素进行操作，我们需要知道这个元素在堆数组中的下标，因此需要一个查找表记录每一个元素及其在堆数组中的下标；</li>
+<li>对于修改元素，我们只需要将修改后的元素同时做一次heapInsert和heapify即可，因为修改后，元素的排序指标可能变大也可能变小，或者不变，因此heapInsert和heapify最多只会发生一个；这个叫做元素的resign（重新分配）</li>
+<li>对于删除元素，我们只需要把最后一个元素last和被删除的元素交换，堆的大小减少1，然后resign这个last元素，如果被删除的刚好是最后一个，直接删除即可。</li>
+<li>可以使用比较器让比较策略灵活指定。</li>
+</ul>
+<h1><span id="3-代码">3. 代码</span></h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Comparator;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">EnhancedHeap</span>&lt;T&gt; &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> ArrayList&lt;T&gt; arrayList;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> HashMap&lt;T,Integer&gt; indexMap;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Comparator&lt;T&gt; comparator;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> size;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">EnhancedHeap</span><span class="params">(Comparator&lt;T&gt; comparator)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.comparator = comparator;</span><br><span class="line">        arrayList = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        indexMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">size</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> size;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">add</span><span class="params">(T data)</span>&#123;</span><br><span class="line">        arrayList.add(data);</span><br><span class="line">        indexMap.put(data,size);</span><br><span class="line">        heapInsert(size++);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">remove</span><span class="params">(T data)</span>&#123;</span><br><span class="line">        <span class="type">Integer</span> <span class="variable">index</span> <span class="operator">=</span> indexMap.get(data);</span><br><span class="line">        <span class="keyword">if</span>(index != <span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(index == size -<span class="number">1</span>)&#123;</span><br><span class="line">                --size;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                swap(arrayList.get(index),arrayList.get(--size));</span><br><span class="line">                resign(index);</span><br><span class="line">            &#125;</span><br><span class="line">            indexMap.remove(data);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">update</span><span class="params">(T data)</span>&#123;</span><br><span class="line">        <span class="type">Integer</span> <span class="variable">index</span> <span class="operator">=</span> indexMap.get(data);</span><br><span class="line">        <span class="keyword">if</span> (index != <span class="literal">null</span>)resign(index);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> T <span class="title function_">poll</span><span class="params">()</span>&#123;</span><br><span class="line">         <span class="type">T</span> <span class="variable">ret</span>  <span class="operator">=</span> arrayList.get(<span class="number">0</span>);</span><br><span class="line">         swap(ret,arrayList.get(--size));</span><br><span class="line">         heapify(<span class="number">0</span>);</span><br><span class="line">         indexMap.remove(ret);</span><br><span class="line">         <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> T <span class="title function_">peek</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> arrayList.get(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">resign</span><span class="params">(<span class="type">int</span> index)</span>&#123;</span><br><span class="line">        heapInsert(index);</span><br><span class="line">        heapify(index);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">heapInsert</span><span class="params">(<span class="type">int</span> index)</span>&#123;</span><br><span class="line">        <span class="type">int</span> parent;</span><br><span class="line">        <span class="keyword">while</span>(comparator.compare(arrayList.get(index),arrayList.get(parent = (index-<span class="number">1</span>) / <span class="number">2</span> )) &gt; <span class="number">0</span>)&#123;</span><br><span class="line">            swap(arrayList.get(index), arrayList.get(parent));</span><br><span class="line">            index = parent;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">heapify</span><span class="params">(<span class="type">int</span> index)</span>&#123;</span><br><span class="line">        <span class="type">int</span> child, bound = size &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(index &lt; bound)&#123;</span><br><span class="line">            child = (index &lt;&lt; <span class="number">1</span>) | <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(child + <span class="number">1</span> &lt; size &amp;&amp; comparator.compare(arrayList.get(child),arrayList.get(child+<span class="number">1</span>)) &lt; <span class="number">0</span>) ++child;</span><br><span class="line">            <span class="keyword">if</span>(comparator.compare(arrayList.get(index),arrayList.get(child)) &lt; <span class="number">0</span>)&#123;</span><br><span class="line">                swap(arrayList.get(index),arrayList.get(child));</span><br><span class="line">                index = child;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">swap</span><span class="params">(T t1, T t2)</span>&#123;</span><br><span class="line">        <span class="type">Integer</span> <span class="variable">index1</span> <span class="operator">=</span> indexMap.get(t1), index2 = indexMap.get(t2);</span><br><span class="line">        arrayList.set(index1,t2);</span><br><span class="line">        arrayList.set(index2,t1);</span><br><span class="line">        indexMap.put(t1,index2);</span><br><span class="line">        indexMap.put(t2,index1);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 测试程序</span></span><br><span class="line">        EnhancedHeap&lt;Info&gt; enhancedHeap = <span class="keyword">new</span> <span class="title class_">EnhancedHeap</span>&lt;&gt;((a,b)-&gt; a.value - b.value);</span><br><span class="line">        <span class="type">Info</span> <span class="variable">a</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Info</span>(<span class="number">1</span>), b = <span class="keyword">new</span> <span class="title class_">Info</span>(<span class="number">2</span>), c = <span class="keyword">new</span> <span class="title class_">Info</span>(<span class="number">3</span>);</span><br><span class="line">        enhancedHeap.add(a);</span><br><span class="line">        System.out.println(<span class="string">&quot;size: &quot;</span>+enhancedHeap.size+<span class="string">&quot;  top: &quot;</span>+enhancedHeap.peek());</span><br><span class="line">        enhancedHeap.add(b);</span><br><span class="line">        System.out.println(<span class="string">&quot;size: &quot;</span>+enhancedHeap.size+<span class="string">&quot;  top: &quot;</span>+enhancedHeap.peek());</span><br><span class="line">        enhancedHeap.add(c);</span><br><span class="line">        System.out.println(<span class="string">&quot;size: &quot;</span>+enhancedHeap.size+<span class="string">&quot;  top: &quot;</span>+enhancedHeap.peek());</span><br><span class="line">        c.value = <span class="number">7</span>;</span><br><span class="line">        enhancedHeap.update(c);</span><br><span class="line">        System.out.println(<span class="string">&quot;size: &quot;</span>+enhancedHeap.size+<span class="string">&quot;  top: &quot;</span>+enhancedHeap.peek());</span><br><span class="line">        enhancedHeap.remove(a);</span><br><span class="line">        System.out.println(<span class="string">&quot;size: &quot;</span>+enhancedHeap.size+<span class="string">&quot;  top: &quot;</span>+enhancedHeap.peek());</span><br><span class="line">        System.out.println(<span class="string">&quot;top: &quot;</span>+enhancedHeap.poll());</span><br><span class="line">        System.out.println(<span class="string">&quot;size: &quot;</span>+enhancedHeap.size+<span class="string">&quot;  top: &quot;</span>+enhancedHeap.peek());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">Info</span>&#123;</span><br><span class="line">        <span class="type">int</span> value;</span><br><span class="line">        <span class="keyword">public</span> <span class="title function_">Info</span><span class="params">(<span class="type">int</span> v)</span>&#123;</span><br><span class="line">            value = v;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> value+<span class="string">&quot;&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/10/10/enhanced-heap/" data-id="cl98kfp3u001kt12wgaa165q5" data-title="堆" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-heapSort" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/10/03/heapSort/" class="article-date">
+  <time class="dt-published" datetime="2022-10-02T23:41:44.000Z" itemprop="datePublished">2022-10-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>►<a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F/">排序</a>►<a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F/%E5%A0%86%E6%8E%92%E5%BA%8F/">堆排序</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/10/03/heapSort/">堆排序</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <!-- toc -->
+
+<ul>
+<li><a href="#1-%E6%95%B4%E4%BD%93%E6%80%9D%E8%B7%AF">1. 整体思路</a></li>
+<li><a href="#2-%E7%AE%97%E6%B3%95%E8%BF%87%E7%A8%8B">2. 算法过程</a></li>
+<li><a href="#3-%E4%BB%A3%E7%A0%81">3. 代码</a></li>
+</ul>
+<!-- tocstop -->
+
+<h1><span id="1-整体思路">1. 整体思路</span></h1><p>和选择排序是一样的，首先在所有元素中选出最大的元素放在最后的位置，然后在剩下的元素中选出最大的放在倒数第二的位置，……，以此类推，直到剩下一个与元素为止。</p>
+<h1><span id="2-算法过程">2. 算法过程</span></h1><ol>
+<li><p>首先把待排序的数组原地调整成一个堆结构，什么？不知道堆数据结构，可以看<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37684467/article/details/117229493">这篇文章</a>；</p>
+</li>
+<li><p>假设数组需要从小到大排序，我们使用大顶堆来完成。数组调整成堆可以使用heapify，线性时间复杂度。</p>
+</li>
+<li><p>只要堆中的元素个数（size）大于1，执行下面的逻辑</p>
+<p>3.1. 把堆顶元素和数组中下标为size-1的元素做交换；</p>
+<p>3.2. size–；</p>
+<p>3.3. 对堆顶元素做heapify操作，调整堆。</p>
+</li>
+</ol>
+<h1><span id="3-代码">3. 代码</span></h1><p>Java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HeapSort</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">times</span> <span class="operator">=</span> <span class="number">100_0000</span>, maxArraySize = <span class="number">1000</span>;</span><br><span class="line">        <span class="type">Random</span> <span class="variable">r</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Random</span>();</span><br><span class="line">        <span class="keyword">while</span>(times-- &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> r.nextInt(maxArraySize);</span><br><span class="line">            <span class="type">int</span>[] arr1 = <span class="keyword">new</span> <span class="title class_">int</span>[len], arr2 = <span class="keyword">new</span> <span class="title class_">int</span>[len];</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; len; ++i) arr1[i] = arr2[i] = r.nextInt(<span class="number">21</span>) - <span class="number">10</span>;</span><br><span class="line">            Arrays.sort(arr1);</span><br><span class="line">            heapSort(arr2);</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; len; ++i) &#123;</span><br><span class="line">                <span class="keyword">if</span>(arr1[i] != arr2[i]) &#123;</span><br><span class="line">                    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; len; ++i) System.out.print(arr1[i] + <span class="string">&quot;,&quot;</span>);</span><br><span class="line">                    System.out.println();</span><br><span class="line">                    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; len; ++i) System.out.print(arr2[i] + <span class="string">&quot;,&quot;</span>);</span><br><span class="line">                    System.out.println();</span><br><span class="line">                    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">	&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">heapSort</span><span class="params">(<span class="type">int</span>[] arr)</span> &#123;</span><br><span class="line">    	<span class="type">int</span> i,len = arr.length;</span><br><span class="line">        <span class="keyword">for</span>(i = (len &gt;&gt; <span class="number">1</span>) - <span class="number">1</span>; i &gt; -<span class="number">1</span>; --i) heapIfy(arr,len,i); <span class="comment">// 创建大顶堆</span></span><br><span class="line">        <span class="keyword">for</span>(i = len; i &gt; <span class="number">1</span>;) &#123;<span class="comment">// i就是堆的size</span></span><br><span class="line">            swap(arr,<span class="number">0</span>,--i);</span><br><span class="line">            heapIfy(arr,i,<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">heapIfy</span><span class="params">(<span class="type">int</span>[] heap, <span class="type">int</span> size, <span class="type">int</span> index)</span> &#123;</span><br><span class="line">        <span class="comment">// 堆的元素个数是size，对下标为index的元素做heapify操作</span></span><br><span class="line">        <span class="type">int</span> child, bound = size &gt;&gt; <span class="number">1</span>, v = heap[index];</span><br><span class="line">        <span class="keyword">while</span>(index &lt; bound) &#123;</span><br><span class="line">            child = (index &lt;&lt; <span class="number">1</span>) + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(child + <span class="number">1</span> &lt; size &amp;&amp; heap[child + <span class="number">1</span>] &gt; heap[child]) ++child;</span><br><span class="line">            <span class="keyword">if</span>(v &gt;= heap[child]) <span class="keyword">break</span>;</span><br><span class="line">            heap[index] = heap[child];</span><br><span class="line">            index = child;</span><br><span class="line">        &#125;</span><br><span class="line">        heap[index] = v;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">swap</span><span class="params">(<span class="type">int</span>[] arr, <span class="type">int</span> i, <span class="type">int</span> j)</span>&#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">t</span> <span class="operator">=</span> arr[i];</span><br><span class="line">        arr[i] = arr[j];</span><br><span class="line">        arr[j] = t;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/10/03/heapSort/" data-id="cl98kfp3v001nt12wgh814tor" data-title="堆排序" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-ls" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/09/20/ls/" class="article-date">
+  <time class="dt-published" datetime="2022-09-20T02:10:29.000Z" itemprop="datePublished">2022-09-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>►<a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/">Linux</a>►<a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/shell/">shell</a>►<a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/shell/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">常用命令</a>►<a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/shell/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C/">目录操作</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/09/20/ls/">ls</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <!-- toc -->
+
+<ul>
+<li><a href="#1-%E5%91%BD%E4%BB%A4%E4%BD%9C%E7%94%A8">1. 命令作用</a></li>
+<li><a href="#2-%E5%91%BD%E4%BB%A4%E6%A0%BC%E5%BC%8F">2. 命令格式</a></li>
+<li><a href="#3-%E5%91%BD%E4%BB%A4%E8%A7%A3%E9%87%8A">3. 命令解释</a></li>
+<li><a href="#4-%E9%80%89%E9%A1%B9">4. 选项</a><ul>
+<li><a href="#41-a-all">4.1. -a,–all</a></li>
+<li><a href="#42-a-almost-all">4.2. -A, –almost-all</a></li>
+<li><a href="#43-b">4.3. -B</a></li>
+<li><a href="#44-d-directory">4.4. -d,–directory</a></li>
+<li><a href="#45-group-directories-first">4.5. –group-directories-first</a></li>
+<li><a href="#46-hidepattern">4.6. –hide&#x3D;PATTERN</a></li>
+<li><a href="#47-i-pattern-ignorepattern">4.7. -I pattern, –ignore&#x3D;pattern</a></li>
+<li><a href="#48-r-recursive">4.8. -R, –recursive</a></li>
+<li><a href="#49-i-inode">4.9 -i, –inode</a></li>
+<li><a href="#410-h-human-readable">4.10 -h, –human-readable</a></li>
+<li><a href="#411-l-formatlong-formatverbose">4.11. -l, –format&#x3D;long, –format&#x3D;verbose</a></li>
+<li><a href="#412-n-numeric-uid-gid">4.12. -n, –numeric-uid-gid</a></li>
+<li><a href="#413-author">4.13. –author</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<h1><span id="1-命令作用">1. 命令作用</span></h1><p>显示目录中的文件信息。</p>
+<h1><span id="2-命令格式">2. 命令格式</span></h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> [options]... [file]...</span><br></pre></td></tr></table></figure>
+
+<h1><span id="3-命令解释">3. 命令解释</span></h1><ol>
+<li>ls程序可以显示目录中的任何文件信息（包括目录的信息），选项和参数和随意混合使用，后来的选项可以覆盖前面与之不兼容的选项；</li>
+<li>ls命令不带任何选项和参数的情况下，相当于ls . ，显示当前目录的文件信息。对于非选项的命令行参数，例如ls xxx，如果xxx是一个目录的话，那么ls程序就会显示这个目录内的文件信息（非递归，且忽略以.（点号）开头的文件），如果xxx是一个文件的话，那么只是显示它的名称。</li>
+</ol>
+<h1><span id="4-选项">4. 选项</span></h1><h2><span id="41-aall">4.1. -a,–all</span></h2><p>不忽略名称以.（点）开头的文件</p>
+<h2><span id="42-a-almost-all">4.2. -A, –almost-all</span></h2><p>不忽略名称以.（点）开头的文件，除了.（当前目录）和..（上一级目录），-a,–all可以覆盖此选项。</p>
+<h2><span id="43-b">4.3. -B</span></h2><p>忽略名称以’~‘结尾的，这些文件一般是文本编辑器的备份文件。–ignore&#x3D;’*<del>‘ –ignore&#x3D;’.*</del>‘具有相同的效果。</p>
+<h2><span id="44-ddirectory">4.4. -d,–directory</span></h2><p>当ls file的时候，如果file是一个目录，那么会显示它立里面的内容，如果想显示目录本身的内容的话，需要使用</p>
+<p>-d选项。</p>
+<h2><span id="45-group-directories-first">4.5. –group-directories-first</span></h2><p>会把目录全部显示在文件的前面，文件和目录单独排序。</p>
+<h2><span id="46-hidex3dpattern">4.6. –hide&#x3D;PATTERN</span></h2><p>隐藏文件名称匹配pattern的文件，如该–all,-a 或者 –almost-all,-A 这些选项在的时候，–hide&#x3D;PATTERN就不起作用了。–ignore&#x3D;PATTERN可以起到相同的作用，但是–all,-a 或者 –almost-all,-A 这些选项对–ignore&#x3D;PATTERN不起作用。</p>
+<p>例如当前目录中有一个文件README<del>，使用ls –hide&#x3D;’*</del>‘ -A，不能隐藏掉README<del>，但是ls –ignore&#x3D;’*</del>‘ -A 就可以。</p>
+<h2><span id="47-i-pattern-ignorex3dpattern">4.7. -I pattern, –ignore&#x3D;pattern</span></h2><p>忽略文件名称和shell 模式匹配的文件。这里的pattern不是正则，是shell的glob表达式。例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> --ignore=<span class="string">&#x27;.??*&#x27;</span> --ignore=<span class="string">&#x27;.[^.]&#x27;</span> --ignore=<span class="string">&#x27;#*&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>第一个选项表示忽略文件名称以.开头的，且文件名称长度至少是三个字符的文件；</p>
+<p>第二个选项表示忽略文件名称以.开头的，且名称不是..的文件；</p>
+<p>第三个选项表示忽略文件名称是以’#’开头的文件；</p>
+<h2><span id="48-r-recursive">4.8. -R, –recursive</span></h2><p>递归显示目录的内容。</p>
+<h2><span id="49-i-inode">4.9 -i, –inode</span></h2><p>在文件名称的左边显示inode信息，inode在一个文件系统中是唯一的。</p>
+<h2><span id="410-h-human-readable">4.10  -h, –human-readable</span></h2><p>以人类可读的方式显示文件的size，文件大小是以字节数显示的，这个选项可以在适当的时候，显示KB，MB等，这里的M默认是2的10次方（1048576）。这个选项与--block-size&#x3D;human-reabable是等价的。</p>
+<p>如果需要让单位以10为基数，即M是10的三次方，可以使用 --si选项。</p>
+<h2><span id="411-l-formatx3dlong-formatx3dverbose">4.11. -l, –format&#x3D;long, –format&#x3D;verbose</span></h2><p>长格式显示。除了每一个文件的文件名称，还会显示文件的类型，文件模式位，硬链接的数目，属主，属组，文件size，时间戳（修改时间）。</p>
+<p>在显示每一个目录信息的开头，显示total blocks信息，代表文件系统为这个目录下的所有文件分配的磁盘块的个数<a href="%E5%85%B6%E5%AE%9E%E5%AE%83%E7%BB%9F%E8%AE%A1%E7%9A%84%E6%98%AF%E6%AF%8F%E4%B8%80%E4%B8%AA%E7%A1%AC%E9%93%BE%E6%8E%A5%E7%9A%84%E7%A3%81%E7%9B%98%E5%9D%97%E6%80%BB%E6%95%B0%EF%BC%8C%E5%8D%B3%E5%A6%82%E6%9E%9C%E4%B8%80%E4%B8%AA%E6%96%87%E4%BB%B6%E5%8D%A0%E7%94%A84%E4%B8%AA%E7%A3%81%E7%9B%98%E5%9D%97%EF%BC%8C%E4%B8%94%E5%AE%83%E6%9C%89%E4%B8%A4%E4%B8%AA%E7%A1%AC%E9%93%BE%E6%8E%A5%EF%BC%8C%E9%82%A3%E4%B9%88%E5%AE%83%E7%9A%84%E7%A3%81%E7%9B%98%E5%9D%97%E4%BC%9A%E8%AE%A1%E7%AE%97%E4%B8%A4%E6%AC%A1%EF%BC%8C%E8%BF%99%E6%9C%89%E5%8F%AF%E8%83%BD%E6%98%AF%E4%B8%AAbug">^1</a>。磁盘块默认1024字节。</p>
+<p>文件类型都有：</p>
+<table>
+<thead>
+<tr>
+<th>文件类型代号</th>
+<th>文件类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-</td>
+<td>普通文件</td>
+</tr>
+<tr>
+<td>b</td>
+<td>块设备文件，例如硬盘</td>
+</tr>
+<tr>
+<td>c</td>
+<td>字符设备文件，例如键盘</td>
+</tr>
+<tr>
+<td>C</td>
+<td>high performance (“contiguous data”) file</td>
+</tr>
+<tr>
+<td>d</td>
+<td>目录</td>
+</tr>
+<tr>
+<td>D</td>
+<td>door (Solaris)</td>
+</tr>
+<tr>
+<td>l</td>
+<td>符号链接，软链接</td>
+</tr>
+<tr>
+<td>M</td>
+<td>off-line (“migrated”) file (Cray DMF)</td>
+</tr>
+<tr>
+<td>n</td>
+<td>network special file (HP-UX)</td>
+</tr>
+<tr>
+<td>p</td>
+<td>FIFO，命名管道</td>
+</tr>
+<tr>
+<td>P</td>
+<td>port (Solaris)</td>
+</tr>
+<tr>
+<td>s</td>
+<td>套接字文件</td>
+</tr>
+<tr>
+<td>?</td>
+<td>其他文件类型</td>
+</tr>
+<tr>
+<td>D</td>
+<td>door (Solaris)</td>
+</tr>
+<tr>
+<td>l</td>
+<td>符号链接，软链接</td>
+</tr>
+<tr>
+<td>M</td>
+<td>off-line (“migrated”) file (Cray DMF)</td>
+</tr>
+<tr>
+<td>n</td>
+<td>network special file (HP-UX)</td>
+</tr>
+</tbody></table>
+<h2><span id="412-n-numeric-uid-gid">4.12. -n, –numeric-uid-gid</span></h2><p>以长格式显示文件信息，但文件的所有者和所在组使用右对齐的数字ID显示，而不是使用左对齐的名称显示。</p>
+<h2><span id="413-author">4.13. –author</span></h2><p>用于长格式显示的情况下，需要与-l配合使用。显示文件的作者。在GNU&#x2F;Hurd系统中，文件的作者和拥有者可以是不一样的，对其他系统来说，他们俩是一个意思。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/09/20/ls/" data-id="cl98kfp3v001lt12w40ds3ae8" data-title="ls" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-pwd" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/09/19/pwd/" class="article-date">
+  <time class="dt-published" datetime="2022-09-19T08:50:36.000Z" itemprop="datePublished">2022-09-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>►<a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/">Linux</a>►<a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/shell/">shell</a>►<a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/shell/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">常用命令</a>►<a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/shell/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/shell%E5%86%85%E5%BB%BA%E5%91%BD%E4%BB%A4/">shell内建命令</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/09/19/pwd/">pwd</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <!-- toc -->
+
+<ul>
+<li><a href="#1-%E5%91%BD%E4%BB%A4%E4%BD%9C%E7%94%A8">1. 命令作用</a></li>
+<li><a href="#2-%E9%80%89%E9%A1%B9">2. 选项</a><ul>
+<li><a href="#21-l">2.1. -L</a></li>
+<li><a href="#22-p">2.2. -P</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<h1><span id="1-命令作用">1. 命令作用</span></h1><p>显示shell的当前工作目录中的绝对路径。</p>
+<h1><span id="2-选项">2. 选项</span></h1><h2><span id="21-l">2.1. -L</span></h2><p>默认选项，打印出的路径包含符号链接。</p>
+<h2><span id="22-p">2.2. -P</span></h2><p>打印出的路径不包含符号链接。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/09/19/pwd/" data-id="cl98kfp3u001jt12w62nbfm8k" data-title="pwd" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-ShellExecEnv-cd" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/09/19/ShellExecEnv-cd/" class="article-date">
+  <time class="dt-published" datetime="2022-09-19T06:53:52.000Z" itemprop="datePublished">2022-09-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>►<a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/">Linux</a>►<a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/shell/">shell</a>►<a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/shell/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">常用命令</a>►<a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/shell/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/shell%E5%86%85%E5%BB%BA%E5%91%BD%E4%BB%A4/">shell内建命令</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/09/19/ShellExecEnv-cd/">cd</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <!-- toc -->
+
+<ul>
+<li><a href="#1-%E5%91%BD%E4%BB%A4%E4%BD%9C%E7%94%A8">1. 命令作用</a></li>
+<li><a href="#2-%E5%91%BD%E4%BB%A4%E6%A0%BC%E5%BC%8F">2. 命令格式</a></li>
+<li><a href="#3-%E5%91%BD%E4%BB%A4%E8%A7%A3%E9%87%8A">3. 命令解释</a><ul>
+<li><a href="#31-%E7%89%B9%E6%AE%8A%E5%8F%82%E6%95%B0">3.1. 特殊参数</a></li>
+<li><a href="#32-cdpath">3.2. CDPATH</a></li>
+<li><a href="#33-_%E7%9A%84%E4%BD%BF%E7%94%A8">3.3 $_的使用</a></li>
+</ul>
+</li>
+<li><a href="#4-%E9%80%89%E9%A1%B9">4. 选项</a><ul>
+<li><a href="#41-l%E9%80%89%E9%A1%B9">4.1. -L选项</a></li>
+<li><a href="#42-p%E9%80%89%E9%A1%B9">4.2. -P选项</a></li>
+</ul>
+</li>
+<li><a href="#43-e%E9%80%89%E9%A1%B9">4.3. -e选项</a></li>
+</ul>
+<!-- tocstop -->
+
+<h1><span id="1-命令作用">1. 命令作用</span></h1><p>切换当前shell的工作目录。</p>
+<h1><span id="2-命令格式">2. 命令格式</span></h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> [-L] [-P [-e]] [<span class="built_in">dir</span>]</span><br></pre></td></tr></table></figure>
+
+<h1><span id="3-命令解释">3. 命令解释</span></h1><h2><span id="31-特殊参数">3.1. 特殊参数</span></h2><p>cd命令后面一般跟一个目录的路径，可以使用绝对路径或者相对路径。如果不提供目录参数，那么默认$HOME，会被使用，即切换到用户的家目录。如果目录参参数是-，那么-会被替换为$OLDPWD，表示切换到上一次shell的工作目录。</p>
+<p>如果你在dir后面提供了多余的参数，那么会被忽略，比如你执行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /root foo bar</span><br></pre></td></tr></table></figure>
+
+<p>foo bar会被忽略。（经过测试，某些版本的shell会打印出错误消息，例如：“bash: cd: too many arguments”）</p>
+<p> 如果一个文件夹的名称叫做“-”，那么使用cd -是不能切换进去的，可以使用cd .&#x2F;- 实现。</p>
+<h2><span id="32-cdpath">3.2. CDPATH</span></h2><p>如果环境变量CDPATH不为空，当我们直接输入cd dir的时候，如果dir在CDPATH中的某个目录中的时候，cd命令就会直接切换到这个目录。</p>
+<p>例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">zk@zk:~$ <span class="built_in">pwd</span></span><br><span class="line">/home/zk</span><br><span class="line">zk@zk:~$ <span class="built_in">ls</span></span><br><span class="line">Desktop    Downloads  Pictures  Public     Tools        Videos</span><br><span class="line">Documents  Music      Projects  Templates  usrlocalbin</span><br><span class="line">zk@zk:~$ CDPATH=/home/zk</span><br><span class="line">zk@zk:~$ <span class="built_in">cd</span> /</span><br><span class="line">zk@zk:/$ <span class="built_in">cd</span> Tools/</span><br><span class="line">/home/zk/Tools</span><br><span class="line">zk@zk:~/Tools$ </span><br></pre></td></tr></table></figure>
+
+<p>&#x2F;home&#x2F;zk目录下有Tools，Projects等目录，当把CDPATH设置成&#x2F;home&#x2F;zk的时候，此时直接输入cd Tools的时候，cd发现Tools在&#x2F;home&#x2F;zk中，那么就会之际切换到&#x2F;home&#x2F;zk&#x2F;Tools中。</p>
+<p>CDPATH中可以设置不止一个路径，多个路径使用：（冒号）分隔。</p>
+<p>如该cd dir中dir是一个绝对路径，那么CDPATH将被禁用。如该CDPATH中的目录或者-参数指定的目录被成功切换，那么这个目录的绝对路径会被打印到标准输出。</p>
+<h2><span id="33-_的使用">3.3 $_的使用</span></h2><p>$_指的是上一个命令的最后一个参数，利用这个我们可以使用一条命令，新建一个目录的同时，并cd进入这个目录。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> aa &amp;&amp; <span class="built_in">cd</span> <span class="variable">$_</span></span><br></pre></td></tr></table></figure>
+
+<p>或者</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> aa ; <span class="built_in">cd</span> <span class="variable">$_</span></span><br></pre></td></tr></table></figure>
+
+<h1><span id="4-选项">4. 选项</span></h1><h2><span id="41-l选项">4.1. -L选项</span></h2><p>这是个默认的选项，使用这个选项的时候，当cd dir的时候，如果dir是符号链接的话，cd会切换到符号链接，而不是符号链接指向的目录。例如，</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">zk@zk:~$ <span class="built_in">ls</span> -lh</span><br><span class="line">total 40K</span><br><span class="line">drwxr-xr-x 2 zk zk 4.0K Sep 17 15:02 Desktop</span><br><span class="line">drwxr-xr-x 3 zk zk 4.0K Sep 16 13:29 Documents</span><br><span class="line">drwxr-xr-x 4 zk zk 4.0K Sep 18 22:26 Downloads</span><br><span class="line">drwxr-xr-x 2 zk zk 4.0K Sep 14 16:45 Music</span><br><span class="line">drwxr-xr-x 2 zk zk 4.0K Sep 15 12:37 Pictures</span><br><span class="line">drwxrwxr-x 6 zk zk 4.0K Sep 18 22:27 Projects</span><br><span class="line">drwxr-xr-x 2 zk zk 4.0K Sep 14 16:45 Public</span><br><span class="line">drwxr-xr-x 2 zk zk 4.0K Sep 14 16:45 Templates</span><br><span class="line">drwxrwxr-x 3 zk zk 4.0K Sep 19 15:44 Tools</span><br><span class="line">lrwxrwxrwx 1 zk zk   15 Sep 19 00:26 usrlocalbin -&gt; /usr/local/bin/</span><br><span class="line">drwxr-xr-x 2 zk zk 4.0K Sep 14 16:45 Videos</span><br><span class="line">zk@zk:~$ <span class="built_in">cd</span> usrlocalbin</span><br><span class="line">/home/zk/usrlocalbin</span><br><span class="line">zk@zk:~/usrlocalbin$ <span class="built_in">pwd</span></span><br><span class="line">/home/zk/usrlocalbin</span><br><span class="line">zk@zk:~/usrlocalbin$ </span><br></pre></td></tr></table></figure>
+
+<p>在&#x2F;home&#x2F;zk目录下，有一个usrlocalbin目录，它是一个指向&#x2F;usr&#x2F;local&#x2F;bin的符号链接，cd到这个目录以后，发现当前工作目录在&#x2F;home&#x2F;zk&#x2F;usrlocalbin，而不是在&#x2F;usr&#x2F;local&#x2F;bin。</p>
+<p>如果cd dir中的dir包含..（父目录）和符号链接，那么-L选项会使得先处理..，再处理符号链接。例如</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /home/zk/usrlocalbin/../Tools</span><br></pre></td></tr></table></figure>
+
+<p>这个命令会使得切换到&#x2F;home&#x2F;zk&#x2F;Tools，可见在符号链接usrlocalbin展开之前，已经处理了..</p>
+<h2><span id="42-p选项">4.2. -P选项</span></h2><p>这个选项和-L选项刚好相反，他会在切换到符号链接的时候，真正进入符号链接所指向的目录，并且如果..和符号链接同时出现在目录路径中的时候，会先展开符号链接，再处理..,例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">zk@zk:~$ <span class="built_in">pwd</span> ; <span class="built_in">ls</span> -lh</span><br><span class="line">/home/zk</span><br><span class="line">total 40K</span><br><span class="line">drwxr-xr-x 2 zk zk 4.0K Sep 17 15:02 Desktop</span><br><span class="line">drwxr-xr-x 3 zk zk 4.0K Sep 16 13:29 Documents</span><br><span class="line">drwxr-xr-x 4 zk zk 4.0K Sep 18 22:26 Downloads</span><br><span class="line">drwxr-xr-x 2 zk zk 4.0K Sep 14 16:45 Music</span><br><span class="line">drwxr-xr-x 2 zk zk 4.0K Sep 15 12:37 Pictures</span><br><span class="line">drwxrwxr-x 6 zk zk 4.0K Sep 18 22:27 Projects</span><br><span class="line">drwxr-xr-x 2 zk zk 4.0K Sep 14 16:45 Public</span><br><span class="line">drwxr-xr-x 2 zk zk 4.0K Sep 14 16:45 Templates</span><br><span class="line">drwxrwxr-x 3 zk zk 4.0K Sep 19 15:44 Tools</span><br><span class="line">lrwxrwxrwx 1 zk zk   15 Sep 19 00:26 usrlocalbin -&gt; /usr/local/bin/</span><br><span class="line">drwxr-xr-x 2 zk zk 4.0K Sep 14 16:45 Videos</span><br><span class="line">zk@zk:~$ <span class="built_in">cd</span> -P usrlocalbin</span><br><span class="line">zk@zk:/usr/local/bin$ <span class="built_in">cd</span> </span><br><span class="line">zk@zk:~$ <span class="built_in">cd</span> /home/zk/usrlocalbin/../T</span><br><span class="line">Templates/ Tools/     </span><br><span class="line">zk@zk:~$ <span class="built_in">cd</span> -P /home/zk/usrlocalbin/../Tools/</span><br><span class="line">bash: <span class="built_in">cd</span>: /home/zk/usrlocalbin/../Tools/: No such file or directory</span><br><span class="line">zk@zk:~$ </span><br></pre></td></tr></table></figure>
+
+<p>可见cd到usrlocalbin的时候，shell的工作目录进入了usrlocalbin指向真实目录&#x2F;usr&#x2F;local&#x2F;bin，当我们使用cd -P &#x2F;home&#x2F;zk&#x2F;usrlocalbin&#x2F;..&#x2F;Tools&#x2F;的时候，由于使用了-P选项，usrlocalbin会在解析..之前被展开，由于&#x2F;usr&#x2F;local&#x2F;bin目录的上一级目录中没有Tools目录，因此就会报错。</p>
+<h1><span id="43-e选项">4.3. -e选项</span></h1><p>这个选项和-P选项一起使用，暂时不清楚作用是啥。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/09/19/ShellExecEnv-cd/" data-id="cl98kfp3o0008t12w99cl1fvr" data-title="cd" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-LinuxTextShowCommand-od" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/09/07/LinuxTextShowCommand-od/" class="article-date">
+  <time class="dt-published" datetime="2022-09-07T13:49:21.000Z" itemprop="datePublished">2022-09-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>►<a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/">Linux</a>►<a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/shell/">shell</a>►<a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/shell/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">常用命令</a>►<a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/shell/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/%E6%96%87%E4%BB%B6%E5%B1%95%E7%A4%BA%E5%91%BD%E4%BB%A4/">文件展示命令</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/09/07/LinuxTextShowCommand-od/">od</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <!-- toc -->
+
+<ul>
+<li><a href="#1-%E5%91%BD%E4%BB%A4%E4%BD%9C%E7%94%A8">1. 命令作用</a></li>
+<li><a href="#2-%E5%B1%95%E7%A4%BA%E6%A0%BC%E5%BC%8F">2. 展示格式</a></li>
+<li><a href="#3-%E9%80%89%E9%A1%B9">3. 选项</a><ul>
+<li><a href="#31-wn-%E6%88%96-width-n">3.1. -w[n] 或 --width[-n]</a></li>
+<li><a href="#32-endianorder">3.2. --endian&#x3D;order</a></li>
+<li><a href="#33-a-radix-%E6%88%96-address-radixradix">3.3. -A radix 或 --address-radix&#x3D;radix</a></li>
+<li><a href="#34-t-type-%E6%88%96-formattype">3.4. -t type 或 --format&#x3D;type</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<h1><span id="1-命令作用">1. 命令作用</span></h1><p>od命令可以把文件的内容以字节块的形式展示，可以让我们看到文件的二进制数据。</p>
+<h1><span id="2-展示格式">2. 展示格式</span></h1><p>od命令是一行一行展示文件内容的，每一行的展示格式如下：</p>
+<p>偏移量  字节块1 字节块2 字节块3……</p>
+<p>偏移量是使用8进制表示的整数，代表当前展示的是文件中第几个字节开始的，默认偏移量是从0开始</p>
+<p>每一个字节块的长度默认是C语言short int类型的字节长度，一般是两个字节，用8进制数表示，默认一行展示16个字节。</p>
+<h1><span id="3-选项">3. 选项</span></h1><h2><span id="31-wn-或-width-n">3.1. -w[n] 或 --width[-n]</span></h2><p>设置od命令一行展示的字节个数，默认是16，如果指定了选项，但是没有给出n，那么是32字节</p>
+<h2><span id="32-endianx3dorder">3.2. --endian&#x3D;order</span></h2><p>当od命令一个字节块包含多个字节的时候，字节展示的顺序，order有大端方式（big）和小断方式（little）。</p>
+<h2><span id="33-a-radix-或-address-radixx3dradix">3.3. -A radix 或 --address-radix&#x3D;radix</span></h2><p>设置偏移量的显示格式，radix有如下选择：</p>
+<ul>
+<li>d：十进制</li>
+<li>o：8进制（默认）</li>
+<li>x：十六进制</li>
+<li>n：不显示偏移量</li>
+</ul>
+<h2><span id="34-t-type-或-formatx3dtype">3.4. -t type 或 --format&#x3D;type</span></h2><p>指定字节块的展示样式，od是按照字节块展示数据的，那么一个字节块是展示成字符，十进制数字，还是浮点数呢？需要我们指定。</p>
+<p>type的取值：</p>
+<ul>
+<li>a：以字符形式展示数据，一个字节一组，且只看低7位组成的ASCII的值，如果是可打印的字符，那么对应的字符，有些字符会换成字符的名称展示，例如如果是空格，打印sp，如果是换行打印nl，是0字节则打印nul；</li>
+<li>c：一个字节一组，如果是可打印的字符，那么打印其ASCII的值，否则如果可以表示成使用反斜杠转义的C语言风格的字符，则转义后打印（例如换行就打印为\n），否则使用3位8进制数字表示这个字节。</li>
+<li>d：有符号十进制整数，4个字节一组。</li>
+<li>u：无符号十进制整数，4字节一组。</li>
+<li>f：浮点数，8个字节一组</li>
+<li>o：8进制整数，4字节一组</li>
+<li>x：十六进制，4个字节一组。</li>
+</ul>
+<p>除了a和c以外，剩下的type取值的中字节块包含的字节数可以使用一个是进制数来指定，例如我想让文件内容显示为十进制，但是想一个字节一组，即一个字节显示为一个十进制整数，可以使用-t d1，其中1个字节，刚好数C语言中的char类型的字节长度，也可以写成-t dc</p>
+<p>其他情况类似，字节个数和对应的替换字符如下：</p>
+<ul>
+<li>c：char 1字节</li>
+<li>s：short 2字节</li>
+<li>I： int 4字节</li>
+<li>L： long  8&#x2F;4字节</li>
+<li>F：float 4字节</li>
+<li>D： double 8字节</li>
+<li>L：long double 10&#x2F;12字节</li>
+</ul>
+<p>还有一些快捷选项：</p>
+<ul>
+<li>-a，等于 -t a</li>
+<li>-b，等于 -t o1</li>
+<li>-c，等于 -t c</li>
+<li>-d，等于 -t u2</li>
+<li>-f，等于 -t fF</li>
+<li>-i，等于 -t dI</li>
+<li>-l，等于 -t dL</li>
+<li>-o，等于-t o2</li>
+<li>-s，等于 -t d2</li>
+<li>-x，等于 -t x2</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/09/07/LinuxTextShowCommand-od/" data-id="cl98kfp3n0004t12whxqzf5wm" data-title="od" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-LinuxTextShowCommand-nl" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/09/05/LinuxTextShowCommand-nl/" class="article-date">
+  <time class="dt-published" datetime="2022-09-05T13:25:40.000Z" itemprop="datePublished">2022-09-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>►<a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/">Linux</a>►<a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/shell/">shell</a>►<a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/shell/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">常用命令</a>►<a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/shell/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/%E6%96%87%E4%BB%B6%E5%B1%95%E7%A4%BA%E5%91%BD%E4%BB%A4/">文件展示命令</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/09/05/LinuxTextShowCommand-nl/">nl</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <!-- toc -->
+
+<ul>
+<li><a href="#1-%E5%91%BD%E4%BB%A4%E4%BD%9C%E7%94%A8">1. 命令作用</a></li>
+<li><a href="#2-%E5%91%BD%E4%BB%A4%E6%A0%BC%E5%BC%8F">2. 命令格式</a></li>
+<li><a href="#3-%E5%8E%9F%E7%90%86%E8%A7%A3%E9%87%8A">3. 原理解释</a></li>
+<li><a href="#4-%E9%80%89%E9%A1%B9">4. 选项</a><ul>
+<li><a href="#41-b%E6%88%96-body-numbering-style">4.1. -b或 --body-numbering-style</a></li>
+<li><a href="#42-d-cd%E6%88%96-section-delimitercd">4.2. -d cd或 --section-delimiter&#x3D;cd</a></li>
+<li><a href="#43-i-number%E6%88%96-line-incrementnumber">4.3. -i number或--line-increment&#x3D;number</a></li>
+<li><a href="#44-l-number%E6%88%96-join-blank-linesnumber">4.4. -l number或--join-blank-lines&#x3D;number</a></li>
+<li><a href="#45-n-format-%E6%88%96-number-formatformat">4.5. -n format 或 --number-format&#x3D;format</a></li>
+<li><a href="#46-p-%E6%88%96-no-renumber">4.6. -p 或 --no-renumber</a></li>
+<li><a href="#47-s-string-%E6%88%96-number-separatorstring">4.7. -s string 或 --number-separator&#x3D;string</a></li>
+<li><a href="#48-v-number-%E6%88%96-starting-line-numbernumber">4.8. -v number 或 --starting-line-number&#x3D;number</a></li>
+<li><a href="#49-w-number-%E6%88%96-number-widthnumber">4.9. -w number 或 --number-width&#x3D;number</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<h1><span id="1-命令作用">1. 命令作用</span></h1><p>nl命令允许可以把文本内容打印出来，同时可以给内容加上行号，相比cat命令，你可以控制行号的很多细节（比如对齐方式，显示字符宽度等），同时nl命令可以让你通过几个标号定义逻辑页，可以作为文本的格式化输出工具。</p>
+<h1><span id="2-命令格式">2. 命令格式</span></h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">nl</span> [options]... [file]...</span><br></pre></td></tr></table></figure>
+
+<p>当没有给出文件名称，或者使用-作为文件名称的时候，则nl显示标准输入的内容。</p>
+<h1><span id="3-原理解释">3. 原理解释</span></h1><p>nl命令把所有的文件内容看作一整个文档显示，根据分隔标记，把整个文档标记成页的不同部分，即header，body，footer。</p>
+<p>header的分隔符是“:::”，body分割符“::”，footer的分割符是“:”，如果组成footer分割符的两个字符分别是ab的话，那么header的分割符就是ababab，body的就是abab。</p>
+<p>分割符独占一行，即紧跟着每一种分割符的内容被认为是对应的页的部分，直到遇到其他分割符。例如一个文本的内容如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">aaa</span><br><span class="line">\:\:\:</span><br><span class="line">bbb</span><br><span class="line">\:\:</span><br><span class="line">ccc</span><br><span class="line">123</span><br><span class="line">\:</span><br><span class="line">ddd</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>bbb属于header</li>
+<li>ccc 123属于body</li>
+<li>ddd属于footer</li>
+</ul>
+<p>第一个分隔符之前的内容也属于body，即aaa是body部分。当然header，body，footer可以在不同文件中。nl在显示文本的时候，会把分隔符替换为空行，默认只会对body添加行号。</p>
+<h1><span id="4-选项">4. 选项</span></h1><h2><span id="41-b或-body-numbering-style">4.1. -b或 --body-numbering-style</span></h2><p>指定body部分的行号添加策略，style有如下几个选择：</p>
+<ul>
+<li>a：为所有行添加行号</li>
+<li>b：只为非空行添加行号，body默认是这个</li>
+<li>n：不添加行号</li>
+</ul>
+<p>类似的，也可以指定header和footer的行号策略，选项分别如下：</p>
+<ul>
+<li>-f style 或 --footer-numbering&#x3D;style 指定footer的行号策略；</li>
+<li>-h style 或 --header-numbering&#x3D;style 指定header的行号策略</li>
+</ul>
+<h2><span id="42-d-cd或-section-delimiterx3dcd">4.2. -d cd或 --section-delimiter&#x3D;cd</span></h2><p>这个选项指定分隔符，注意cd是两个字符，这样的话，cdcdcd后面的部分是header，cdcd后面的部分是body，cd后面的部分是footer了。默认情况下c&#x3D;‘\’，d&#x3D;‘:’，一般来说分隔符只能指定两个字符，当使用GNU扩展的时候，可以指定多个字符，也可以指定为空字符串（此时将禁用页分区的功能了）。</p>
+<h2><span id="43-i-number或-line-incrementx3dnumber">4.3. -i number或--line-increment&#x3D;number</span></h2><p>这个选项指定行号的增量，例如初始行号是1，那么下一行是2，此时增量为1（默认是1），也可以指定负数。</p>
+<h2><span id="44-l-number或-join-blank-linesx3dnumber">4.4. -l number或--join-blank-lines&#x3D;number</span></h2><p>当有至少number个连续的空行的时候，只为最后一个空行设置行号，当连续空行个数小于number的时候，不为这些空行设置行号。空行指的是这一行，除了换行符以外，没有其他字符。</p>
+<h2><span id="45-n-format-或-number-formatx3dformat">4.5. -n format 或 --number-format&#x3D;format</span></h2><p>指定行编号的样式，format有如下几个可选的值：</p>
+<ul>
+<li>ln：左对齐，没有前导0</li>
+<li>rn：右对齐，没有前导0（默认）</li>
+<li>rz：右对齐，右前导0</li>
+</ul>
+<p>nl输出的每一行的格式可以描述为这样：</p>
+<p>行号区域 行号和内容的分隔区域 内容其区域</p>
+<p>其中行号区域默认是6字符宽度，当我们的行号从一个比较小的数开始的时候，比如1，那么这个1是如何放置？</p>
+<p>其中左对齐即（x表示空出来的字符）：</p>
+<p>1xxxxx 行号和内容的分隔区域 内容其区域</p>
+<p>右对齐是：</p>
+<p>xxxxx1 行号和内容的分隔区域 内容其区域,</p>
+<p>右对齐，有前导0，即：</p>
+<p>000001 行号和内容的分隔区域 内容其区域,</p>
+<h2><span id="46-p-或-no-renumber">4.6. -p 或 --no-renumber</span></h2><p>这个选项指定了当一个新的页开始的时候，行号不要从新开始。一般来说，我们可以定义多个header，body和footer，当上一个footer结束，下一个header开始的时候，即为新的一页，新的页开始的时候，行号从新开始的。</p>
+<h2><span id="47-s-string-或-number-separatorx3dstring">4.7. -s string 或 --number-separator&#x3D;string</span></h2><p>上面说了，nl输出的每一行的行号和内容之间有分隔区域，这个选项设置行号和行内容之间的分隔区域，默认是TAB，可以指定任何字符串。</p>
+<h2><span id="48-v-number-或-starting-line-numberx3dnumber">4.8. -v number 或 --starting-line-number&#x3D;number</span></h2><p>设置行号的初始值，默认是1</p>
+<h2><span id="49-w-number-或-number-widthx3dnumber">4.9. -w number 或 --number-width&#x3D;number</span></h2><p>上面说了，nl输出的每一行的行号区域默认是6字符宽度，这个选项用来设置行号区域的字符宽度。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/09/05/LinuxTextShowCommand-nl/" data-id="cl98kfp3l0002t12w8trq08yl" data-title="nl" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-LinuxTextShowCommand-tac" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/09/03/LinuxTextShowCommand-tac/" class="article-date">
+  <time class="dt-published" datetime="2022-09-03T10:19:28.000Z" itemprop="datePublished">2022-09-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>►<a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/">Linux</a>►<a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/shell/">shell</a>►<a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/shell/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">常用命令</a>►<a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/shell/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/%E6%96%87%E4%BB%B6%E5%B1%95%E7%A4%BA%E5%91%BD%E4%BB%A4/">文件展示命令</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/09/03/LinuxTextShowCommand-tac/">tac</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <!-- toc -->
+
+<ul>
+<li><a href="#1-%E5%91%BD%E4%BB%A4%E4%BD%9C%E7%94%A8">1. 命令作用</a></li>
+<li><a href="#2-%E5%91%BD%E4%BB%A4%E6%A0%BC%E5%BC%8F">2. 命令格式</a></li>
+<li><a href="#3-%E5%91%BD%E4%BB%A4%E5%8E%9F%E7%90%86">3. 命令原理</a></li>
+<li><a href="#4-%E9%80%89%E9%A1%B9">4. 选项</a><ul>
+<li><a href="#41-b-before">4.1. -b，--before</a></li>
+<li><a href="#42-s-separatorstr">4.2. -s，--separator&#x3D;str</a></li>
+<li><a href="#43-r-regex">4.3. -r，--regex</a></li>
+<li><a href="#44-help%E5%92%8C-version">4.4. --help和--version</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<h1><span id="1-命令作用">1. 命令作用</span></h1><p>tac命令和cat命令功能差不多，都是读取文件或者标准输入的文本，然后显示在标准输出，只不过tac是按行反序输出的，即先打印最后一行，然后倒数第二行，。。</p>
+<p>例如有一个文件，它的内容如下：</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">123</span><br><span class="line">456</span><br><span class="line">789</span><br></pre></td></tr></table></figure>
+
+<p>那么使用tac输出的结果就是</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">789</span><br><span class="line">456</span><br><span class="line">123</span><br></pre></td></tr></table></figure>
+
+<h1><span id="2-命令格式">2. 命令格式</span></h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">tac</span> [options]... [file]...</span><br></pre></td></tr></table></figure>
+
+<p>如果没有文件名称，或者文件名称是-，那么代表标准输入。</p>
+<h1><span id="3-命令原理">3. 命令原理</span></h1><p>tac命令的工作原理是根据一个字符串把整个文本切分成分组，然后先打印最后一个分组，再倒数第二个，。。。，最后打印第一个分组，用来拆分的分割字符串默认被附加在每一个分组末尾，tac默认使用换行符作为分割字符串。</p>
+<p>这可能不太好理解，下面我们结合-b选项，讲解一下tac的工作原理。</p>
+<h1><span id="4-选项">4. 选项</span></h1><h2><span id="41-b-before">4.1. -b，--before</span></h2><p>这个选项可以把分割字符串附加在每一个分组的前面，假设上面的文件每一行都有一个换行符，换行符使用$表示，</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">123$</span><br><span class="line">456$</span><br><span class="line">789$</span><br></pre></td></tr></table></figure>
+
+<p>因此整个文本被换行符分割成“123” “456” “789”，由于使用-b选项，因此换行符会被附加在每一个分组前面，因此每一个完整的分组如下：</p>
+<p>“123” “$456”  “$789”，“$”，反着打印结果如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">789</span><br><span class="line">456123</span><br></pre></td></tr></table></figure>
+
+<p>即：</p>
+<ol>
+<li>先打印换行符</li>
+<li>打印$789（此时789前面有个换行）</li>
+<li>打印$456</li>
+<li>最后在456后面打印123，456和123之间没有换行</li>
+</ol>
+<h2><span id="42-s-separatorx3dstr">4.2. -s，--separator&#x3D;str</span></h2><p>这个选项可以修改分割字符串，例如我们使用-s “ww”，那么我们使用这个选项打印如下文本 “aaawwbwswwdd$”（$代表换行），即</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;aaawwbwswwdd&quot;</span> &gt; test.txt</span><br><span class="line"><span class="built_in">tac</span> -s <span class="string">&quot;ww&quot;</span> test.txt</span><br></pre></td></tr></table></figure>
+
+<p>熟悉根据分割字符串“ww”，原始文本被分割成“aaaww”，“bwsww”，“dd$”，那么打印出来的结果就是</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dd</span><br><span class="line">bwswwaaaww</span><br></pre></td></tr></table></figure>
+
+<p>如果此时加上-b选项，</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">tac</span> -b -s <span class="string">&quot;ww&quot;</span> test.txt</span><br></pre></td></tr></table></figure>
+
+<p>熟悉根据分割字符串“ww”，原始文本被分割成“aaa”，“wwbws”，“wwdd$”，那么打印出来的结果就是</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wwdd</span><br><span class="line">wwbwsaaa</span><br></pre></td></tr></table></figure>
+
+<h2><span id="43-r-regex">4.3. -r，--regex</span></h2><p>把分割字符串当成正则表达式来解析</p>
+<h2><span id="44-help和-version">4.4. --help和--version</span></h2><p>这两个选项会被大部分GNU coreutils 工具包中的程序支持，分别是打印帮助信息和打印当前工具命令的版本号。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/09/03/LinuxTextShowCommand-tac/" data-id="cl98kfp3n0005t12whklm908z" data-title="tac" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-LinuxTextShowCommand-cat" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/09/02/LinuxTextShowCommand-cat/" class="article-date">
+  <time class="dt-published" datetime="2022-09-02T15:57:56.000Z" itemprop="datePublished">2022-09-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>►<a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/">Linux</a>►<a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/shell/">shell</a>►<a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/shell/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">常用命令</a>►<a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/shell/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/%E6%96%87%E4%BB%B6%E5%B1%95%E7%A4%BA%E5%91%BD%E4%BB%A4/">文件展示命令</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/09/02/LinuxTextShowCommand-cat/">cat</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <!-- toc -->
+
+<ul>
+<li><a href="#1-%E5%91%BD%E4%BB%A4%E4%BD%9C%E7%94%A8">1. 命令作用</a></li>
+<li><a href="#2-%E5%91%BD%E4%BB%A4%E6%A0%BC%E5%BC%8F">2. 命令格式</a></li>
+<li><a href="#3-%E9%80%89%E9%A1%B9">3. 选项</a></li>
+<li><a href="#4-%E5%85%B6%E4%BB%96%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D">4. 其他使用介绍</a></li>
+</ul>
+<!-- tocstop -->
+
+<h1><span id="1-命令作用">1. 命令作用</span></h1><p>这个命令主要的作用是把文件（或者标准输入）的内容显示在标准输出。</p>
+<h1><span id="2-命令格式">2. 命令格式</span></h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> [options] [file]...</span><br></pre></td></tr></table></figure>
+
+<p>当没有给出文件名称，或者使用-作为文件名称的时候，则cat显示标准输入的内容。</p>
+<h1><span id="3-选项">3. 选项</span></h1><table>
+<thead>
+<tr>
+<th>短选项</th>
+<th>长选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td>--help</td>
+<td>打印帮助信息</td>
+</tr>
+<tr>
+<td></td>
+<td>--version</td>
+<td>打印版本号</td>
+</tr>
+<tr>
+<td>-n</td>
+<td>--number</td>
+<td>给输出的行编号，从1开始</td>
+</tr>
+<tr>
+<td>-b</td>
+<td>--number-nonblank</td>
+<td>给输出的行编号，从1开始，跳过所有的空行，如果这个选项生效，那么-n被忽略</td>
+</tr>
+<tr>
+<td>-s</td>
+<td>--squeeze-blank</td>
+<td>合并相邻的多个空行为一个空行</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>--show-nonprinting</td>
+<td>展示除了LFD（换行）和TAB（水平制表符）以外的所有控制字符，展示方式是使用^标记，例如ASCII码中的NUL字符可以使用CTRL+@表示，那么NUL字符就展示为^@。<br>-v选项使得cat命令一个字节一个字节的展示文件的数据，cat会默认把一个字节的低7位当作ASCII码来展示，如果是可打印字符就展示对应的字符，如果不是可打印的，就使用^+xxx来展示，例如当这个字节是0的时候，就是展示成^@，如果这个字节的最高位是1，那么就在展示的字符前面加上前导的M-，例如-128，就展示为M-^@</td>
+</tr>
+<tr>
+<td>-E</td>
+<td>--show-ends</td>
+<td>把换行符LFD（Line Feed）展示为$，如果在换行符前面有回车符，即\r\n，则一起展示为^M$</td>
+</tr>
+<tr>
+<td>-T</td>
+<td>--show-tabs</td>
+<td>把TAB符展示为^I（爱）</td>
+</tr>
+<tr>
+<td>-e</td>
+<td></td>
+<td>等于-vE</td>
+</tr>
+<tr>
+<td>-t</td>
+<td></td>
+<td>等于-vT</td>
+</tr>
+<tr>
+<td>-A</td>
+<td></td>
+<td>等于-vET</td>
+</tr>
+</tbody></table>
+<h1><span id="4-其他使用介绍">4. 其他使用介绍</span></h1><p>借助重定向的操作，可以创建新文件并写入初始化的内容，即：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> &gt; NewFile.txt</span><br></pre></td></tr></table></figure>
+
+<p>或者</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> - &gt; NewFile.txt</span><br></pre></td></tr></table></figure>
+
+<p>此时cat会从标准输入读取字符，直到输入结束（CTRL+D）。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/09/02/LinuxTextShowCommand-cat/" data-id="cl98kfp3k0001t12wezxqced5" data-title="cat" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/">Linux</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/shell/">shell</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/shell/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">常用命令</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/shell/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/shell%E5%86%85%E5%BB%BA%E5%91%BD%E4%BB%A4/">shell内建命令</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/shell/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/%E6%96%87%E4%BB%B6%E5%B1%95%E7%A4%BA%E5%91%BD%E4%BB%A4/">文件展示命令</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/shell/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C/">目录操作</a></li></ul></li></ul></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F/">排序</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F/%E5%A0%86%E6%8E%92%E5%BA%8F/">堆排序</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%A0%86/">堆</a></li></ul></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">October 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/09/">September 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/10/14/Lottery/">Lottery</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/10/enhanced-heap/">堆</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/03/heapSort/">堆排序</a>
+          </li>
+        
+          <li>
+            <a href="/2022/09/20/ls/">ls</a>
+          </li>
+        
+          <li>
+            <a href="/2022/09/19/pwd/">pwd</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
