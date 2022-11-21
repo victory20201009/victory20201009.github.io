@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="zh-CN" color-mode="light">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="Victory" />
+  <meta name="description" content="简单专注" />
+  
+  
+  <title>
+    
+      Top K问题 
+      
+      
+      |
+    
+     Victory的博客
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.jpg">
+    <link rel="icon" href="/images/favicon.jpg">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- hexo site css -->
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1886449_67xjft27j1l.css" />
+  <!-- 代码块风格 -->
+  
+    
+<link rel="stylesheet" href="/css/figcaption/mac-block.css">
+
+  
+
+  <!-- jquery3.3.1 -->
+  
+    <script defer type="text/javascript" src="/plugins/jquery.min.js"></script>
+  
+
+  <!-- fancybox -->
+  
+    <link href="/plugins/jquery.fancybox.min.css" rel="stylesheet">
+    <script defer type="text/javascript" src="/plugins/jquery.fancybox.min.js"></script>
+  
+  
+<script src="/js/fancybox.js"></script>
+
+
+  
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  <script>
+    var html = document.documentElement
+    const colorMode = localStorage.getItem('color-mode')
+    if (colorMode) {
+      document.documentElement.setAttribute('color-mode', colorMode)
+    }
+  </script>
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <div class="avatar">
+    <a href="/">
+      <!-- 头像取消懒加载，添加no-lazy -->
+      
+        <img src="/images/avatar.jpg" alt="">
+      
+    </a>
+    <div class="nickname"><a href="/">victory</a></div>
+  </div>
+  <div class="navbar">
+    <ul>
+      
+        <li class="nav-item" data-path="/">
+          <a href="/">首页</a>
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          <a href="/archives/">归档</a>
+        </li>
+      
+        <li class="nav-item" data-path="/categories/">
+          <a href="/categories/">分类</a>
+        </li>
+      
+        <li class="nav-item" data-path="/tags/">
+          <a href="/tags/">标签</a>
+        </li>
+      
+        <li class="nav-item" data-path="/friends/">
+          <a href="/friends/">友链</a>
+        </li>
+      
+        <li class="nav-item" data-path="/about/">
+          <a href="/about/">关于</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+<script src="/js/activeNav.js"></script>
+
+
+
+      <div class="flex-container">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+
+  <!-- LaTex Display -->
+
+  
+    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    }
+  </script>
+
+
+
+
+
+  <!-- clipboard -->
+
+  
+    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
+  
+  
+<script src="/js/codeCopy.js"></script>
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">Top K问题</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime mr-10" title="更新时间"></i>
+          2022-11-17 21:21:51
+        </span>
+        
+              <span class="post-categories">
+                <i class="iconfont icon-bookmark" title="分类"></i>
+                
+                <span class="span--category">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" title="算法">
+                    <b>#</b> 算法
+                  </a>
+                </span>
+                
+                <span class="span--category">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/%E9%97%AE%E9%A2%98/" title="问题">
+                    <b>#</b> 问题
+                  </a>
+                </span>
+                
+                <span class="span--category">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/%E9%97%AE%E9%A2%98/Top-K/" title="Top K">
+                    <b>#</b> Top K
+                  </a>
+                </span>
+                
+              </span>
+          
+              <span class="post-tags">
+                <i class="iconfont icon-tags mr-10" title="标签"></i>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/%E5%A0%86/" title="堆">
+                    #堆
+                  </a>
+                </span>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" title="快速排序">
+                    #快速排序
+                  </a>
+                </span>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/%E8%8D%B7%E5%85%B0%E5%9B%BD%E6%97%97%E9%97%AE%E9%A2%98/" title="荷兰国旗问题">
+                    #荷兰国旗问题
+                  </a>
+                </span>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/BFPRT/" title="BFPRT">
+                    #BFPRT
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+      <div class="markdown-body">
+        <!-- toc -->
+
+<h1 id="1-问题描述"><a href="#1-问题描述" class="headerlink" title="1. 问题描述"></a>1. 问题描述</h1><p>给定一个数组，找出数组中最大的K个元素，按照从小到大的顺序返回。保证K不超过数组的长度。</p>
+<h1 id="2-使用排序的方法"><a href="#2-使用排序的方法" class="headerlink" title="2.使用排序的方法"></a>2.使用排序的方法</h1><p>把数组按照从小到大的顺序排序，然后取最后的K个元素即可。代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TopKUsingSort</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span>[] topK(<span class="type">int</span>[] arr, <span class="type">int</span> k) &#123;</span><br><span class="line">        <span class="type">int</span>[] ans = <span class="keyword">new</span> <span class="title class_">int</span>[k];</span><br><span class="line">        <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> arr.length, i;</span><br><span class="line">        Arrays.sort(arr);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 排序后取最后的K个数即可。</span></span><br><span class="line">        <span class="keyword">for</span>(i = len - k; i &lt; len; ++i) ans[i - len + k] = arr[i];</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度$O(N\log_2N)$，空间复杂度$O(1)$。</p>
+<h1 id="3-使用堆数据结构"><a href="#3-使用堆数据结构" class="headerlink" title="3. 使用堆数据结构"></a>3. 使用堆数据结构</h1><h2 id="3-1-使用大根堆"><a href="#3-1-使用大根堆" class="headerlink" title="3.1. 使用大根堆"></a>3.1. 使用大根堆</h2><p>方法是先通过heapIfy把数组调整成一个大根堆，然后从堆中弹出K个元素即可。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TopKUsingBigRootHeap</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span>[] topK(<span class="type">int</span>[] arr, <span class="type">int</span> k) &#123;</span><br><span class="line">        <span class="type">int</span>[] ans = <span class="keyword">new</span> <span class="title class_">int</span>[k];</span><br><span class="line">        <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> arr.length, i;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 把数组调整成大根堆</span></span><br><span class="line">        <span class="keyword">for</span>(i = (len &gt;&gt; <span class="number">1</span>) - <span class="number">1</span>; i &gt; -<span class="number">1</span>; --i) heapIfy(arr, i, len);</span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; k; ++i) &#123;<span class="comment">// 弹出K次堆顶</span></span><br><span class="line">            ans[k - i - <span class="number">1</span>] = arr[<span class="number">0</span>];</span><br><span class="line">            arr[<span class="number">0</span>] = arr[--len];</span><br><span class="line">            heapIfy(arr, <span class="number">0</span>, len);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">heapIfy</span><span class="params">(<span class="type">int</span>[] heap, <span class="type">int</span> index, <span class="type">int</span> size)</span> &#123;</span><br><span class="line">        <span class="type">int</span> child, value = heap[index], bnd =  size &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(index &lt; bnd) &#123;</span><br><span class="line">            child = (index &lt;&lt; <span class="number">1</span>) | <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(child + <span class="number">1</span> &lt; size &amp;&amp; heap[child] &lt; heap[child + <span class="number">1</span>]) ++child;</span><br><span class="line">            <span class="keyword">if</span>(value &gt;= heap[child]) <span class="keyword">break</span>;</span><br><span class="line">            heap[index] = heap[child];</span><br><span class="line">            index = child;</span><br><span class="line">        &#125;</span><br><span class="line">        heap[index] = value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度，数组调整成大根堆的时间是$O(N)$，弹出K次堆顶元素$O(K\log_2N)$，所以时间复杂度$O(N+K\log_2N)$。空间复杂度$O(1)$（如果不允许修改原数组的话，那么就需要$O(N)$的额外空间）。当K较小的时候，时间复杂度还是可以接受的。</p>
+<h2 id="3-2-使用小根堆"><a href="#3-2-使用小根堆" class="headerlink" title="3.2. 使用小根堆"></a>3.2. 使用小根堆</h2><p>我们维护一个长度为K的小根堆，然后遍历数组，当堆不满的时候，元素进入堆，当堆满的时候，如果当前元素比堆顶大，那么当前元素替换堆顶，否则丢弃当前元素。数组遍历完的时候，堆中的元素就是最大的K个数了，把堆中的元素依次弹出即可。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TopKUsingSmallRootHeap</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span>[] topK(<span class="type">int</span>[] arr, <span class="type">int</span> k) &#123;</span><br><span class="line">        <span class="type">int</span>[] ans = <span class="keyword">new</span> <span class="title class_">int</span>[k];</span><br><span class="line">        System.arraycopy(arr, <span class="number">0</span>, ans, <span class="number">0</span>, k);</span><br><span class="line">        <span class="type">int</span> i, len = arr.length;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 先把前K个元素，调整成小根堆</span></span><br><span class="line">        <span class="keyword">for</span>(i = (k &gt;&gt; <span class="number">1</span>) - <span class="number">1</span>; i &gt; -<span class="number">1</span>; --i) heapIfy(ans, i, k);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 遍历数组后面的元素， 如果比堆顶大，则替换堆顶</span></span><br><span class="line">        <span class="keyword">for</span>(i = k; i &lt; len; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span>(ans[<span class="number">0</span>] &lt; arr[i]) &#123;</span><br><span class="line">                ans[<span class="number">0</span>] = arr[i];</span><br><span class="line">                heapIfy(ans, <span class="number">0</span>, k);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        Arrays.sort(ans);<span class="comment">// 最后对答案排序</span></span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">heapIfy</span><span class="params">(<span class="type">int</span>[] heap, <span class="type">int</span> index, <span class="type">int</span> size)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">v</span> <span class="operator">=</span> heap[index], child, bnd = size &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(index &lt; bnd) &#123;</span><br><span class="line">            child = (index &lt;&lt; <span class="number">1</span>) | <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(child + <span class="number">1</span> &lt; size &amp;&amp; heap[child] &gt; heap[child + <span class="number">1</span>]) ++child;</span><br><span class="line">            <span class="keyword">if</span>(v &lt;= heap[child]) <span class="keyword">break</span>;</span><br><span class="line">            heap[index] = heap[child];</span><br><span class="line">            index = child;</span><br><span class="line">        &#125;</span><br><span class="line">        heap[index] = v;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度，调整小根堆$O(K)$，剩余部分数组遍历和调整堆$O((N-K)\log_2K)$，最后对答案数组排序$O(K\log_2K)$；因此总的时间就是$O(K+(N-K)\log_2K+K\log_2K) &#x3D; K+N\log_2K$。空间复杂度$O(1)$。当N很大，甚至无限的时候，这个方法也可以适用。</p>
+<h1 id="4-使用快速排序的划分过程"><a href="#4-使用快速排序的划分过程" class="headerlink" title="4. 使用快速排序的划分过程"></a>4. 使用快速排序的划分过程</h1><p>可以利用快速排序的划分过程，找到数组中第K大的元素target，然后遍历一次数组，找大于target的元素放入答案数组，再次遍历，找等于target的元素放入答案数组，最后对答案数组排序即可。那么如何使用快排的partition过程，找出数组中第K大的元素呢？</p>
+<blockquote>
+<p>不能只遍历一次，找大于等于target的元素。这是因为，例如数组arr&#x3D;[1,1,1,1,1,1,1,1,2] , K &#x3D; 2 的时候</p>
+<p>我们通过数组划分，找到第2大的元素是1，如果我们遍历数组一次，找大于等于1的元素，会得到[1,1]这样的答案，而不是[1,2]。</p>
+</blockquote>
+<p>我们通过数组划分，选择一个枢轴元素pivot，如果划分以后，</p>
+<ol>
+<li>大于枢轴部分的长度是K-1的话，那么说明，枢轴就是第K大的元素；</li>
+<li>如果大于枢轴部分的长度大于等于K的话，那么说明大于枢轴部分包含了第K大的元素，因此我们需要在大于部分中寻找第K大的元素；</li>
+<li>如果大于枢轴部分的长度$len_{big}$小于K-1，那么此时需要看等于枢轴部分的长度$len_{equ}$，<ol>
+<li>如果$len_{big}+len_{equ}&gt;&#x3D;K$，那么枢轴元素就是第K大的元素；</li>
+<li>如果$len_{big}+len_{equ}&lt;K$，那么说明第K大的元素在小于枢轴的部分，于是我们需要在小于部分寻找第$K - len_{big}-len_{equ}$大的元素。</li>
+</ol>
+</li>
+</ol>
+<p>对于枢轴元素的选取可以采用随机法和三数取中法。代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TopKUsingArrayPartition</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span>[] topK(<span class="type">int</span>[] arr, <span class="type">int</span> k) &#123;</span><br><span class="line">        <span class="type">int</span>[] ans = <span class="keyword">new</span> <span class="title class_">int</span>[k];</span><br><span class="line">        <span class="type">int</span> <span class="variable">s</span> <span class="operator">=</span> <span class="number">0</span>, e = arr.length - <span class="number">1</span>, len, kThbig = arr[s], ansLen = k;</span><br><span class="line">        <span class="keyword">while</span>(s &lt;= e) &#123;</span><br><span class="line">            <span class="keyword">if</span>(s == e) &#123; <span class="comment">// 如果只有一个数，那么这个数就是答案</span></span><br><span class="line">                kThbig = arr[s];</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            len = e - s + <span class="number">1</span>;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 三数取中选取枢轴</span></span><br><span class="line">            <span class="type">int</span> pivotIndex;</span><br><span class="line">            <span class="keyword">if</span>(len == <span class="number">2</span>) pivotIndex = s;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> (s + e) &gt;&gt;&gt; <span class="number">1</span>;</span><br><span class="line">                pivotIndex = arr[s] &gt; arr[mid] ? ((arr[mid] &gt; arr[e] ? mid : (arr[s] &gt; arr[e] ? e : s))) : (arr[s] &gt; arr[e] ? s : (arr[mid] &gt; arr[e] ? e : mid));</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 三数取中选取枢轴</span></span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 荷兰国旗问题</span></span><br><span class="line">            swap(arr, pivotIndex, e);</span><br><span class="line">            <span class="type">int</span> <span class="variable">l</span> <span class="operator">=</span> s - <span class="number">1</span>, r = e, i = s, pivotValue = arr[e];</span><br><span class="line">            <span class="keyword">while</span>(i &lt; r) &#123;</span><br><span class="line">                <span class="keyword">if</span>(arr[i] &lt; pivotValue) swap(arr, ++l, i++);</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(arr[i] &gt; pivotValue) swap(arr, --r, i);</span><br><span class="line">                <span class="keyword">else</span> ++i;</span><br><span class="line">            &#125;</span><br><span class="line">            swap(arr, e, r);</span><br><span class="line">            <span class="comment">// 荷兰国旗问题</span></span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span>(e - r == k - <span class="number">1</span>) &#123;<span class="comment">//大于区域刚好是k-1长度，那么枢轴就是答案</span></span><br><span class="line">                kThbig = pivotValue;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(e - r &gt;= k) s = r + <span class="number">1</span>;<span class="comment">//大于区域刚长度至少是k，那么就在大于区域找</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(e - r &lt; k - <span class="number">1</span>) &#123; <span class="comment">// 否则大于区域长度不超过k-1</span></span><br><span class="line">                <span class="keyword">if</span>(e - l &gt;= k) &#123;<span class="comment">// 如果等于区域+大于区域长度至少是k，那么枢轴就是答案</span></span><br><span class="line">                    kThbig = pivotValue;</span><br><span class="line">                	<span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                k -= e - l;<span class="comment">// 否则，在小于区域找</span></span><br><span class="line">                e = l;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>, j = <span class="number">0</span>;</span><br><span class="line">        len = arr.length;</span><br><span class="line">        <span class="comment">// 两次遍历，找到top k的数</span></span><br><span class="line">        <span class="keyword">for</span>(; i &lt; len; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[i] &gt; kThbig) ans[j++] = arr[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; len; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[i] == kThbig) ans[j++] = arr[i];</span><br><span class="line">            <span class="keyword">if</span>(j == ansLen) <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        Arrays.sort(ans);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">swap</span><span class="params">(<span class="type">int</span>[] arr, <span class="type">int</span> i, <span class="type">int</span> j)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(i != j &amp;&amp; arr[i] != arr[j]) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">t</span> <span class="operator">=</span> arr[i];</span><br><span class="line">            arr[i] = arr[j];</span><br><span class="line">            arr[j] = t;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度$O(N+K\log_2K)$，空间复杂度$O(1)$。这个时间复杂度是平均值，当枢轴选取的每次都很不合理的时候，也会使得时间复杂度提高到$O(N^2)$（虽然这种情况很少出现，但是还是有机会出现的）。</p>
+<h1 id="5-BFPRT算法"><a href="#5-BFPRT算法" class="headerlink" title="5. BFPRT算法"></a>5. BFPRT算法</h1><p>bfprt算法是一种线性选择算法，它的作用就是找数组中第K大，或者第K小的数。这个方法的大体思路和快速排序一样，也是基于数组的划分，只不过bfprt算法在选取枢轴值的时候的方法不同，使得最坏情况的时间复杂度能收敛到$O(N)$。下面介绍这种方法。</p>
+<ol>
+<li>首先对数组5个数为一组分组；</li>
+<li>对每一个小组排序，找到每一个小组的中位数，这些中位数组成新的数组median；</li>
+<li>递归使用bfprt算法找到median的中位数，用这个数作为枢轴元素；</li>
+<li>使用找到的枢轴元素作为划分的基准，划分数组；</li>
+<li>根据划分出的大于区域，等于区域，小于区域的长度和K的关系（这个关系在上面的快排方法中），递归调用bfprt算法求解。</li>
+</ol>
+<p>代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TopKUsingBfprt</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span>[] topK(<span class="type">int</span>[] arr, <span class="type">int</span> k) &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> arr.length, i = <span class="number">0</span>, j = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span>[] ans = <span class="keyword">new</span> <span class="title class_">int</span>[k];</span><br><span class="line">        <span class="type">int</span> <span class="variable">kTh</span> <span class="operator">=</span> bfprt(arr, k, <span class="number">0</span>, len - <span class="number">1</span>);<span class="comment">// 使用bfprt算法求解得到第K大的数</span></span><br><span class="line">        <span class="keyword">for</span>(; i &lt; len; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[i] &gt; kTh) ans[j++] = arr[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; len; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[i] == kTh) ans[j++] = arr[i];</span><br><span class="line">            <span class="keyword">if</span>(j == k) <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        Arrays.sort(ans);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">bfprt</span><span class="params">(<span class="type">int</span>[] arr, <span class="type">int</span> k, <span class="type">int</span> l, <span class="type">int</span> r)</span> &#123; <span class="comment">// 在数组arr[l..r]上，找出第K大的数</span></span><br><span class="line">        <span class="keyword">if</span>(l == r) <span class="keyword">return</span> arr[r];</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 5个数一组，找出每一组的中位数，组成新的数组</span></span><br><span class="line">        <span class="type">int</span>[] help = <span class="keyword">new</span> <span class="title class_">int</span>[(r - l) / <span class="number">5</span> + <span class="number">1</span>];</span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> l, j, m = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(i &lt;= r) &#123;</span><br><span class="line">            j = Math.min(r, i + <span class="number">4</span>);</span><br><span class="line">            Arrays.sort(arr, i, j + <span class="number">1</span>);</span><br><span class="line">            help[m++] = arr[(i + j) &gt;&gt;&gt; <span class="number">1</span>];</span><br><span class="line">            i = j + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 5个数一组，找出每一组的中位数，组成新的数组</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 递归找出中位数的中位数</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">pivot</span> <span class="operator">=</span> bfprt(help, help.length &gt;&gt; <span class="number">1</span>, <span class="number">0</span>, help.length - <span class="number">1</span>);</span><br><span class="line">        <span class="comment">// 递归找出中位数的中位数</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">//荷兰国旗问题划分数组</span></span><br><span class="line">        i = l - <span class="number">1</span>;</span><br><span class="line">        j = r + <span class="number">1</span>;</span><br><span class="line">        m = l;</span><br><span class="line">        <span class="keyword">while</span>(m &lt; j) &#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[m] &lt; pivot) swap(arr, ++i, m++);</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(arr[m] &gt; pivot) swap(arr, --j, m);</span><br><span class="line">            <span class="keyword">else</span> ++m;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//荷兰国旗问题划分数组</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(r - j + <span class="number">1</span> == k - <span class="number">1</span>) <span class="keyword">return</span> pivot;</span><br><span class="line">        <span class="keyword">if</span>(r - j + <span class="number">1</span> &gt;= k) <span class="keyword">return</span> bfprt(arr, k, j, r);</span><br><span class="line">        <span class="keyword">if</span>(r - i &gt;= k) <span class="keyword">return</span> pivot;</span><br><span class="line">        <span class="keyword">return</span> bfprt(arr, k - r + i, l, i);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">swap</span><span class="params">(<span class="type">int</span>[] arr, <span class="type">int</span> i, <span class="type">int</span> j)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(i != j &amp;&amp; arr[i] != arr[j]) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">t</span> <span class="operator">=</span> arr[i];</span><br><span class="line">            arr[i] = arr[j];</span><br><span class="line">            arr[j] = t;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="bfprt算法的时间复杂度问题"><a href="#bfprt算法的时间复杂度问题" class="headerlink" title="bfprt算法的时间复杂度问题"></a>bfprt算法的时间复杂度问题</h2><p>假设数组长度是$N$，每5个数为一组，每一组中的中位数组成的新数组median的长度是$\frac{N}{5}$，假设median的中位数是$p$，那么在median中至少有$\frac{N}{10}$的数不小于$p$，又因为median中的每一个数，都是原数组中5个数一组的中位数，那么可以知道，在原数组中至少有$\frac{3N}{10}$的数不小于$p$，这就可以说明，我们使用$p$作为枢轴元素划分数组后，至少可以排除掉$\frac{3N}{10}$的元素。如下图所示：</p>
+<img src="https://pic1.zhimg.com/80/v2-2906586aaabead596cb7434a3a0f5568_720w.webp"/>
+
+<p>为了估计最坏情况下的时间复杂度，我们假设每次都走最坏的情况（每次只筛掉$\frac{3N}{10}$的数），假设bfprt算法的时间复杂度为$T(N)$，那么可以知道，<br>$$<br>T(N) \le O(N) + T(\frac{N}{5})+T(\frac{7N}{10})<br>$$<br>可以证明$T(N)$收敛到$O(N)$。证明过程可以参考算法导论，以及<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/291206708">这篇文章</a>。</p>
+<p>空间复杂度$O(N)$。</p>
+<h1 id="6-测试程序"><a href="#6-测试程序" class="headerlink" title="6. 测试程序"></a>6. 测试程序</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TopKTest</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">times</span> <span class="operator">=</span> <span class="number">100_0000</span>, maxSize = <span class="number">20</span>;</span><br><span class="line">        <span class="keyword">while</span>(times-- &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="type">Random</span> <span class="variable">r</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Random</span>();</span><br><span class="line">            <span class="type">int</span> <span class="variable">size</span> <span class="operator">=</span> r.nextInt(maxSize) + <span class="number">1</span>;</span><br><span class="line">            <span class="type">int</span>[][] arrays = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">6</span>][size];</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; size; ++j) &#123;</span><br><span class="line">                <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> r.nextInt(<span class="number">500</span>);</span><br><span class="line">                <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">6</span>; ++i) arrays[i][j] = n;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> r.nextInt(size) + <span class="number">1</span>;</span><br><span class="line">            <span class="type">int</span>[] ans1 = TopKUsingSort.topK(arrays[<span class="number">0</span>], k);</span><br><span class="line">            <span class="type">int</span>[] ans2 = TopKUsingBigRootHeap.topK(arrays[<span class="number">1</span>], k);</span><br><span class="line">            <span class="type">int</span>[] ans3 = TopKUsingSmallRootHeap.topK(arrays[<span class="number">2</span>], k);</span><br><span class="line">            <span class="type">int</span>[] ans4 = TopKUsingArrayPartition.topK(arrays[<span class="number">3</span>], k);</span><br><span class="line">            <span class="type">int</span>[] ans5 = TopKUsingBfprt.topK(arrays[<span class="number">4</span>], k);</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; k; ++i) &#123;</span><br><span class="line">                <span class="keyword">if</span>(ans1[i] != ans2[i] </span><br><span class="line">                   || ans1[i] != ans3[i] </span><br><span class="line">                   || ans1[i] != ans4[i] </span><br><span class="line">                   || ans1[i] != ans5[i]) &#123;</span><br><span class="line">                    System.out.println(<span class="string">&quot;Oops!, wrong answer, k = &quot;</span> + k);</span><br><span class="line">                    System.out.println(<span class="string">&quot;ans1: &quot;</span> + Arrays.toString(ans1));</span><br><span class="line">                    System.out.println(<span class="string">&quot;ans2: &quot;</span> + Arrays.toString(ans2));</span><br><span class="line">                    System.out.println(<span class="string">&quot;ans3: &quot;</span> + Arrays.toString(ans3));</span><br><span class="line">                    System.out.println(<span class="string">&quot;ans4: &quot;</span> + Arrays.toString(ans4));</span><br><span class="line">                    System.out.println(<span class="string">&quot;ans5: &quot;</span> + Arrays.toString(ans5));</span><br><span class="line">                    System.out.println(<span class="string">&quot;Origin arrays: &quot;</span> + Arrays.toString(arrays[<span class="number">5</span>]));</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(<span class="string">&quot;Testcase: &quot;</span> + times + <span class="string">&quot; done!&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;Test done successfully!!!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2022/11/16/MaxDiffBetweenAdjacentNumAfterSort/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>上一页</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime mr-10" title="更新时间"></i>
+              2022-11-17 21:21:51
+            </span>
+            
+                  <span class="post-categories">
+                    <i class="iconfont icon-bookmark" title="分类"></i>
+                    
+                    <span class="span--category">
+                      <a href="/categories/%E7%AE%97%E6%B3%95/" title="算法">
+                        <b>#</b> 算法
+                      </a>
+                    </span>
+                    
+                    <span class="span--category">
+                      <a href="/categories/%E7%AE%97%E6%B3%95/%E9%97%AE%E9%A2%98/" title="问题">
+                        <b>#</b> 问题
+                      </a>
+                    </span>
+                    
+                    <span class="span--category">
+                      <a href="/categories/%E7%AE%97%E6%B3%95/%E9%97%AE%E9%A2%98/Top-K/" title="Top K">
+                        <b>#</b> Top K
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags mr-10" title="标签"></i>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/%E5%A0%86/" title="堆">
+                        #堆
+                      </a>
+                    </span>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" title="快速排序">
+                        #快速排序
+                      </a>
+                    </span>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/%E8%8D%B7%E5%85%B0%E5%9B%BD%E6%97%97%E9%97%AE%E9%A2%98/" title="荷兰国旗问题">
+                        #荷兰国旗问题
+                      </a>
+                    </span>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/BFPRT/" title="BFPRT">
+                        #BFPRT
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+              <a href="/2022/11/21/BitOperSummary/" target="_self">
+                <span>下一页</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+    </div>
+    
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">目录</div>
+    <div class="catalog-content">
+      
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="toc-text">1. 问题描述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8%E6%8E%92%E5%BA%8F%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">2.使用排序的方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E4%BD%BF%E7%94%A8%E5%A0%86%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-text">3. 使用堆数据结构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E4%BD%BF%E7%94%A8%E5%A4%A7%E6%A0%B9%E5%A0%86"><span class="toc-text">3.1. 使用大根堆</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-%E4%BD%BF%E7%94%A8%E5%B0%8F%E6%A0%B9%E5%A0%86"><span class="toc-text">3.2. 使用小根堆</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E4%BD%BF%E7%94%A8%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E7%9A%84%E5%88%92%E5%88%86%E8%BF%87%E7%A8%8B"><span class="toc-text">4. 使用快速排序的划分过程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-BFPRT%E7%AE%97%E6%B3%95"><span class="toc-text">5. BFPRT算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#bfprt%E7%AE%97%E6%B3%95%E7%9A%84%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E9%97%AE%E9%A2%98"><span class="toc-text">bfprt算法的时间复杂度问题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E6%B5%8B%E8%AF%95%E7%A8%8B%E5%BA%8F"><span class="toc-text">6. 测试程序</span></a></li></ol>
+      
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
+    
+      <div class="comments-container">
+        
+
+
+
+
+   <div id="gitalk-container"></div>
+  <script>
+    function loadGitalkSuc() {
+      const gitalk = new Gitalk({
+        clientID: 'ec89f39f054b72018b04',
+        clientSecret: 'c60124d09914e1e860acd9716342e39379720b62',
+        repo: 'BlogIssues',
+        owner: 'victory20201009',
+        admin: ['victory20201009'],
+        id: location.pathname,
+        distractionFreeMode: false,
+		createIssueManually: false
+      })
+	  console.log(location);
+      gitalk.render('gitalk-container')
+    }
+  </script>
+
+  
+    <link rel="stylesheet" href="/plugins/gitalk.css">
+    <script type="text/javascript" src="/plugins/gitalk.min.js" onload="loadGitalkSuc(this)"></script>
+  
+
+ 
+
+
+
+
+      </div>
+    
+  </div>
+
+
+        
+<div class="footer">
+  <div class="social">
+    <ul>
+      
+        <li>
+          <a title="github" target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">
+            <i class="iconfont icon-github"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+  
+    
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Copyright © 2022 Oranges</a>
+        
+    </div>
+  
+    
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Theme by Oranges | Powered by Hexo</a>
+        
+    </div>
+  
+  
+    <div class="footer-views">
+      
+          本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        
+      
+          本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+        
+      
+          本站访客数<span id="busuanzi_value_site_uv"></span>人
+        
+      
+    </div>
+  
+</div>
+
+      </div>
+
+      <div class="tools-bar">
+        <div class="back-to-top tools-bar-item hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+        
+  <div class="search-icon tools-bar-item" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-title">
+        <span class="search-icon-input">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-search"></i>
+          </a>
+        </span>
+        
+          <input type="text" class="search-input" id="search-input" placeholder="搜索...">
+        
+        <span class="search-close-icon" id="search-close-icon">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-close"></i>
+          </a>
+        </span>
+      </div>
+      <div class="search-result" id="search-result"></div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    inputArea.onclick = function() {
+      getSearchFile()
+      this.onclick = null
+    }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        // inputArea.focus()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'>首次搜索，正在载入索引文件，请稍后……<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'>" + orig_data_title + "</a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<p class=\"search-result-abstract\">" + match_content + "...</p>"
+                }
+                str += "</li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>没有找到内容，请尝试更换检索词。<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>未找到search.xml文件，具体请参考：<a href='https://github.com/zchengsite/hexo-theme-oranges#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>请求失败，尝试重新刷新页面或稍后重试。<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "/search.xml";
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+        
+  <div class="tools-bar-item theme-icon" id="switch-color-scheme">
+    <a href="javascript: void(0)">
+      <i id="theme-icon" class="iconfont icon-moon"></i>
+    </a>
+  </div>
+
+  
+<script src="/js/colorscheme.js"></script>
+
+
+
+
+
+        
+  
+    <div class="share-icon tools-bar-item">
+      <a href="javascript: void(0)" id="share-icon">
+        <i class="iconfont iconshare"></i>
+      </a>
+      <div class="share-content hidden">
+        
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + Top%20K%E9%97%AE%E9%A2%98 + '&url=' + https%3A%2F%2Fvictory20201009.github.io%2F2022%2F11%2F17%2FTopK%2F + '" target="_blank" title="Twitter">
+            <i class="iconfont icon-twitter"></i>
+          </a>
+        
+        
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=https://victory20201009.github.io/2022/11/17/TopK/" target="_blank" title="Facebook">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+  
+<script src="/js/shares.js"></script>
+
+
+
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="zh-CN" color-mode="light">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="Victory" />
+  <meta name="description" content="简单专注" />
+  
+  
+  <title>
+    
+      位运算小知识总结 
+      
+      
+      |
+    
+     Victory的博客
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.jpg">
+    <link rel="icon" href="/images/favicon.jpg">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- hexo site css -->
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1886449_67xjft27j1l.css" />
+  <!-- 代码块风格 -->
+  
+    
+<link rel="stylesheet" href="/css/figcaption/mac-block.css">
+
+  
+
+  <!-- jquery3.3.1 -->
+  
+    <script defer type="text/javascript" src="/plugins/jquery.min.js"></script>
+  
+
+  <!-- fancybox -->
+  
+    <link href="/plugins/jquery.fancybox.min.css" rel="stylesheet">
+    <script defer type="text/javascript" src="/plugins/jquery.fancybox.min.js"></script>
+  
+  
+<script src="/js/fancybox.js"></script>
+
+
+  
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  <script>
+    var html = document.documentElement
+    const colorMode = localStorage.getItem('color-mode')
+    if (colorMode) {
+      document.documentElement.setAttribute('color-mode', colorMode)
+    }
+  </script>
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <div class="avatar">
+    <a href="/">
+      <!-- 头像取消懒加载，添加no-lazy -->
+      
+        <img src="/images/avatar.jpg" alt="">
+      
+    </a>
+    <div class="nickname"><a href="/">victory</a></div>
+  </div>
+  <div class="navbar">
+    <ul>
+      
+        <li class="nav-item" data-path="/">
+          <a href="/">首页</a>
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          <a href="/archives/">归档</a>
+        </li>
+      
+        <li class="nav-item" data-path="/categories/">
+          <a href="/categories/">分类</a>
+        </li>
+      
+        <li class="nav-item" data-path="/tags/">
+          <a href="/tags/">标签</a>
+        </li>
+      
+        <li class="nav-item" data-path="/friends/">
+          <a href="/friends/">友链</a>
+        </li>
+      
+        <li class="nav-item" data-path="/about/">
+          <a href="/about/">关于</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+<script src="/js/activeNav.js"></script>
+
+
+
+      <div class="flex-container">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+
+  <!-- LaTex Display -->
+
+  
+    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    }
+  </script>
+
+
+
+
+
+  <!-- clipboard -->
+
+  
+    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
+  
+  
+<script src="/js/codeCopy.js"></script>
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">位运算小知识总结</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime mr-10" title="更新时间"></i>
+          2022-11-21 21:28:05
+        </span>
+        
+              <span class="post-categories">
+                <i class="iconfont icon-bookmark" title="分类"></i>
+                
+                <span class="span--category">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" title="算法">
+                    <b>#</b> 算法
+                  </a>
+                </span>
+                
+                <span class="span--category">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/%E4%BD%8D%E6%93%8D%E4%BD%9C/" title="位操作">
+                    <b>#</b> 位操作
+                  </a>
+                </span>
+                
+              </span>
+          
+              <span class="post-tags">
+                <i class="iconfont icon-tags mr-10" title="标签"></i>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" title="位运算">
+                    #位运算
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+      <div class="markdown-body">
+        <!-- toc -->
+
+<blockquote>
+<p>  本文转载自<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37684467/article/details/119489758">https://blog.csdn.net/qq_37684467/article/details/119489758</a></p>
+</blockquote>
+<h1 id="1-位运算基本介绍"><a href="#1-位运算基本介绍" class="headerlink" title="1. 位运算基本介绍"></a>1. 位运算基本介绍</h1><h2 id="1-1-位运算适用的数据类型"><a href="#1-1-位运算适用的数据类型" class="headerlink" title="1.1. 位运算适用的数据类型"></a>1.1. 位运算适用的数据类型</h2><ul>
+<li>在Java中，位运算适用于基础数据类型中的整数类型，即<font color="green">byte，short，char，int，long </font>，引用类型，布尔类型，浮点类型不可以使用。</li>
+<li>byte，short，char类型在使用位运算的时候会被转换为int类型（符号位扩展），其结果也是int类型（表达式中没有long）；</li>
+<li>含有long类型的位运算的表达式的结果是long类型</li>
+</ul>
+<p>我这里就不一一验证了哈。</p>
+<h2 id="1-2-位运算介绍"><a href="#1-2-位运算介绍" class="headerlink" title="1.2. 位运算介绍"></a>1.2. 位运算介绍</h2><p>在说位运算之前，我们先看一下逻辑运算，逻辑运算是离散数学中的概念，我们在高中的时候应该也学过，或，且，非等运算，举两个例子：</p>
+<ul>
+<li>逻辑与，a且b，它的结果是，一假则假，a，b只要有一个是假，结果就是假的，否则是真</li>
+<li>逻辑或，a或b，它的结果是，一真则真，a，b只要有一个是真，结果就是真的，否则是假</li>
+</ul>
+<p>位运算跟逻辑运算是相通的，把每一位的0看作假，1看作真，在这样的基础上进行的逻辑运算。因此，</p>
+<ul>
+<li>按位与（&amp;），如果两位都是1，结果是1，否则是0；</li>
+<li>按位或（|），如果两位都是0，结果是0，否则是1；</li>
+<li>按位取反（~），如果某一位是1，结果是0，否则结果是1；</li>
+<li>按位异或（^），如果两位代表的数值一样，则结果是0，否则是1。</li>
+<li>左移操作，a&lt;&lt;m，表示把整数a，左移m位，m可以是任何整数类型，可以是0，负整数，正整数<ul>
+<li>当m等于0时，相当于什么也没做</li>
+<li>当a是int类型时，（byte，char，short会自动扩展成int）<ul>
+<li>m大于0，且m小于32，相当于把a按位左移m位，低位补0，高位舍去。</li>
+<li>m大于等于32，int类型4字节，32位，左移32位，相当于啥也没干，因此当m大于32时的结果，相当于a&lt;&lt;(m%32)的结果；</li>
+<li>m小于0，且m大于-32，例如m&#x3D;-1，左移-1位，相当于左移32位时，上一次的结果，即左移31位的结果，此时结果相当于a&lt;&lt;(32+m)的结果</li>
+<li>m小于等于-32，int类型4字节，32位，左移-32位，相当于啥也没干，因此当m小于-32时的结果，相当于a&lt;&lt;(32-(-m)%32)的结果</li>
+</ul>
+</li>
+<li>当a时long类型时，只需把结论中的32换成64即可，不再赘述</li>
+</ul>
+</li>
+<li>右移操作，a&gt;&gt;m，相当于把a按位右移m位，低位舍去，高位补符号位（<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37684467/article/details/114366711?spm=1001.2014.3001.5501">啥是符号位？</a>）。剩余的规则跟左移是一样的。</li>
+<li>无符号右移，可以理解为普通的右移，只不过高位补0</li>
+</ul>
+<h2 id="1-3-对异或的理解"><a href="#1-3-对异或的理解" class="headerlink" title="1.3. 对异或的理解"></a>1.3. 对异或的理解</h2><p>异或规则是，如果两位代表的数值一样，则结果是0，否则是1。可以理解为什么呢？可以理解为，如果两个位中1的个数是偶数，则结果为0，否则结果为1。<br><img src="https://img-blog.csdnimg.cn/111e47a071504ca3a615d3c55bb2e488.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3Njg0NDY3,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>既然，异或可以这么理解，那么多个数同时异或的时候，异或的结果假设为ans，即<br><code>a1 ^ a2 ^ a3 ^.....an = ans</code><br><strong>那ans的每一位，都是所有的数在这一位上的1的个数的奇偶性决定的，如果所有的数在这一位上1的个数加起来是奇数，那ans的这一位就是1，否则是0。<br>而结果中1的个数的奇偶性，跟异或的顺序是没有关系的，不可能说，a1和a3先异或，就会导致结果不一样，因此异或操作满足交换律和结合律。</strong></p>
+<p>有几个显而易见的小结论：</p>
+<ol>
+<li>当一个数和自己异或的时候，a^a &#x3D; 0，</li>
+<li>一个数和0异或的时候，a^0 &#x3D; a；</li>
+<li>当一个数和-1异或的时候，a^-1 &#x3D; ~a,</li>
+</ol>
+<p>那异或还可以理解为什么呢？<br>可以理解为无进位相加，a^b相当于a和b按位无进位相加，无进位相加，就是按照加法的规则，一位一位的相加，只不过，不考虑进位；<br><img src="https://img-blog.csdnimg.cn/17689b71e6c74f42a109d72204d449fd.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3Njg0NDY3,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br><strong>那a+b的结果相当于a和b无进位相加的结果，加上进位信息</strong>，进位信息怎么算？<br>啥时候产生进位？？，只有两位都是1的时候会产生，因此a和b的进位信息就是(a&amp;b)&lt;&lt;1，为啥左移一位？因为进位是向上进位的。因此可以使用位运算实现加法。代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> &#123;</span><br><span class="line">    <span class="type">int</span> t;</span><br><span class="line">    <span class="keyword">while</span> (b != <span class="number">0</span>) &#123;</span><br><span class="line">        t = a;<span class="comment">//t 先抓住上一次的a</span></span><br><span class="line">        a ^= b;<span class="comment">// a保留a和b无进位相加的结果</span></span><br><span class="line">        b = (b &amp; t) &lt;&lt; <span class="number">1</span>;<span class="comment">//b和原来的a相与，保留进位信息</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="2-位运算应用"><a href="#2-位运算应用" class="headerlink" title="2. 位运算应用"></a>2. 位运算应用</h1><h2 id="2-1-快速乘法"><a href="#2-1-快速乘法" class="headerlink" title="2.1. 快速乘法"></a>2.1. 快速乘法</h2><p>a*b，当b是2的n次幂时，即$b &#x3D;2^n$，a*b &#x3D; a&lt;&lt;n;</p>
+<h2 id="2-2-快速除法"><a href="#2-2-快速除法" class="headerlink" title="2.2. 快速除法"></a>2.2. 快速除法</h2><p>$\frac{a}{b}$，当b是2的n次幂时，即$b &#x3D;2^n$，$\frac{a}{b}$ &#x3D; a&gt;&gt;n;</p>
+<h2 id="2-3-快速取模"><a href="#2-3-快速取模" class="headerlink" title="2.3. 快速取模"></a>2.3. 快速取模</h2><p>a%b，当b是2的n次幂时，即$b &#x3D;2^n$，a%b &#x3D; a&amp;(b-1)；为啥，因为$b &#x3D;2^n$，因此b的二进制中，第$n$位为1，而$b-1 &#x3D;\frac{1-2^n}{1-2}&#x3D;2^0+2^1+2^2+…+2^{n-1}$（等比数列求和），相当于把第n位置0，后面的所有位都置1。<br><img src="https://img-blog.csdnimg.cn/f0d609208dde443db97bf9526c160695.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3Njg0NDY3,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>而a%b不就是，a中去掉几个x个b，剩下不够一个b的部分吗？如果a&lt;b，那么a&lt;&#x3D;b-1，a和全都是1的部分相与，那结果显然正确；如果a&gt;b，那a至少第n位是1，有可能第n+1位，第n+2位是1，但是这些位代表的数，都是b的整倍数，剩下不足一个b的部分，就是a的低n-1位组成的数，才是余数，所以取a的低n-1位就是结果。<br><img src="https://img-blog.csdnimg.cn/6cc471c739f4408397ff916d0480726b.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3Njg0NDY3,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<h2 id="2-4-对称加密"><a href="#2-4-对称加密" class="headerlink" title="2.4. 对称加密"></a>2.4. 对称加密</h2><p>对于两个整数a，b，如果 a &#x3D; a^b，此时a成了a和b异或的结果，a此时再次异或b，a &#x3D; a^b^b &#x3D; a^0 &#x3D; a，又变回了a，此时b相当于一个对称密钥的作用。</p>
+<h2 id="2-5-两数交换"><a href="#2-5-两数交换" class="headerlink" title="2.5. 两数交换"></a>2.5. 两数交换</h2><p>不使用额外变量交换两个数，直接上代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">swap</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> &#123;</span><br><span class="line">    a ^= b; <span class="comment">//此时 a的值是 a^b</span></span><br><span class="line">    b ^= a; <span class="comment">// b = (a^b) ^b  = a;</span></span><br><span class="line">    a ^= b; <span class="comment">// a = (a^b) ^a(b已经变成a了)  = b;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果交换的是数组元素，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">swap</span><span class="params">(<span class="type">int</span>[] arr, <span class="type">int</span> i, <span class="type">int</span> j)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (i != j) &#123;</span><br><span class="line">        arr[i] ^= arr[j];</span><br><span class="line">        arr[j] ^= arr[i];</span><br><span class="line">        arr[i] ^= arr[j];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>异或的两个元素不能同时指向同一块内存，否则这个内存的数变成0</p>
+<h2 id="2-6-位图（bitmap）"><a href="#2-6-位图（bitmap）" class="headerlink" title="2.6. 位图（bitmap）"></a>2.6. 位图（bitmap）</h2><p>假设需要实现一个集合，可以往集合中放入自然数，然后判断一个数是不是存在于集合中，我们可以使用hash表实现，当数的范围比较集中的时候，我们可以使用一个bit位是0或1表示这个数是否在集合中。代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">BitMap</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span>[] data;</span><br><span class="line">    <span class="type">int</span> max;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> max bitmap能保存的最大自然数</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">BitMap</span><span class="params">(<span class="type">int</span> max)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (max &lt; <span class="number">0</span>) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">IllegalArgumentException</span>(<span class="string">&quot;max number can not less than zero&quot;</span>);</span><br><span class="line">        <span class="built_in">this</span>.max = max;</span><br><span class="line">        data = <span class="keyword">new</span> <span class="title class_">int</span>[(max + <span class="number">31</span>) &gt;&gt; <span class="number">5</span>];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">put</span><span class="params">(<span class="type">int</span> number)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (number &gt; max) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">IllegalArgumentException</span>(<span class="string">&quot;number can not greater than max&quot;</span>);</span><br><span class="line">        <span class="comment">// 先找到这个数应该存在哪个整数里，粗略定位</span></span><br><span class="line">        <span class="comment">// 再确定这个数在哪一位上</span></span><br><span class="line">        <span class="comment">//然后把这一位置1</span></span><br><span class="line">        data[number &gt;&gt; <span class="number">5</span>] |= (<span class="number">1</span> &lt;&lt; (number &amp; <span class="number">31</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">remove</span><span class="params">(<span class="type">int</span> number)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (number &gt; max) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">IllegalArgumentException</span>(<span class="string">&quot;number can not greater than max&quot;</span>);</span><br><span class="line">        data[number &gt;&gt; <span class="number">5</span>] &amp;= ~(<span class="number">1</span> &lt;&lt; (number &amp; <span class="number">31</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">contains</span><span class="params">(<span class="type">int</span> number)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (number &gt; max) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">IllegalArgumentException</span>(<span class="string">&quot;number can not greater than max&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> (data[number &gt;&gt; <span class="number">5</span>] &amp; (<span class="number">1</span> &lt;&lt; (number &amp; <span class="number">31</span>))) != <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-7-确定一个int整数中有几个位是1"><a href="#2-7-确定一个int整数中有几个位是1" class="headerlink" title="2.7. 确定一个int整数中有几个位是1"></a>2.7. 确定一个int整数中有几个位是1</h2><p><strong>解法1：</strong> 依次测试每一位是0 还是1，然后设置一个计数器，当前位是1，则计数器加一，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">countOneBit</span><span class="params">(<span class="type">int</span> number)</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">ans</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">32</span>; ++i) </span><br><span class="line">        <span class="keyword">if</span> ((number &amp; (<span class="number">1</span> &lt;&lt; i)) != <span class="number">0</span>) ++ans;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>解法2：</strong> 解法1遍历的次数固定32次，还有更好的方法吗？有<br>下面我们先看一下，假设一个数x不是0，x-1的二进制表示与x的二进制表示有什么不同？？？<br>其实是这样的，因为x不是0，因此不妨假设从低位开始数，x的第一个非0的位在第$n$($0&lt;&#x3D;n&lt;&#x3D;31$)位，那么x和-1相加，相当于把前低n位全部取反，剩余的，同时第n位和1相加，产生一个进位，导致后面的位和1相加以后，都没有发生改变。如下图所示：<br><img src="https://img-blog.csdnimg.cn/10721fd8859c4f9cb9b5e3a37cea3142.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3Njg0NDY3,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>x-1的结果，<strong>就是把x最右边的1及其前面的位都取反了</strong>，那x&amp;(x-1)，相当于，把x最右边的1置0，那么我们设置一个计数器，每一次把x最右边的1置0，然后计数器加一，直到x变成0为止，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">countOneBit</span><span class="params">(<span class="type">int</span> number)</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">ans</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (number != <span class="number">0</span>) &#123;</span><br><span class="line">        number &amp;= (number - <span class="number">1</span>);</span><br><span class="line">        ++ans;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个循环次数是，number中有几个1，就循环几次。</p>
+<p><strong>解法3：</strong>  有没有更好的做法？有，请往下看。<br>这种做法的思路是，先两位分组，把两位中1的数量找出来，还放到这两位中，如下图所示：<br><img src="https://img-blog.csdnimg.cn/0db32219ebdf42d1b1eb012573e41b89.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3Njg0NDY3,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>那如何做到这一步呢？两位二进制，一共四种情况，我们分别列出来看一下，如下图所示：</p>
+<p><img src="https://img-blog.csdnimg.cn/6f12316d687c467f9458cd4ab820da2e.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3Njg0NDY3,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>假设这个数是x，我们可以把x无符号右移一位，然后使用原来的x减去它，即x-(x&gt;&gt;&gt;1)；这样做并不可行，因为是整体无符号右移，不是两位一组的无符号右移，这样移动会导致下一组的最低位，移到这一组的最高位，如果这一位是0那道无所谓，如果是1，就影响计算了，因此，我们需要把x&gt;&gt;&gt;1的值中所有的偶数位置0，因此只需要让它跟<code>0x55555555</code>相与即可，如下图所示：<br><img src="https://img-blog.csdnimg.cn/8a7d9f8411c14b2bb8b5181b5a5b4e73.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3Njg0NDY3,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>经过这一步，已经完成了两位一组的，把1的个数找出来，并存储在这两位当中了，接下来，就是4位一组，8位一组，16位一组进行合并即可。</p>
+<p>四位一组进行合并，我们需要四位一组的高两位和低两位相加，我们把上一步得到的结果，记作x，我们让x无符号右移两位，这样，高两位和低两位对齐了，不要忘记清除垃圾数据，因此右移的过程中，下一组的低两位，会移动到当前组的高两位上，影响计算结果，因此计算之前，清除高两位的值，如下图所示：<br><img src="https://img-blog.csdnimg.cn/321404b240ce45eebb110e1ab53dcd4f.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3Njg0NDY3,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>八位一组进行合并，跟四位一组合并类似，也是需要移位，把最高位置0，下面不再赘述，当16位一组合并完成后，因为int类型有32位，1的个数不会超过2的5次方，所以取结果的低6位即可，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">countOneBit</span><span class="params">(<span class="type">int</span> number)</span> &#123;</span><br><span class="line">    number -= ((number &gt;&gt;&gt; <span class="number">1</span>) &amp; <span class="number">0x55555555</span>);</span><br><span class="line">    number = (number &amp; (<span class="number">0x33333333</span>)) + ((number &gt;&gt;&gt; <span class="number">2</span>) &amp; <span class="number">0x33333333</span>);</span><br><span class="line">    number = (number + (number &gt;&gt;&gt; <span class="number">4</span>)) &amp; <span class="number">0x0f0f0f0f</span>;</span><br><span class="line">    number += number &gt;&gt;&gt; <span class="number">8</span>;</span><br><span class="line">    number += number &gt;&gt;&gt; <span class="number">16</span>;</span><br><span class="line">    <span class="keyword">return</span> number &amp; <span class="number">0x3f</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这其实是jdk中bitCount方法的实现。</p>
+<h2 id="2-8-判断一个数是不是2的幂"><a href="#2-8-判断一个数是不是2的幂" class="headerlink" title="2.8. 判断一个数是不是2的幂"></a>2.8. 判断一个数是不是2的幂</h2><p>如果一个整数是2的幂（如果是负数的话，说他的绝对值），那么它的二进制表示中只有1个位是1，我们只需要把它最右边的1置0，然后判断是否为0即可，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isPowerOf2</span><span class="params">(<span class="type">int</span> number)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (number == <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    number = Math.abs(number);</span><br><span class="line">    <span class="keyword">return</span> (number &amp; (number - <span class="number">1</span>)) == <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-9-取一个数二进制表示中最右边的1表示的数"><a href="#2-9-取一个数二进制表示中最右边的1表示的数" class="headerlink" title="2.9. 取一个数二进制表示中最右边的1表示的数"></a>2.9. 取一个数二进制表示中最右边的1表示的数</h2><p>意思就是，例如12的二进制表示为<code>0000 1100</code>，取出最右边的1代表的数，<code>0000 0100</code>，即4，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getRightOneBit</span><span class="params">(<span class="type">int</span> number)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> number &amp; ((~number) + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>number取反+1，相当于把number的最右边的1及其右边的0（如果存在的话）保留下来，最后边的1左边的位全部取反了，然后相与，就把最后边的1留下来了。<br><img src="https://img-blog.csdnimg.cn/69efd902f0a846aeb68e6cb9ea3a5f06.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3Njg0NDY3,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><code>(~number) + 1</code>其实就是-number，可以简单记为<code>number&amp;-number</code></p>
+<h2 id="2-10-取一个数二进制表示中最左边的1表示的数"><a href="#2-10-取一个数二进制表示中最左边的1表示的数" class="headerlink" title="2.10. 取一个数二进制表示中最左边的1表示的数"></a>2.10. 取一个数二进制表示中最左边的1表示的数</h2><p>这里只针对正整数x，例如12的二进制表示为<code>0000 1100</code>，取出最左边的1代表的数，<code>0000 1000</code>，即8，就是找到不超过x的最大的2的幂。例如给个7，返回4，给个9返回8，给个8返回8。<br>此时我们不知道最左边的1在哪个位置，其实方法就是我们把这个数，最左边的1右边全变成1，例如12，<code>0000 1100</code>，我们想办法变成<code>0000 1111</code>，这样我们把这个数+1，然后右移一位即可。如何做到把最左边的1右边全变成1呢？其实我们可以把x和(x&gt;&gt;&gt;1)按位或，这样，最左边的1和次左边的位都变成1，然后右移两位，再次或，然后右移四位，八位，16位，代码如下：<br><img src="https://img-blog.csdnimg.cn/8f00cdaaf31c4408a5d8b78d13a75402.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3Njg0NDY3,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getLeftOneBit</span><span class="params">(<span class="type">int</span> number)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> ((number &amp; (number - <span class="number">1</span>)) == <span class="number">0</span>) <span class="keyword">return</span> number;</span><br><span class="line">    number |= number &gt;&gt;&gt; <span class="number">1</span>;</span><br><span class="line">    number |= number &gt;&gt;&gt; <span class="number">2</span>;</span><br><span class="line">    number |= number &gt;&gt;&gt; <span class="number">4</span>;</span><br><span class="line">    number |= number &gt;&gt;&gt; <span class="number">8</span>;</span><br><span class="line">    number |= number &gt;&gt;&gt; <span class="number">16</span>;</span><br><span class="line">    <span class="keyword">return</span> (number + <span class="number">1</span>) &gt;&gt;&gt; <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-11-找出大于等于一个数的最小的2的幂"><a href="#2-11-找出大于等于一个数的最小的2的幂" class="headerlink" title="2.11. 找出大于等于一个数的最小的2的幂"></a>2.11. 找出大于等于一个数的最小的2的幂</h2><p>例如给一个5，大于等于5的最小的2的幂是8，因此返回8，给3，返回4，给8，返回8。<br>其实，这个数值，就是上一个问题《取一个数二进制表示中最左边的1表示的数》，在最后不要右移一位的值，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getLeftOneBit</span><span class="params">(<span class="type">int</span> number)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> ((number &amp; (number - <span class="number">1</span>)) == <span class="number">0</span>) <span class="keyword">return</span> number;</span><br><span class="line">    number |= number &gt;&gt;&gt; <span class="number">1</span>;</span><br><span class="line">    number |= number &gt;&gt;&gt; <span class="number">2</span>;</span><br><span class="line">    number |= number &gt;&gt;&gt; <span class="number">4</span>;</span><br><span class="line">    number |= number &gt;&gt;&gt; <span class="number">8</span>;</span><br><span class="line">    number |= number &gt;&gt;&gt; <span class="number">16</span>;</span><br><span class="line">    <span class="keyword">return</span> number + <span class="number">1</span>;<span class="comment">//这里不要右移一位</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-12-只出现一次的数字"><a href="#2-12-只出现一次的数字" class="headerlink" title="2.12. 只出现一次的数字"></a>2.12. 只出现一次的数字</h2><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/single-number/">leetcode第136题</a>，异或有两个性质</p>
+<ol>
+<li>相同的两个数异或为0</li>
+<li>0跟任何数异或是自己</li>
+</ol>
+<p>因此，我们可以用0，跟数组中的所以数异或一次，相同的两个数必然两两异或变为0，剩下的那个数即为所求，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">singleNumber</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">ans</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i: nums)ans^=i;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>升级版题目：给定一个整数数组 nums，其中恰好有两个元素只出现一次，其余所有元素均出现两次。 找出只出现一次的那两个元素。你可以按 任意顺序 返回答案。<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/single-number-iii/">leetcode260题</a><br>假设那两个数是a，b。我们按照第一道题的做法，把所有元素异或一遍，得到的值肯定是a^b的结果（记作res），且不为0，我们如何把这两个数拆分出来呢？<br>思路这样：<strong>res的结果不为0，则肯定某一位是1，我们不妨取res的最右边的1，那么a和b必然在这一位上一个是0，一个是1，我们把数组中这一位是1的所有数组挑出来再次异或一遍，最后得到的结果肯定就是a和b中的一个，记作ans，再把ans和res异或，得到另一个。</strong>代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span>[] singleNumber(<span class="type">int</span>[] nums) &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">res</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> n : nums) res ^= n;</span><br><span class="line">    <span class="type">int</span> <span class="variable">masker</span> <span class="operator">=</span> res &amp; (~res + <span class="number">1</span>), ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> n : nums) </span><br><span class="line">        <span class="keyword">if</span> ((n &amp; masker) != <span class="number">0</span>) ans ^= n;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;ans, res ^ ans&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上内容如有错误，码字仓促，请大家不吝赐教。OK，今天的内容据到这里啦，下期再见，拜拜。</p>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2022/11/17/TopK/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>上一页</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime mr-10" title="更新时间"></i>
+              2022-11-21 21:28:05
+            </span>
+            
+                  <span class="post-categories">
+                    <i class="iconfont icon-bookmark" title="分类"></i>
+                    
+                    <span class="span--category">
+                      <a href="/categories/%E7%AE%97%E6%B3%95/" title="算法">
+                        <b>#</b> 算法
+                      </a>
+                    </span>
+                    
+                    <span class="span--category">
+                      <a href="/categories/%E7%AE%97%E6%B3%95/%E4%BD%8D%E6%93%8D%E4%BD%9C/" title="位操作">
+                        <b>#</b> 位操作
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags mr-10" title="标签"></i>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" title="位运算">
+                        #位运算
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+          </div>
+        </div>
+      
+    </div>
+    
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">目录</div>
+    <div class="catalog-content">
+      
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E4%BD%8D%E8%BF%90%E7%AE%97%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D"><span class="toc-text">1. 位运算基本介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E4%BD%8D%E8%BF%90%E7%AE%97%E9%80%82%E7%94%A8%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">1.1. 位运算适用的数据类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E4%BD%8D%E8%BF%90%E7%AE%97%E4%BB%8B%E7%BB%8D"><span class="toc-text">1.2. 位运算介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-%E5%AF%B9%E5%BC%82%E6%88%96%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-text">1.3. 对异或的理解</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E4%BD%8D%E8%BF%90%E7%AE%97%E5%BA%94%E7%94%A8"><span class="toc-text">2. 位运算应用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E5%BF%AB%E9%80%9F%E4%B9%98%E6%B3%95"><span class="toc-text">2.1. 快速乘法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E5%BF%AB%E9%80%9F%E9%99%A4%E6%B3%95"><span class="toc-text">2.2. 快速除法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-%E5%BF%AB%E9%80%9F%E5%8F%96%E6%A8%A1"><span class="toc-text">2.3. 快速取模</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86"><span class="toc-text">2.4. 对称加密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5-%E4%B8%A4%E6%95%B0%E4%BA%A4%E6%8D%A2"><span class="toc-text">2.5. 两数交换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-6-%E4%BD%8D%E5%9B%BE%EF%BC%88bitmap%EF%BC%89"><span class="toc-text">2.6. 位图（bitmap）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-7-%E7%A1%AE%E5%AE%9A%E4%B8%80%E4%B8%AAint%E6%95%B4%E6%95%B0%E4%B8%AD%E6%9C%89%E5%87%A0%E4%B8%AA%E4%BD%8D%E6%98%AF1"><span class="toc-text">2.7. 确定一个int整数中有几个位是1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-8-%E5%88%A4%E6%96%AD%E4%B8%80%E4%B8%AA%E6%95%B0%E6%98%AF%E4%B8%8D%E6%98%AF2%E7%9A%84%E5%B9%82"><span class="toc-text">2.8. 判断一个数是不是2的幂</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-9-%E5%8F%96%E4%B8%80%E4%B8%AA%E6%95%B0%E4%BA%8C%E8%BF%9B%E5%88%B6%E8%A1%A8%E7%A4%BA%E4%B8%AD%E6%9C%80%E5%8F%B3%E8%BE%B9%E7%9A%841%E8%A1%A8%E7%A4%BA%E7%9A%84%E6%95%B0"><span class="toc-text">2.9. 取一个数二进制表示中最右边的1表示的数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-10-%E5%8F%96%E4%B8%80%E4%B8%AA%E6%95%B0%E4%BA%8C%E8%BF%9B%E5%88%B6%E8%A1%A8%E7%A4%BA%E4%B8%AD%E6%9C%80%E5%B7%A6%E8%BE%B9%E7%9A%841%E8%A1%A8%E7%A4%BA%E7%9A%84%E6%95%B0"><span class="toc-text">2.10. 取一个数二进制表示中最左边的1表示的数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-11-%E6%89%BE%E5%87%BA%E5%A4%A7%E4%BA%8E%E7%AD%89%E4%BA%8E%E4%B8%80%E4%B8%AA%E6%95%B0%E7%9A%84%E6%9C%80%E5%B0%8F%E7%9A%842%E7%9A%84%E5%B9%82"><span class="toc-text">2.11. 找出大于等于一个数的最小的2的幂</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-12-%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97"><span class="toc-text">2.12. 只出现一次的数字</span></a></li></ol></li></ol>
+      
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
+    
+      <div class="comments-container">
+        
+
+
+
+
+   <div id="gitalk-container"></div>
+  <script>
+    function loadGitalkSuc() {
+      const gitalk = new Gitalk({
+        clientID: 'ec89f39f054b72018b04',
+        clientSecret: 'c60124d09914e1e860acd9716342e39379720b62',
+        repo: 'BlogIssues',
+        owner: 'victory20201009',
+        admin: ['victory20201009'],
+        id: location.pathname,
+        distractionFreeMode: false,
+		createIssueManually: false
+      })
+	  console.log(location);
+      gitalk.render('gitalk-container')
+    }
+  </script>
+
+  
+    <link rel="stylesheet" href="/plugins/gitalk.css">
+    <script type="text/javascript" src="/plugins/gitalk.min.js" onload="loadGitalkSuc(this)"></script>
+  
+
+ 
+
+
+
+
+      </div>
+    
+  </div>
+
+
+        
+<div class="footer">
+  <div class="social">
+    <ul>
+      
+        <li>
+          <a title="github" target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">
+            <i class="iconfont icon-github"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+  
+    
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Copyright © 2022 Oranges</a>
+        
+    </div>
+  
+    
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Theme by Oranges | Powered by Hexo</a>
+        
+    </div>
+  
+  
+    <div class="footer-views">
+      
+          本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        
+      
+          本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+        
+      
+          本站访客数<span id="busuanzi_value_site_uv"></span>人
+        
+      
+    </div>
+  
+</div>
+
+      </div>
+
+      <div class="tools-bar">
+        <div class="back-to-top tools-bar-item hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+        
+  <div class="search-icon tools-bar-item" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-title">
+        <span class="search-icon-input">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-search"></i>
+          </a>
+        </span>
+        
+          <input type="text" class="search-input" id="search-input" placeholder="搜索...">
+        
+        <span class="search-close-icon" id="search-close-icon">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-close"></i>
+          </a>
+        </span>
+      </div>
+      <div class="search-result" id="search-result"></div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    inputArea.onclick = function() {
+      getSearchFile()
+      this.onclick = null
+    }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        // inputArea.focus()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'>首次搜索，正在载入索引文件，请稍后……<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'>" + orig_data_title + "</a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<p class=\"search-result-abstract\">" + match_content + "...</p>"
+                }
+                str += "</li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>没有找到内容，请尝试更换检索词。<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>未找到search.xml文件，具体请参考：<a href='https://github.com/zchengsite/hexo-theme-oranges#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>请求失败，尝试重新刷新页面或稍后重试。<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "/search.xml";
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+        
+  <div class="tools-bar-item theme-icon" id="switch-color-scheme">
+    <a href="javascript: void(0)">
+      <i id="theme-icon" class="iconfont icon-moon"></i>
+    </a>
+  </div>
+
+  
+<script src="/js/colorscheme.js"></script>
+
+
+
+
+
+        
+  
+    <div class="share-icon tools-bar-item">
+      <a href="javascript: void(0)" id="share-icon">
+        <i class="iconfont iconshare"></i>
+      </a>
+      <div class="share-content hidden">
+        
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + %E4%BD%8D%E8%BF%90%E7%AE%97%E5%B0%8F%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93 + '&url=' + https%3A%2F%2Fvictory20201009.github.io%2F2022%2F11%2F21%2FBitOperSummary%2F + '" target="_blank" title="Twitter">
+            <i class="iconfont icon-twitter"></i>
+          </a>
+        
+        
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=https://victory20201009.github.io/2022/11/21/BitOperSummary/" target="_blank" title="Facebook">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+  
+<script src="/js/shares.js"></script>
+
+
+
+      </div>
+    </div>
+  </body>
+</html>
