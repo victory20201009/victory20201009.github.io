@@ -272,7 +272,7 @@
 <p>证明：</p>
 <ol>
 <li>对于任何一个合数X，都可以分解成$X &#x3D; p_{xmin} * B$，其中$p_{xmin}$是$X$的最小素约数，也正是因为是最小素约数，所以B的最小素约数$p_{bmin}$，不会超过$p_{xmin}$（这是因为B是X的一个约数，如果B的最小素约数比$p_{xmin}$还小，那么$p_{xmin}$就不是X的最小素约数了，因此和假设矛盾），而且显然的，B&lt;X，$p_{xmin}&lt;&#x3D;B$，因此B比X先被外层循环遍历到，$p_{xmin}$比B先被遍历到，当遍历到B的时候，$p_{xmin}$已经被处理过了，因此在遍历到B进入内层循环的时候，$p_{xmin}$已经在素数列表中了，又因为B的最小素约数不小于$p_{xmin}$，因此在内循环中，遍历到素数$p_{bmin}$的时候。一定可以遍历到$p_{xmin}$，因此isPrime[X]一定会被设置为false；因此这个方法可以保证任何一个合数都能被筛掉；</li>
-<li>那么合数X没有可能被X的其他素约数筛掉呢？不可能。假设X还有另一个素约数$p_{xother}$，那么就有$X&#x3D;p_{xmin}*B&#x3D;p_{xother}*C$成立，即$C&#x3D;p_{xmin}*\frac{B}{p_{xother}}$成立，因为C是个整数，因此$\frac{B}{p_{xother}}$也是整数，此时$p_{xmin}$就是$C$的素约数；因此当最外层循环遍历到$C$的时候，内层循环是从小到大遍历已经得到的素数表的，因此一定会先遇到$p_{xmin}$，而此时$p_{xmin}$是$C$的素约数，因此内层循环直接退出，B没有机会和$p_{xother}$结合再次筛掉X。</li>
+<li>那么合数X没有可能被X的其他素约数筛掉呢？不可能。假设X还有另一个素约数$p_{xother}$，那么就有$X&#x3D;p_{xmin}*B&#x3D;p_{xother}*C$成立，即$C&#x3D;p_{xmin}*\frac{B}{p_{xother}}$成立，因为C是个整数，因此$\frac{B}{p_{xother}}$也是整数，此时$p_{xmin}$就是$C$的素约数；因此当最外层循环遍历到$C$的时候，内层循环是从小到大遍历已经得到的素数表的，因此一定会先遇到$p_{xmin}$，而此时$p_{xmin}$是$C$的素约数，因此内层循环直接退出，C没有机会和$p_{xother}$结合再次筛掉X。</li>
 </ol>
 <p>因此一个合数X一定且只会被他的最小素约数筛掉，如果他没有被之前的素数筛掉，那么X就是一个素数。</p>
 <p>证明参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qaqwqaqwq/article/details/123587336">https://blog.csdn.net/qaqwqaqwq/article/details/123587336</a></p>

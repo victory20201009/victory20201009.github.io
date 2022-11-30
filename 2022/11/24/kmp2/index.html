@@ -232,7 +232,7 @@
 <img src="kmp4.svg">
 
 <p>总结一下：此时我们似乎找到了，保证s指针不回退的时候，p的指针的调整方案，即当我们发现某一次匹配失败的时候，我们需要找出<strong>前面已经匹配部分的<font color="red">前后缀最大匹配长度</font>，假设为next，那么我们只需要把j调整为next</strong>，继续进行匹配操作即可。</p>
-<h2 id="2-2-next数组"><a href="#2-2-next数组" class="headerlink" title="2.2. next数组"></a>2.2. next数组</h2><h3 id="2-2-1-什么是next数组？"><a href="#2-2-1-什么是next数组？" class="headerlink" title="2.2.1. 什么是next数组？"></a>2.2.1. 什么是next数组？</h3><p>ß我们在进行真正的匹配之前，我们要先计算好，每一个元素的next值（next值的含义就是当前元素失去匹配的时候，它前面部分字符串的前后缀最大匹配长度，这个前后缀不包含自己），看下面对字符串“caccacb”的next值的定义过程：</p>
+<h2 id="2-2-next数组"><a href="#2-2-next数组" class="headerlink" title="2.2. next数组"></a>2.2. next数组</h2><h3 id="2-2-1-什么是next数组？"><a href="#2-2-1-什么是next数组？" class="headerlink" title="2.2.1. 什么是next数组？"></a>2.2.1. 什么是next数组？</h3><p>我们在进行真正的匹配之前，我们要先计算好，每一个元素的next值（next值的含义就是当前元素失去匹配的时候，它前面部分字符串的前后缀最大匹配长度，这个前后缀不包含自己），看下面对字符串“caccacb”的next值的定义过程：</p>
 <img src="kmp5.svg">
 
 <h3 id="2-2-2-使用next数组加速匹配过程"><a href="#2-2-2-使用next数组加速匹配过程" class="headerlink" title="2.2.2. 使用next数组加速匹配过程"></a>2.2.2. 使用next数组加速匹配过程</h3><p>如果我们在匹配之前，得到这么一个，关于模式串p的每一个位置index失去匹配后，模式串的匹配指针应该调整为next[index]的next数组的话，那么我们的匹配过程可以变成这样：</p>
