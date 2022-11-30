@@ -246,14 +246,14 @@
 <blockquote>
 <p>算法优化点：</p>
 <ol>
-<li>第12行代码的j不需要从$2i$开始，可以从$i<em>i$开始，这是因为，当我们要把$x</em>i(x&lt;i)$设置为false的时候，其实在我们遍历x的时候，$x*i$已经设置过了，因此不需要重复设置。</li>
+<li>第12行代码的j不需要从$2i$开始，可以从$i*i$开始，这是因为，当我们要把$x*i(x&lt;i)$设置为false的时候，其实在我们遍历x的时候，$x*i$已经设置过了，因此不需要重复设置。</li>
 </ol>
 </blockquote>
 <p>于是优化后的代码：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">GetPrimeNumsEratosthenes</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> List&lt;Integer&gt; <span class="title function_">getPrimeNums</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">        List&lt;Integer&gt; ans = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span>(n == <span class="number">1</span>) <span class="keyword">return</span> ans;</span><br><span class="line">        <span class="type">boolean</span>[] notPrime = <span class="keyword">new</span> <span class="title class_">boolean</span>[n + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">2</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span>(!notPrime[i]) &#123;</span><br><span class="line">                ans.add(i);</span><br><span class="line">                <span class="keyword">for</span>(<span class="type">long</span> <span class="variable">j</span> <span class="operator">=</span> (<span class="type">long</span>)i * i; j &lt;= n; j += i) notPrime[(<span class="type">int</span>)j] = <span class="literal">true</span>;<span class="comment">// 用long类型防止因为i太大导致溢出</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>空间复杂度$O(N)$，时间复杂度$O(N\log_2(\log_2N))$，时间复杂度证明参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/alfayoung/p/16154640.html">https://www.cnblogs.com/alfayoung/p/16154640.html</a></p>
-<h1 id="4-欧拉筛"><a href="#4-欧拉筛" class="headerlink" title="4. 欧拉筛"></a>4. 欧拉筛</h1><h2 id="4-1-算法分析"><a href="#4-1-算法分析" class="headerlink" title="4.1. 算法分析"></a>4.1. 算法分析</h2><p>埃氏筛是遇到一个素数，就筛掉这个素数的倍数，但是这样会存在重复筛掉一个数的情况，例如当遇到素数2的时候，筛掉2的6倍，即$2<em>6&#x3D;12$，当我们们遇到3的时候，会筛掉3的4倍，即$3</em>4&#x3D;12$，但是12在遇到2的时候已经被筛掉了，这是一个重复操作。</p>
+<h1 id="4-欧拉筛"><a href="#4-欧拉筛" class="headerlink" title="4. 欧拉筛"></a>4. 欧拉筛</h1><h2 id="4-1-算法分析"><a href="#4-1-算法分析" class="headerlink" title="4.1. 算法分析"></a>4.1. 算法分析</h2><p>埃氏筛是遇到一个素数，就筛掉这个素数的倍数，但是这样会存在重复筛掉一个数的情况，例如当遇到素数2的时候，筛掉2的6倍，即$2*6&#x3D;12$，当我们们遇到3的时候，会筛掉3的4倍，即$3*4&#x3D;12$，但是12在遇到2的时候已经被筛掉了，这是一个重复操作。</p>
 <p>实际上，假设一个合数X有N个不同的素约数，那么他就会被筛掉N次，那么如何才能避免这样的重复操作呢？</p>
 <p>我们先说明欧拉筛的算法，然后再说明欧拉筛是如何避免重复筛选的。</p>
 <p>准备一个标记数组isPrime，长度是n+1，和一个素数列表primeList，刚开始标记数组都初始化为true，认为从$[2,n]$都是素数；</p>
@@ -262,7 +262,7 @@
 </li>
 <li><p>遍历已经得到的primeList，对于其中的任何一个数字p；</p>
 <ul>
-<li>如果$p<em>x &gt; n$，退出遍历；否则设置isPrime[$p</em>x$] &#x3D; false;</li>
+<li>如果$p*x &gt; n$，退出遍历；否则设置isPrime[$p*x$] &#x3D; false;</li>
 <li>如果x能被p整除，那么退出遍历；</li>
 </ul>
 </li>
