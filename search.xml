@@ -53,16 +53,14 @@
           
           <category> 算法 </category>
           
-          <category> 问题 </category>
-          
-          <category> KMP算法相关 </category>
+          <category> 查找 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 字符串模式匹配 </tag>
+            <tag> KMP </tag>
             
         </tags>
       
@@ -84,14 +82,12 @@
           
           <category> 查找 </category>
           
-          <category> KMP </category>
-          
       </categories>
       
       
         <tags>
             
-            <tag> 字符串模式匹配 </tag>
+            <tag> KMP </tag>
             
         </tags>
       
@@ -111,7 +107,7 @@
           
           <category> 算法 </category>
           
-          <category> 位操作 </category>
+          <category> 位运算 </category>
           
       </categories>
       
@@ -138,7 +134,7 @@
           
           <category> 算法 </category>
           
-          <category> 位操作 </category>
+          <category> 位运算 </category>
           
       </categories>
       
@@ -154,7 +150,7 @@
     
     
     <entry>
-      <title>Top K问题</title>
+      <title>Top K 问题</title>
       <link href="/2022/11/17/TopK/"/>
       <url>/2022/11/17/TopK/</url>
       
@@ -165,9 +161,7 @@
           
           <category> 算法 </category>
           
-          <category> 问题 </category>
-          
-          <category> Top K </category>
+          <category> 查找 </category>
           
       </categories>
       
@@ -177,8 +171,6 @@
             <tag> 堆 </tag>
             
             <tag> 快速排序 </tag>
-            
-            <tag> 荷兰国旗问题 </tag>
             
             <tag> BFPRT </tag>
             
@@ -200,9 +192,7 @@
           
           <category> 算法 </category>
           
-          <category> 问题 </category>
-          
-          <category> 排序相关 </category>
+          <category> 排序 </category>
           
       </categories>
       
@@ -231,9 +221,7 @@
           
           <category> 算法 </category>
           
-          <category> 问题 </category>
-          
-          <category> 排序相关 </category>
+          <category> 排序 </category>
           
       </categories>
       
@@ -264,8 +252,6 @@
           
           <category> 排序 </category>
           
-          <category> 基数排序 </category>
-          
       </categories>
       
       
@@ -293,8 +279,6 @@
           
           <category> 排序 </category>
           
-          <category> 快速排序 </category>
-          
       </categories>
       
       
@@ -320,9 +304,7 @@
           
           <category> 算法 </category>
           
-          <category> 问题 </category>
-          
-          <category> 归并排序相关 </category>
+          <category> 多解法问题 </category>
           
       </categories>
       
@@ -355,9 +337,7 @@
           
           <category> 算法 </category>
           
-          <category> 问题 </category>
-          
-          <category> 归并排序相关 </category>
+          <category> 排序 </category>
           
       </categories>
       
@@ -384,9 +364,7 @@
           
           <category> 算法 </category>
           
-          <category> 问题 </category>
-          
-          <category> 归并排序相关 </category>
+          <category> 排序 </category>
           
       </categories>
       
@@ -413,9 +391,7 @@
           
           <category> 算法 </category>
           
-          <category> 问题 </category>
-          
-          <category> 归并排序相关 </category>
+          <category> 排序 </category>
           
       </categories>
       
@@ -442,9 +418,7 @@
           
           <category> 算法 </category>
           
-          <category> 问题 </category>
-          
-          <category> 归并排序相关 </category>
+          <category> 排序 </category>
           
       </categories>
       
@@ -473,8 +447,6 @@
           
           <category> 排序 </category>
           
-          <category> 归并排序 </category>
-          
       </categories>
       
       
@@ -500,18 +472,14 @@
           
           <category> 算法 </category>
           
-          <category> 问题 </category>
-          
-          <category> 数学相关 </category>
-          
-          <category> 素数 </category>
+          <category> 数学 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 数学 </tag>
+            <tag> 素数 </tag>
             
         </tags>
       
@@ -531,18 +499,14 @@
           
           <category> 算法 </category>
           
-          <category> 问题 </category>
-          
-          <category> 数学相关 </category>
-          
-          <category> 素数 </category>
+          <category> 数学 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 数学 </tag>
+            <tag> 素数 </tag>
             
         </tags>
       
@@ -562,18 +526,14 @@
           
           <category> 算法 </category>
           
-          <category> 问题 </category>
-          
-          <category> 数学相关 </category>
-          
-          <category> 素数 </category>
+          <category> 数学 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 数学 </tag>
+            <tag> 素数 </tag>
             
         </tags>
       
@@ -593,9 +553,9 @@
           
           <category> 算法 </category>
           
-          <category> 问题 </category>
+          <category> 数据结构 </category>
           
-          <category> 堆相关 </category>
+          <category> 堆 </category>
           
       </categories>
       
@@ -622,9 +582,9 @@
           
           <category> 算法 </category>
           
-          <category> 问题 </category>
+          <category> 数据结构 </category>
           
-          <category> 堆相关 </category>
+          <category> 堆 </category>
           
       </categories>
       
@@ -632,6 +592,8 @@
         <tags>
             
             <tag> 堆 </tag>
+            
+            <tag> 面试原题 </tag>
             
         </tags>
       
@@ -651,9 +613,9 @@
           
           <category> 算法 </category>
           
-          <category> 问题 </category>
+          <category> 数据结构 </category>
           
-          <category> 堆相关 </category>
+          <category> 堆 </category>
           
       </categories>
       
@@ -687,6 +649,12 @@
       </categories>
       
       
+        <tags>
+            
+            <tag> 堆 </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -705,10 +673,14 @@
           
           <category> 排序 </category>
           
-          <category> 堆排序 </category>
-          
       </categories>
       
+      
+        <tags>
+            
+            <tag> 堆 </tag>
+            
+        </tags>
       
     </entry>
     
