@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="zh-CN" color-mode="light">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="Victory" />
+  <meta name="description" content="简单专注" />
+  
+  
+  <title>
+    
+      荷兰国旗问题有几种解法？ 
+      
+      
+      |
+    
+     Victory的博客
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.jpg">
+    <link rel="icon" href="/images/favicon.jpg">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- hexo site css -->
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1886449_67xjft27j1l.css" />
+  <!-- 代码块风格 -->
+  
+    
+<link rel="stylesheet" href="/css/figcaption/mac-block.css">
+
+  
+
+  <!-- jquery3.3.1 -->
+  
+    <script defer type="text/javascript" src="/plugins/jquery.min.js"></script>
+  
+
+  <!-- fancybox -->
+  
+    <link href="/plugins/jquery.fancybox.min.css" rel="stylesheet">
+    <script defer type="text/javascript" src="/plugins/jquery.fancybox.min.js"></script>
+  
+  
+<script src="/js/fancybox.js"></script>
+
+
+  
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  <script>
+    var html = document.documentElement
+    const colorMode = localStorage.getItem('color-mode')
+    if (colorMode) {
+      document.documentElement.setAttribute('color-mode', colorMode)
+    }
+  </script>
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <div class="avatar">
+    <a href="/">
+      <!-- 头像取消懒加载，添加no-lazy -->
+      
+        <img src="/images/avatar.jpg" alt="">
+      
+    </a>
+    <div class="nickname"><a href="/">victory</a></div>
+  </div>
+  <div class="navbar">
+    <ul>
+      
+        <li class="nav-item" data-path="/">
+          <a href="/">首页</a>
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          <a href="/archives/">归档</a>
+        </li>
+      
+        <li class="nav-item" data-path="/categories/">
+          <a href="/categories/">分类</a>
+        </li>
+      
+        <li class="nav-item" data-path="/tags/">
+          <a href="/tags/">标签</a>
+        </li>
+      
+        <li class="nav-item" data-path="/friends/">
+          <a href="/friends/">友链</a>
+        </li>
+      
+        <li class="nav-item" data-path="/about/">
+          <a href="/about/">关于</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+<script src="/js/activeNav.js"></script>
+
+
+
+      <div class="flex-container">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+
+  <!-- LaTex Display -->
+
+  
+    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    }
+  </script>
+
+
+
+
+
+  <!-- clipboard -->
+
+  
+    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
+  
+  
+<script src="/js/codeCopy.js"></script>
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">荷兰国旗问题有几种解法？</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime mr-10" title="更新时间"></i>
+          2023-01-11 23:30:18
+        </span>
+        
+              <span class="post-categories">
+                <i class="iconfont icon-bookmark" title="分类"></i>
+                
+                <span class="span--category">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" title="算法">
+                    <b>#</b> 算法
+                  </a>
+                </span>
+                
+                <span class="span--category">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F/" title="排序">
+                    <b>#</b> 排序
+                  </a>
+                </span>
+                
+              </span>
+          
+              <span class="post-tags">
+                <i class="iconfont icon-tags mr-10" title="标签"></i>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" title="双指针">
+                    #双指针
+                  </a>
+                </span>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/%E8%8D%B7%E5%85%B0%E5%9B%BD%E6%97%97%E9%97%AE%E9%A2%98/" title="荷兰国旗问题">
+                    #荷兰国旗问题
+                  </a>
+                </span>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/leetcode/" title="leetcode">
+                    #leetcode
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+      <div class="markdown-body">
+        <!-- toc -->
+
+<p>今天我们来聊聊荷兰国旗问题。</p>
+<h1 id="1-问题引入"><a href="#1-问题引入" class="headerlink" title="1. 问题引入"></a>1. 问题引入</h1><p>荷兰国旗问题是荷兰计算机科学家Dijkstra提出的一个排序问题。问题是这样的，荷兰国旗由红，白，蓝三种颜色组成，现在给出一些小球，它们的颜色只有红，白，蓝，现在需要设计一个算法对这些小球排序，使得小球按照红，白，蓝排列。</p>
+<img src="https://picx.zhimg.com/80a6cdaf01ec978971ba777488b7ca4c_1440w.jpg?source=172ae18b"/>
+
+<p>我们可以对原问题进行抽象，用0代表红色，1代表白色，2代表蓝色，那么原问题本质上就是对一个只含有0，1，2三种元素的数组进行从小到大排序的问题。leetcode上第75题<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/sort-colors/">颜色分类</a>，本质上也是一个荷兰国旗问题。</p>
+<h1 id="2-排序"><a href="#2-排序" class="headerlink" title="2. 排序"></a>2. 排序</h1><p>既然是排序问题，那么我们直接对数组排序即可，这个方法简单暴力，因为只有3种数，最好使用计数排序。具体计数排序的代码我就不赘述了。代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ColorSortUsingSort</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">sort</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>, j = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span>[] cnt = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">3</span>];</span><br><span class="line">        <span class="keyword">for</span>(; i &lt; nums.length; ++i) ++cnt[nums[i]];</span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; <span class="number">3</span>; ++i) </span><br><span class="line">            <span class="keyword">while</span>(cnt[i]-- &gt; <span class="number">0</span>) nums[j++] = i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="3-单个指针调整"><a href="#3-单个指针调整" class="headerlink" title="3. 单个指针调整"></a>3. 单个指针调整</h1><p>这个思路是这样的，我们遍历数组一次，把所有的0调整到数组左端；然后再遍历一次，把所有的1，放在0的右边，这样剩下的2必然在1的右边。具体做法就是，使用一个指针p，代表最后一个0出现的位置，p初始化为-1，表示现在还没有找到一个0，然后开始遍历数组，当我们遇到0的时候，此时p的下一个位置一定不是0（因为p表示最后一个0出现的位置），此时这个0要放在p的下一个位置，于是把个0和p的下一个位置交换，因为此时发现了一个0，于是p指针++，当我们遍历完数组，所有的0都被整理到数组左端了。整理1也是同样的方法，只不过p初始化应该是最后一个0出现的位置，而不是-1，如下图所示：</p>
+<img src="1.svg"/>
+
+<p>根据这个逻辑，可以写出如下的代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ColorSortUsingSinglePointer</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">sort</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">p</span> <span class="operator">=</span> -<span class="number">1</span>, i = <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 调整0的位置</span></span><br><span class="line">        <span class="keyword">for</span>(; i &lt; nums.length; ++i) </span><br><span class="line">            <span class="keyword">if</span>(nums[i] == <span class="number">0</span>) swap(nums, ++p, i);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 调整1的位置</span></span><br><span class="line">        <span class="keyword">for</span>(i = p + <span class="number">1</span>; i &lt; nums.length; ++i) </span><br><span class="line">            <span class="keyword">if</span>(nums[i] == <span class="number">1</span>) swap(nums, ++p, i);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">swap</span><span class="params">(<span class="type">int</span>[] a, <span class="type">int</span> i, <span class="type">int</span> j)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(i != j &amp;&amp; a[i] != a[j]) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">t</span> <span class="operator">=</span> a[i];</span><br><span class="line">            a[i] = a[j];</span><br><span class="line">            a[j] = t;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="4-双指针调整"><a href="#4-双指针调整" class="headerlink" title="4. 双指针调整"></a>4. 双指针调整</h1><h2 id="4-1-调整0和2"><a href="#4-1-调整0和2" class="headerlink" title="4.1. 调整0和2"></a>4.1. 调整0和2</h2><p>只要想办法把0调整到数组的左端，2调整到数组的右端，剩下的1自然会跑到它该去的地方。我们使用指针p表示最后一个0出现的位置，指针q表示第一个2出现的位置。一开始，p初始化为-1，q初始化为数组长度，然后开始遍历数组（注意此时停止条件是当前位置没有达到q）；</p>
+<p>如果当前位置的数是0，那么此时我们发现了一个0，根据单指针调整的思路，它应该和p的下一个位置的数交换，同时p++，因为交换过来的数是p的下一个位置，根据p和q的定义，以及循环停止条件可以知道，p的下一个位置的数一定是1，因此i++，</p>
+<p>如果当前位置的数是2，那么此时我们发现一个1，根据q的定义，我们应该把这个2放到q的前一个位置，因为q始终指向第一个2出现的位置，于是我们把当前的数2和q的前一个位置的数交换，由于发现了一个2，于是q–-；因为q前面的数还是没有遍历过的元素，所以交换过来的数还需要再次判断，此时i不能++</p>
+<p>如果当前位置的数是1，那么无需处理，跳过，i++，整个过程如下图所示：</p>
+<img src="2.svg"/>
+
+<p>根据这个逻辑，可以写出如下的代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ColorSortUsingDoublePointer1</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">sort</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">p</span> <span class="operator">=</span> -<span class="number">1</span>, q = nums.length, i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(i &lt; q) &#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] == <span class="number">0</span>) swap(nums, ++p, i++);</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(nums[i] == <span class="number">2</span>) swap(nums, --q, i);</span><br><span class="line">            <span class="keyword">else</span> ++i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">swap</span><span class="params">(<span class="type">int</span>[] a, <span class="type">int</span> i, <span class="type">int</span> j)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(i != j &amp;&amp; a[i] != a[j]) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">t</span> <span class="operator">=</span> a[i];</span><br><span class="line">            a[i] = a[j];</span><br><span class="line">            a[j] = t;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-2-调整0和1"><a href="#4-2-调整0和1" class="headerlink" title="4.2. 调整0和1"></a>4.2. 调整0和1</h2><p>这个方法是把所有的0搬到数组的左端，把所有的1搬到最后一个0的右边，这样2就在数组的最右边。我们使用指针p表示最后一个0出现的位置，使用指针q表示最后一个1出现的位置，一开始p和q都初始化为-1，我们从左到右遍历数组，</p>
+<p>如果当前元素是0，此时需要看一下p是否等于q，如果p&#x3D;&#x3D;q那么说明此时我们没有发现一个1，那么只需要让这个0和p的下一个位置交换，然后p++，q++，i++；如果p!&#x3D;q，说明我们曾经发现过1，因为当前的这个0要放在指针p的下一个位置，所以我们需要先为这个0腾位置，所以我们可以先让当前的0和指针q的下一个位置交换，然后再和指针p的下一个位置交换，然后p++，q++，i++；</p>
+<p>如果当前元素是1，那么它需要和指针q的下一个位置交换，然后q++，i++；</p>
+<p>如果当前元素是2，不用处理，跳过；整个过程如下图所示：</p>
+<img src="3.svg"/>
+
+<p>根据这个逻辑，可以写出如下的代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ColorSortUsingDoublePointer2</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">sort</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">p</span> <span class="operator">=</span> -<span class="number">1</span>, q = -<span class="number">1</span>, i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(; i &lt; nums.length; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] == <span class="number">0</span>) &#123;<span class="comment">// 遇到0</span></span><br><span class="line">                <span class="keyword">if</span>(p == q) swap(nums, q = ++p, i); <span class="comment">//p == q</span></span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    swap(nums, ++q, i);</span><br><span class="line">                    swap(nums, q, ++p);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(nums[i] == <span class="number">1</span>) swap(nums, ++q, i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">swap</span><span class="params">(<span class="type">int</span>[] a, <span class="type">int</span> i, <span class="type">int</span> j)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(i != j &amp;&amp; a[i] != a[j]) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">t</span> <span class="operator">=</span> a[i];</span><br><span class="line">            a[i] = a[j];</span><br><span class="line">            a[j] = t;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个方法比上面的方法好一些，是因为当数据是一个一个给我们的时候，我们事先不知道数据有几个，这个方法可以做到实时调整。</p>
+<h1 id="5-赋值"><a href="#5-赋值" class="headerlink" title="5. 赋值"></a>5. 赋值</h1><p>这个方法的思路来自于上面双指针种的第二种方法。假设现在我们遍历到了i位置，最后一个0在p位置，最后一个1在q位置，</p>
+<p>如果i位置的数是2，那么此时我们不用管，直接遍历下一个；</p>
+<p>如果i位置的数是1，那么此时需要把这个1放到q的下一个位置，然后q++，那么1区域部分会增长1个元素的单位，因为q作为最后一个1的位置，那么q的下一个位置一定是2，因此他会把这个2“挤出去”，那么挤到哪里呢？只能挤到i所在的位置，如下图所示：</p>
+<img src="4.svg"/>
+
+<p>如果i位置的数是0，那么此时需要把这个0放到p的下一个位置，然后p++，然而p的下一个位置，原来放置的应该是1，那么这个1会被“挤出去”，会被挤到哪里？会被挤到q的下一个位置，但是q的下一个位置原来放置的是2，那么这个2同样也会被“挤出去”，会被挤到i所在的位置，如下图所示：</p>
+<img src="5.svg"/>
+
+<p>因为这个题目只有0,1,2这三种数，因此我们可以写下如下代码。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ColorSortUsingAssignment</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">sort</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">p</span> <span class="operator">=</span> -<span class="number">1</span>, q = -<span class="number">1</span>, i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(; i &lt; nums.length; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] == <span class="number">1</span>) &#123;</span><br><span class="line">                nums[i] = <span class="number">2</span>;</span><br><span class="line">                nums[++q] = <span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(nums[i] == <span class="number">0</span>) &#123;</span><br><span class="line">                nums[i] = <span class="number">2</span>;</span><br><span class="line">                nums[++q] = <span class="number">1</span>;</span><br><span class="line">                nums[++p] = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>写的再简单一点：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ColorSortUsingAssignment</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">sort</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">p</span> <span class="operator">=</span> -<span class="number">1</span>, q = -<span class="number">1</span>, i = <span class="number">0</span>, t;</span><br><span class="line">        <span class="keyword">for</span>(; i &lt; nums.length; ++i) &#123;</span><br><span class="line">            t = nums[i];</span><br><span class="line">            nums[i] = <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(t &lt; <span class="number">2</span>) nums[++q] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(t &lt; <span class="number">1</span>) nums[++p] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2022/12/01/StudyAlgorithm/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>上一页</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime mr-10" title="更新时间"></i>
+              2023-01-11 23:30:18
+            </span>
+            
+                  <span class="post-categories">
+                    <i class="iconfont icon-bookmark" title="分类"></i>
+                    
+                    <span class="span--category">
+                      <a href="/categories/%E7%AE%97%E6%B3%95/" title="算法">
+                        <b>#</b> 算法
+                      </a>
+                    </span>
+                    
+                    <span class="span--category">
+                      <a href="/categories/%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F/" title="排序">
+                        <b>#</b> 排序
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags mr-10" title="标签"></i>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" title="双指针">
+                        #双指针
+                      </a>
+                    </span>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/%E8%8D%B7%E5%85%B0%E5%9B%BD%E6%97%97%E9%97%AE%E9%A2%98/" title="荷兰国旗问题">
+                        #荷兰国旗问题
+                      </a>
+                    </span>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/leetcode/" title="leetcode">
+                        #leetcode
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+              <a href="/2023/01/20/RandomNumber/" target="_self">
+                <span>下一页</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+    </div>
+    
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">目录</div>
+    <div class="catalog-content">
+      
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E9%97%AE%E9%A2%98%E5%BC%95%E5%85%A5"><span class="toc-text">1. 问题引入</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E6%8E%92%E5%BA%8F"><span class="toc-text">2. 排序</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E5%8D%95%E4%B8%AA%E6%8C%87%E9%92%88%E8%B0%83%E6%95%B4"><span class="toc-text">3. 单个指针调整</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%8F%8C%E6%8C%87%E9%92%88%E8%B0%83%E6%95%B4"><span class="toc-text">4. 双指针调整</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-%E8%B0%83%E6%95%B40%E5%92%8C2"><span class="toc-text">4.1. 调整0和2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-%E8%B0%83%E6%95%B40%E5%92%8C1"><span class="toc-text">4.2. 调整0和1</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E8%B5%8B%E5%80%BC"><span class="toc-text">5. 赋值</span></a></li></ol>
+      
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
+    
+      <div class="comments-container">
+        
+
+
+
+
+   <div id="gitalk-container"></div>
+  <script>
+    function loadGitalkSuc() {
+      const gitalk = new Gitalk({
+        clientID: 'ec89f39f054b72018b04',
+        clientSecret: 'c60124d09914e1e860acd9716342e39379720b62',
+        repo: 'BlogIssues',
+        owner: 'victory20201009',
+        admin: ['victory20201009'],
+        id: location.pathname,
+        distractionFreeMode: false,
+		createIssueManually: false,
+proxy: "https://kaicoding.xyz/gitalk/login/oauth/access_token"
+      })
+	  console.log(location);
+      gitalk.render('gitalk-container')
+    }
+  </script>
+
+  
+    <link rel="stylesheet" href="/plugins/gitalk.css">
+    <script type="text/javascript" src="/plugins/gitalk.min.js" onload="loadGitalkSuc(this)"></script>
+  
+
+ 
+
+
+
+
+      </div>
+    
+  </div>
+
+
+        
+<div class="footer">
+  <div class="social">
+    <ul>
+      
+        <li>
+          <a title="github" target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">
+            <i class="iconfont icon-github"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+  
+    
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Copyright © 2023 Oranges</a>
+        
+    </div>
+  
+    
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Theme by Oranges | Powered by Hexo</a>
+        
+    </div>
+  
+  
+    <div class="footer-views">
+      
+          本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        
+      
+          本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+        
+      
+          本站访客数<span id="busuanzi_value_site_uv"></span>人
+        
+      
+    </div>
+  
+</div>
+
+      </div>
+
+      <div class="tools-bar">
+        <div class="back-to-top tools-bar-item hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+        
+  <div class="search-icon tools-bar-item" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-title">
+        <span class="search-icon-input">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-search"></i>
+          </a>
+        </span>
+        
+          <input type="text" class="search-input" id="search-input" placeholder="搜索...">
+        
+        <span class="search-close-icon" id="search-close-icon">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-close"></i>
+          </a>
+        </span>
+      </div>
+      <div class="search-result" id="search-result"></div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    inputArea.onclick = function() {
+      getSearchFile()
+      this.onclick = null
+    }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        // inputArea.focus()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'>首次搜索，正在载入索引文件，请稍后……<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'>" + orig_data_title + "</a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<p class=\"search-result-abstract\">" + match_content + "...</p>"
+                }
+                str += "</li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>没有找到内容，请尝试更换检索词。<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>未找到search.xml文件，具体请参考：<a href='https://github.com/zchengsite/hexo-theme-oranges#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>请求失败，尝试重新刷新页面或稍后重试。<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "/search.xml";
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+        
+  <div class="tools-bar-item theme-icon" id="switch-color-scheme">
+    <a href="javascript: void(0)">
+      <i id="theme-icon" class="iconfont icon-moon"></i>
+    </a>
+  </div>
+
+  
+<script src="/js/colorscheme.js"></script>
+
+
+
+
+
+        
+  
+    <div class="share-icon tools-bar-item">
+      <a href="javascript: void(0)" id="share-icon">
+        <i class="iconfont iconshare"></i>
+      </a>
+      <div class="share-content hidden">
+        
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + %E8%8D%B7%E5%85%B0%E5%9B%BD%E6%97%97%E9%97%AE%E9%A2%98%E6%9C%89%E5%87%A0%E7%A7%8D%E8%A7%A3%E6%B3%95%EF%BC%9F + '&url=' + https%3A%2F%2Fvictory20201009.github.io%2F2023%2F01%2F11%2FDutchNationalFlagProblem%2F + '" target="_blank" title="Twitter">
+            <i class="iconfont icon-twitter"></i>
+          </a>
+        
+        
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=https://victory20201009.github.io/2023/01/11/DutchNationalFlagProblem/" target="_blank" title="Facebook">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+  
+<script src="/js/shares.js"></script>
+
+
+
+      </div>
+    </div>
+  </body>
+</html>

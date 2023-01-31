@@ -11,7 +11,7 @@
   
   <title>
     
-      StackAndQueue 
+      探讨栈和队列的几个基础问题 
       
       
       |
@@ -161,16 +161,102 @@
   <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
   <div class="container post-details" id="post-details">
     <div class="post-content">
-      <div class="post-title">StackAndQueue</div>
+      <div class="post-title">探讨栈和队列的几个基础问题</div>
       <div class="post-attach">
         <span class="post-pubtime">
           <i class="iconfont icon-updatetime mr-10" title="更新时间"></i>
           2022-11-30 23:47:21
         </span>
         
+              <span class="post-categories">
+                <i class="iconfont icon-bookmark" title="分类"></i>
+                
+                <span class="span--category">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" title="算法">
+                    <b>#</b> 算法
+                  </a>
+                </span>
+                
+                <span class="span--category">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="数据结构">
+                    <b>#</b> 数据结构
+                  </a>
+                </span>
+                
+                <span class="span--category">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/" title="栈和队列">
+                    <b>#</b> 栈和队列
+                  </a>
+                </span>
+                
+              </span>
+          
+              <span class="post-tags">
+                <i class="iconfont icon-tags mr-10" title="标签"></i>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/%E6%A0%88/" title="栈">
+                    #栈
+                  </a>
+                </span>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/%E9%98%9F%E5%88%97/" title="队列">
+                    #队列
+                  </a>
+                </span>
+                
+              </span>
+          
       </div>
       <div class="markdown-body">
-        
+        <!-- toc -->
+
+<h1 id="1-环形队列"><a href="#1-环形队列" class="headerlink" title="1. 环形队列"></a>1. 环形队列</h1><p>用数组实现一个容量固定的环形队列，需要实现队列的入队，出队，返回元素个数，判空，判断队列是否满等操作。（假设队列只存放整数）。即需要实现如下接口：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">RingQueue</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">enqueue</span><span class="params">(<span class="type">int</span> value)</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="type">int</span> <span class="title function_">poll</span><span class="params">()</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="type">boolean</span> <span class="title function_">isEmpty</span><span class="params">()</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="type">boolean</span> <span class="title function_">isFull</span><span class="params">()</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="type">int</span> <span class="title function_">size</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-1-使用一个size变量记录当前队列的元素个数"><a href="#1-1-使用一个size变量记录当前队列的元素个数" class="headerlink" title="1.1. 使用一个size变量记录当前队列的元素个数"></a>1.1. 使用一个size变量记录当前队列的元素个数</h2><p>队列有队头和队尾，我们需要一个头指针head和尾指针rear记录队列的头和尾，还需要一个size变量记录队列中的元素个数。头指针head始终指向队列中的第一个元素的位置，尾指针rear始终指向队列中最后一个元素的下一个位置。</p>
+<p>当元素需要入队列的时候，只需在rear位置处放入元素，然后rear前进一个位置；</p>
+<p>当元素需要出队列的时候，只需返回head位置的元素，然后head前进一个位置；</p>
+<p>那怎么判断队列的空和满呢？当size等于0的时候，队列空，size等于数组长度的时候，队列满。如下图所示：</p>
+<img src="1.svg" />
+
+<p>根据上述逻辑可以实现如下代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ArrayRingQueue1</span> <span class="keyword">implements</span> <span class="title class_">RingQueue</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> size, rear, head;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span>[] queue;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">ArrayRingQueue1</span><span class="params">(<span class="type">int</span> capacity)</span> &#123;</span><br><span class="line">        queue = <span class="keyword">new</span> <span class="title class_">int</span>[capacity];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">enqueue</span><span class="params">(<span class="type">int</span> value)</span> &#123;</span><br><span class="line">        queue[rear] = value;</span><br><span class="line">        rear = next(rear);</span><br><span class="line">        ++size;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">poll</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">v</span> <span class="operator">=</span> queue[head];</span><br><span class="line">        head = next(head);</span><br><span class="line">        --size;</span><br><span class="line">        <span class="keyword">return</span> v;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isEmpty</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> size == <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isFull</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> size == queue.length;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">size</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> size;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="title function_">next</span><span class="params">(<span class="type">int</span> index)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(index == queue.length - <span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> index + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-2-不使用size变量"><a href="#1-2-不使用size变量" class="headerlink" title="1.2. 不使用size变量"></a>1.2. 不使用size变量</h2><p>当有size的时候，可以使用size和数组的长度关系判断队列是否为空，是否满，不使用size变量，如何实现呢？直觉告诉我们，当rear指针“追上”head指针的时候，队列为满，那此时队列是否为满的条件是否可以定为head &#x3D;&#x3D; rear呢？不可以！因为read &#x3D;&#x3D; head的时候，队列还有可能为空。那么怎么解决这个问题？如下图所示：</p>
+<img src="2.svg" />
+
+<p>于是我们可以写出如下代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ArrayRingQueue2</span> <span class="keyword">implements</span> <span class="title class_">RingQueue</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> rear, head;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span>[] queue;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">ArrayRingQueue1</span><span class="params">(<span class="type">int</span> capacity)</span> &#123;</span><br><span class="line">        queue = <span class="keyword">new</span> <span class="title class_">int</span>[capacity + <span class="number">1</span>];<span class="comment">// 多使用一个元素空间</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">enqueue</span><span class="params">(<span class="type">int</span> value)</span> &#123;</span><br><span class="line">        queue[rear] = value;</span><br><span class="line">        rear = next(rear);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">poll</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">v</span> <span class="operator">=</span> queue[head];</span><br><span class="line">        head = next(head);</span><br><span class="line">        <span class="keyword">return</span> v;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isEmpty</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> head == rear;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isFull</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> next(rear) == head;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">size</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> rear - head + (rear &lt; head ? queue.length : <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="title function_">next</span><span class="params">(<span class="type">int</span> index)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(index == queue.length - <span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> index + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="2-最小栈"><a href="#2-最小栈" class="headerlink" title="2. 最小栈"></a>2. 最小栈</h1><p>设计一个栈，可以返回当前栈的最小值，要求时间空间复杂度尽可能的低。我们可以使用两个栈来实现，一个是数据栈，一个是最小值栈，数据栈用来存储数据，而最小值栈用来存储当前数据栈中的最小值，每次数据栈数据发生变化的时候，都要在最小值栈存储当前的最小值。一开始两个栈都是空的。</p>
+<p>当数据栈push一个元素的时候，需要把当前元素和最小值栈的栈顶元素对比，如果没有栈顶，或者当前元素小于栈顶，那么把当前元素也压入最小值栈，否则把最小值栈的栈顶再次压入最小值栈。</p>
+<p>当数据栈pop一个元素的时候，最小值栈的栈顶也要弹出。如下图所示：</p>
+<img src="3.svg" />
+
+<p>任何时候，最小值栈的栈顶元素就是当前数据栈中的最小值。代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Stack;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MinStack</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> Stack&lt;Integer&gt; data, min;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">MinStack</span><span class="params">()</span> &#123;</span><br><span class="line">        data = <span class="keyword">new</span> <span class="title class_">Stack</span>&lt;&gt;();</span><br><span class="line">        min = <span class="keyword">new</span> <span class="title class_">Stack</span>&lt;&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">push</span><span class="params">(<span class="type">int</span> value)</span> &#123;</span><br><span class="line">        data.push(value);</span><br><span class="line">        <span class="keyword">if</span>(min.isEmpty() || min.peek() &gt; value) min.push(value);</span><br><span class="line">        <span class="keyword">else</span> min.push(min.peek());</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">pop</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">ans</span> <span class="operator">=</span> data.pop();</span><br><span class="line">        min.pop();</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getMin</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> min.peek();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="3-用栈实现队列"><a href="#3-用栈实现队列" class="headerlink" title="3. 用栈实现队列"></a>3. 用栈实现队列</h1><p>因为队列是先进先出，栈是后进先出，因此我们需要使用两个栈，当需要入队列的时候，把数据压入其中一个栈中，当需要出队列的时候，先把栈中的数据倒出，压入另外一个栈，在从另外一个栈弹出。这样就保证了入队列和出队列的顺序。如下图所示：</p>
+<img src="4.svg" />
+
+<p>代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Stack;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">QueueUsingStack</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> Stack&lt;Integer&gt; data, help;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">QueueUsingStack</span><span class="params">()</span> &#123;</span><br><span class="line">        data = <span class="keyword">new</span> <span class="title class_">Stack</span>&lt;&gt;();</span><br><span class="line">        help = <span class="keyword">new</span> <span class="title class_">Stack</span>&lt;&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">enqueue</span><span class="params">(<span class="type">int</span> value)</span> &#123;</span><br><span class="line">        data.push(value);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">poll</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(help.isEmpty()) &#123;<span class="comment">// 只有help为空的时候，才可以从data中倒出数据，且一次倒完。</span></span><br><span class="line">            <span class="keyword">while</span>(!data.isEmpty) help.push(data.pop());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> help.pop();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="4-用队列实现栈"><a href="#4-用队列实现栈" class="headerlink" title="4. 用队列实现栈"></a>4. 用队列实现栈</h1><p>可以使用两个队列，一个数据队列，一个辅助队列，当压入数据的时候，把数据压入数据队列，当弹出栈顶数据的时候，需要把之前的所有元素都出队列到辅助队列中，然后返回当前元素。然后辅助队列和数据队列的引用交换。如下图所示：</p>
+<img src="5.svg" />
+
+<p>代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.LinkedList;</span><br><span class="line"><span class="keyword">import</span> java.util.Queue;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StackUsingQueue</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> Queue&lt;Integer&gt; data, help;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">StackUsingQueue</span><span class="params">()</span> &#123;</span><br><span class="line">        data = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        help = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">push</span><span class="params">(<span class="type">int</span> value)</span> &#123;</span><br><span class="line">        data.offer(value);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">pop</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">while</span>(data.size() &gt; <span class="number">1</span>) help.offer(data.poll());</span><br><span class="line">        <span class="type">int</span> <span class="variable">ans</span> <span class="operator">=</span> data.poll();</span><br><span class="line">        Queue&lt;Integer&gt; t = data;</span><br><span class="line">        data = help;</span><br><span class="line">        help = t;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以只用一个队列实现栈吗？可以的！一个队列既是数据队列，又是辅助队列。如下图所示：</p>
+<img src="6.svg" />
+
+<p>代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.LinkedList;</span><br><span class="line"><span class="keyword">import</span> java.util.Queue;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StackUsingSingleQueue</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> Queue&lt;Integer&gt; data;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">StackUsingQueue</span><span class="params">()</span> &#123;</span><br><span class="line">        data = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">push</span><span class="params">(<span class="type">int</span> value)</span> &#123;</span><br><span class="line">        data.offer(value);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">pop</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">size</span> <span class="operator">=</span> data.size();</span><br><span class="line">        <span class="keyword">if</span>(size &gt; <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; size - <span class="number">1</span>; ++i) data.offer(data.poll());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> data.poll();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
       </div>
       
         <div class="prev-or-next">
@@ -188,6 +274,46 @@
               2022-11-30 23:47:21
             </span>
             
+                  <span class="post-categories">
+                    <i class="iconfont icon-bookmark" title="分类"></i>
+                    
+                    <span class="span--category">
+                      <a href="/categories/%E7%AE%97%E6%B3%95/" title="算法">
+                        <b>#</b> 算法
+                      </a>
+                    </span>
+                    
+                    <span class="span--category">
+                      <a href="/categories/%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="数据结构">
+                        <b>#</b> 数据结构
+                      </a>
+                    </span>
+                    
+                    <span class="span--category">
+                      <a href="/categories/%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/" title="栈和队列">
+                        <b>#</b> 栈和队列
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags mr-10" title="标签"></i>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/%E6%A0%88/" title="栈">
+                        #栈
+                      </a>
+                    </span>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/%E9%98%9F%E5%88%97/" title="队列">
+                        #队列
+                      </a>
+                    </span>
+                    
+                  </span>
+              
           </div>
           <div class="post-foot-prev">
             
@@ -201,6 +327,23 @@
       
     </div>
     
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">目录</div>
+    <div class="catalog-content">
+      
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E7%8E%AF%E5%BD%A2%E9%98%9F%E5%88%97"><span class="toc-text">1. 环形队列</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E4%BD%BF%E7%94%A8%E4%B8%80%E4%B8%AAsize%E5%8F%98%E9%87%8F%E8%AE%B0%E5%BD%95%E5%BD%93%E5%89%8D%E9%98%9F%E5%88%97%E7%9A%84%E5%85%83%E7%B4%A0%E4%B8%AA%E6%95%B0"><span class="toc-text">1.1. 使用一个size变量记录当前队列的元素个数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E4%B8%8D%E4%BD%BF%E7%94%A8size%E5%8F%98%E9%87%8F"><span class="toc-text">1.2. 不使用size变量</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E6%9C%80%E5%B0%8F%E6%A0%88"><span class="toc-text">2. 最小栈</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E7%94%A8%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97"><span class="toc-text">3. 用栈实现队列</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E7%94%A8%E9%98%9F%E5%88%97%E5%AE%9E%E7%8E%B0%E6%A0%88"><span class="toc-text">4. 用队列实现栈</span></a></li></ol>
+      
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
 
     
       <div class="comments-container">
@@ -516,7 +659,7 @@ proxy: "https://kaicoding.xyz/gitalk/login/oauth/access_token"
       </a>
       <div class="share-content hidden">
         
-          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + StackAndQueue + '&url=' + https%3A%2F%2Fvictory20201009.github.io%2F2022%2F11%2F30%2FStackAndQueue%2F + '" target="_blank" title="Twitter">
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + %E6%8E%A2%E8%AE%A8%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97%E7%9A%84%E5%87%A0%E4%B8%AA%E5%9F%BA%E7%A1%80%E9%97%AE%E9%A2%98 + '&url=' + https%3A%2F%2Fvictory20201009.github.io%2F2022%2F11%2F30%2FStackAndQueue%2F + '" target="_blank" title="Twitter">
             <i class="iconfont icon-twitter"></i>
           </a>
         

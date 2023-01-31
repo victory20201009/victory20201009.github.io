@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="zh-CN" color-mode="light">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="Victory" />
+  <meta name="description" content="简单专注" />
+  
+  
+  <title>
+    
+      几个有关随机数的有趣问题 
+      
+      
+      |
+    
+     Victory的博客
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.jpg">
+    <link rel="icon" href="/images/favicon.jpg">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- hexo site css -->
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1886449_67xjft27j1l.css" />
+  <!-- 代码块风格 -->
+  
+    
+<link rel="stylesheet" href="/css/figcaption/mac-block.css">
+
+  
+
+  <!-- jquery3.3.1 -->
+  
+    <script defer type="text/javascript" src="/plugins/jquery.min.js"></script>
+  
+
+  <!-- fancybox -->
+  
+    <link href="/plugins/jquery.fancybox.min.css" rel="stylesheet">
+    <script defer type="text/javascript" src="/plugins/jquery.fancybox.min.js"></script>
+  
+  
+<script src="/js/fancybox.js"></script>
+
+
+  
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  <script>
+    var html = document.documentElement
+    const colorMode = localStorage.getItem('color-mode')
+    if (colorMode) {
+      document.documentElement.setAttribute('color-mode', colorMode)
+    }
+  </script>
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <div class="avatar">
+    <a href="/">
+      <!-- 头像取消懒加载，添加no-lazy -->
+      
+        <img src="/images/avatar.jpg" alt="">
+      
+    </a>
+    <div class="nickname"><a href="/">victory</a></div>
+  </div>
+  <div class="navbar">
+    <ul>
+      
+        <li class="nav-item" data-path="/">
+          <a href="/">首页</a>
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          <a href="/archives/">归档</a>
+        </li>
+      
+        <li class="nav-item" data-path="/categories/">
+          <a href="/categories/">分类</a>
+        </li>
+      
+        <li class="nav-item" data-path="/tags/">
+          <a href="/tags/">标签</a>
+        </li>
+      
+        <li class="nav-item" data-path="/friends/">
+          <a href="/friends/">友链</a>
+        </li>
+      
+        <li class="nav-item" data-path="/about/">
+          <a href="/about/">关于</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+<script src="/js/activeNav.js"></script>
+
+
+
+      <div class="flex-container">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+
+  <!-- LaTex Display -->
+
+  
+    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    }
+  </script>
+
+
+
+
+
+  <!-- clipboard -->
+
+  
+    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
+  
+  
+<script src="/js/codeCopy.js"></script>
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">几个有关随机数的有趣问题</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime mr-10" title="更新时间"></i>
+          2023-01-20 15:44:26
+        </span>
+        
+              <span class="post-categories">
+                <i class="iconfont icon-bookmark" title="分类"></i>
+                
+                <span class="span--category">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" title="算法">
+                    <b>#</b> 算法
+                  </a>
+                </span>
+                
+                <span class="span--category">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/%E6%95%B0%E5%AD%A6/" title="数学">
+                    <b>#</b> 数学
+                  </a>
+                </span>
+                
+              </span>
+          
+              <span class="post-tags">
+                <i class="iconfont icon-tags mr-10" title="标签"></i>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/%E9%9A%8F%E6%9C%BA%E6%95%B0/" title="随机数">
+                    #随机数
+                  </a>
+                </span>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/%E6%A6%82%E7%8E%87/" title="概率">
+                    #概率
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+      <div class="markdown-body">
+        <!-- toc -->
+
+<h1 id="1-认识随机数函数"><a href="#1-认识随机数函数" class="headerlink" title="1. 认识随机数函数"></a>1. 认识随机数函数</h1><p><code>Math.random()</code>这个方法会随机的返回$[0,1)$上一个double类型的浮点数。可以简单的验证一下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">VerifyRandomness</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">testTimes</span> <span class="operator">=</span> <span class="number">1000000</span>, cnt = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; testTimes; i++) </span><br><span class="line">            <span class="keyword">if</span> (Math.random() &lt; <span class="number">0.5</span>) ++cnt;</span><br><span class="line">        System.out.println(<span class="string">&quot;测试次数：&quot;</span> + testTimes + <span class="string">&quot; 出现小于0.5的数的次数：&quot;</span> + cnt + <span class="string">&quot; 频率：&quot;</span> + cnt * <span class="number">1.0</span> / testTimes);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="2-改变返回随机数的概率"><a href="#2-改变返回随机数的概率" class="headerlink" title="2. 改变返回随机数的概率"></a>2. 改变返回随机数的概率</h1><p>设计一个方法，要求它返回$[0,1)$范围内的浮点数，且返回的数在$[0,x)$上的概率是$x^2,x\in[0,1)$。这里直接给出方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ChangeRandomNumberProbability</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">double</span> <span class="title function_">random</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> Math.max(Math.random(), Math.random());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果这个方法返回的数在$[0,x)$上，由于它里面调用了两次<code>Math.random()</code>，且返回的是这两次的最大值，所以这两次<code>Math.random()</code>调用的返回结果都在$[0,x)$上，而<code>Math.random()</code>的结果在$[0,x)$上的概率是$x$，所以<code>Math.max(Math.random(), Math.random())</code>返回的数在$[0,x)$上的概率是$x^2$。</p>
+<h1 id="3-返回连续的随机整数"><a href="#3-返回连续的随机整数" class="headerlink" title="3. 返回连续的随机整数"></a>3. 返回连续的随机整数</h1><h2 id="3-1-根据Math-random-方法实现等概率返回连续的随机整数"><a href="#3-1-根据Math-random-方法实现等概率返回连续的随机整数" class="headerlink" title="3.1. 根据Math.random()方法实现等概率返回连续的随机整数"></a>3.1. 根据<code>Math.random()</code>方法实现等概率返回连续的随机整数</h2><p>我们要实现返回$[M,N]$上的随机整数，我们首先需要实现返回$[0,N-M]$上的随机数，然后在把这个范围向右平移$N$个单位即可。如果实现返回$[0,N-M]$上的随机整数呢？我们可以把<code>Math.random()</code>的结果扩大$N-M+1$倍，再把结果转为int即可。方法如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">GetRandomInteger</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">int</span> random(<span class="type">int</span> m, <span class="type">int</span> n) &#123;</span><br><span class="line">        <span class="keyword">return</span> (<span class="type">int</span>)(Math.random() * (n - m + <span class="number">1</span>)) + m;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-2-根据一个范围的整数随机函数返回另一个范围的整数随机函数"><a href="#3-2-根据一个范围的整数随机函数返回另一个范围的整数随机函数" class="headerlink" title="3.2. 根据一个范围的整数随机函数返回另一个范围的整数随机函数"></a>3.2. 根据一个范围的整数随机函数返回另一个范围的整数随机函数</h2><p>现在有一个可以等概率返回$[1,5]$上的随机整数的方法random1，现在以random1这个方法为基础，设计一个方法，可以等概率的返回$[3,7]$上的随机整数的方法。</p>
+<ol>
+<li><p>根据random1方法，设计一个等概率的01发生器，所谓01发生器，就是只返回0和1的方法。</p>
+<p>因为random1方法只返回$[0,5]$上的整数，我们可以在random1返回1和2的时候，返回0；random1返回3和4的时候返回1。返回5的时候继续，这样就做好了等概率的01发生器。代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">GetRandomInteger2</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">random1</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> GetRandomInteger.random(<span class="number">1</span>,<span class="number">5</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">oneZeroGenerator</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">int</span> n;</span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            n = random1();</span><br><span class="line">        &#125;<span class="keyword">while</span>(n == <span class="number">5</span>);<span class="comment">// 返回5的时候继续，直到某一次不是5</span></span><br><span class="line">        <span class="keyword">return</span> n == <span class="number">1</span> || n == <span class="number">2</span> ? <span class="number">0</span> : <span class="number">1</span>;<span class="comment">// 返回0和1的概率都是50%</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>根据01发生器，等概率返回$[0,7]$上的随机整数</p>
+<p>我们知道，在计算机中，整数都是二进制存储的，我们只要生成一个整数的所有二进制位，那么我们就可以生成这个整数。$[0,7]$这个范围上的数，只占据3比特位，因此我们只要等概率地生成每一个比特位，那么生成的整数就是等概率的。代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">GetRandomInteger2</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">random1</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> GetRandomInteger.random(<span class="number">1</span>,<span class="number">5</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">generateOneZero</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">int</span> n;</span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            n = random1();</span><br><span class="line">        &#125;<span class="keyword">while</span>(n == <span class="number">5</span>);<span class="comment">// 返回5的时候继续，直到某一次不是5</span></span><br><span class="line">        <span class="keyword">return</span> n == <span class="number">1</span> || n == <span class="number">2</span> ? <span class="number">0</span> : <span class="number">1</span>;<span class="comment">// 返回0和1的概率都是50%</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">getRandomFrom0to7</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> generateOneZero() &lt;&lt; <span class="number">2</span> | generateOneZero() &lt;&lt; <span class="number">1</span> | generateOneZero();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>等概率返回$[3,7]$上的随机整数</p>
+<p>调用<code>getRandomFrom0to7</code>这个方法，如果返回是$[3,7]$上的就返回，否则再次调用，完整代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">GetRandomInteger2</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">random1</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> GetRandomInteger.random(<span class="number">1</span>,<span class="number">5</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">generateOneZero</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">int</span> n;</span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            n = random1();</span><br><span class="line">        &#125;<span class="keyword">while</span>(n == <span class="number">5</span>);<span class="comment">// 返回5的时候继续，直到某一次不是5</span></span><br><span class="line">        <span class="keyword">return</span> n == <span class="number">1</span> || n == <span class="number">2</span> ? <span class="number">0</span> : <span class="number">1</span>;<span class="comment">// 返回0和1的概率都是50%</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">getRandomFrom0to7</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> generateOneZero() &lt;&lt; <span class="number">2</span> | generateOneZero() &lt;&lt; <span class="number">1</span> | generateOneZero();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">random2</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">int</span> ans;</span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            ans = getRandomFrom0to7();</span><br><span class="line">        &#125;<span class="keyword">while</span>(ans &lt; <span class="number">3</span>);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">testTime</span> <span class="operator">=</span> <span class="number">100_0000</span>;</span><br><span class="line">        <span class="type">int</span>[] cnts = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">8</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; testTime; ++i) ++cnts[random2()];</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">3</span>; i &lt; <span class="number">8</span>; ++i) System.out.println(i + <span class="string">&quot; 出现的频率：&quot;</span> + cnts[i] * <span class="number">1.0</span> / testTime);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="4-根据非等概率的01发生器设计等概率的01发生器"><a href="#4-根据非等概率的01发生器设计等概率的01发生器" class="headerlink" title="4. 根据非等概率的01发生器设计等概率的01发生器"></a>4. 根据非等概率的01发生器设计等概率的01发生器</h1><p>现在有一个非等概率的01发生器：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ZeroOneGeneratorTest</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">generate</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> Math.random() &lt; <span class="number">0.8</span> ? <span class="number">0</span> : <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>需要基于这个方法，设计一个等概率的01发生器。其实很简单，只需要调用两次这个方法，如果两次调用的返回值不一样，那么返回第一次调用的结果，否则继续循环。代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ZeroOneGeneratorTest</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">generate</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> Math.random() &lt; <span class="number">0.8</span> ? <span class="number">0</span> : <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">get01</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">int</span> n;</span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            n = generate();</span><br><span class="line">        &#125;<span class="keyword">while</span>(n == generate());</span><br><span class="line">        <span class="keyword">return</span> n;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>假设<code>generate()</code>返回0的概率是$p$，返回1的概率是$1-p$，那么连续调用两次，返回值分别是0,1和1,0的概率都是$p*(1-p)$。</p>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2023/01/11/DutchNationalFlagProblem/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>上一页</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime mr-10" title="更新时间"></i>
+              2023-01-20 15:44:26
+            </span>
+            
+                  <span class="post-categories">
+                    <i class="iconfont icon-bookmark" title="分类"></i>
+                    
+                    <span class="span--category">
+                      <a href="/categories/%E7%AE%97%E6%B3%95/" title="算法">
+                        <b>#</b> 算法
+                      </a>
+                    </span>
+                    
+                    <span class="span--category">
+                      <a href="/categories/%E7%AE%97%E6%B3%95/%E6%95%B0%E5%AD%A6/" title="数学">
+                        <b>#</b> 数学
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags mr-10" title="标签"></i>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/%E9%9A%8F%E6%9C%BA%E6%95%B0/" title="随机数">
+                        #随机数
+                      </a>
+                    </span>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/%E6%A6%82%E7%8E%87/" title="概率">
+                        #概率
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+          </div>
+        </div>
+      
+    </div>
+    
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">目录</div>
+    <div class="catalog-content">
+      
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E8%AE%A4%E8%AF%86%E9%9A%8F%E6%9C%BA%E6%95%B0%E5%87%BD%E6%95%B0"><span class="toc-text">1. 认识随机数函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E6%94%B9%E5%8F%98%E8%BF%94%E5%9B%9E%E9%9A%8F%E6%9C%BA%E6%95%B0%E7%9A%84%E6%A6%82%E7%8E%87"><span class="toc-text">2. 改变返回随机数的概率</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E8%BF%94%E5%9B%9E%E8%BF%9E%E7%BB%AD%E7%9A%84%E9%9A%8F%E6%9C%BA%E6%95%B4%E6%95%B0"><span class="toc-text">3. 返回连续的随机整数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E6%A0%B9%E6%8D%AEMath-random-%E6%96%B9%E6%B3%95%E5%AE%9E%E7%8E%B0%E7%AD%89%E6%A6%82%E7%8E%87%E8%BF%94%E5%9B%9E%E8%BF%9E%E7%BB%AD%E7%9A%84%E9%9A%8F%E6%9C%BA%E6%95%B4%E6%95%B0"><span class="toc-text">3.1. 根据Math.random()方法实现等概率返回连续的随机整数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-%E6%A0%B9%E6%8D%AE%E4%B8%80%E4%B8%AA%E8%8C%83%E5%9B%B4%E7%9A%84%E6%95%B4%E6%95%B0%E9%9A%8F%E6%9C%BA%E5%87%BD%E6%95%B0%E8%BF%94%E5%9B%9E%E5%8F%A6%E4%B8%80%E4%B8%AA%E8%8C%83%E5%9B%B4%E7%9A%84%E6%95%B4%E6%95%B0%E9%9A%8F%E6%9C%BA%E5%87%BD%E6%95%B0"><span class="toc-text">3.2. 根据一个范围的整数随机函数返回另一个范围的整数随机函数</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E6%A0%B9%E6%8D%AE%E9%9D%9E%E7%AD%89%E6%A6%82%E7%8E%87%E7%9A%8401%E5%8F%91%E7%94%9F%E5%99%A8%E8%AE%BE%E8%AE%A1%E7%AD%89%E6%A6%82%E7%8E%87%E7%9A%8401%E5%8F%91%E7%94%9F%E5%99%A8"><span class="toc-text">4. 根据非等概率的01发生器设计等概率的01发生器</span></a></li></ol>
+      
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
+    
+      <div class="comments-container">
+        
+
+
+
+
+   <div id="gitalk-container"></div>
+  <script>
+    function loadGitalkSuc() {
+      const gitalk = new Gitalk({
+        clientID: 'ec89f39f054b72018b04',
+        clientSecret: 'c60124d09914e1e860acd9716342e39379720b62',
+        repo: 'BlogIssues',
+        owner: 'victory20201009',
+        admin: ['victory20201009'],
+        id: location.pathname,
+        distractionFreeMode: false,
+		createIssueManually: false,
+proxy: "https://kaicoding.xyz/gitalk/login/oauth/access_token"
+      })
+	  console.log(location);
+      gitalk.render('gitalk-container')
+    }
+  </script>
+
+  
+    <link rel="stylesheet" href="/plugins/gitalk.css">
+    <script type="text/javascript" src="/plugins/gitalk.min.js" onload="loadGitalkSuc(this)"></script>
+  
+
+ 
+
+
+
+
+      </div>
+    
+  </div>
+
+
+        
+<div class="footer">
+  <div class="social">
+    <ul>
+      
+        <li>
+          <a title="github" target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">
+            <i class="iconfont icon-github"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+  
+    
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Copyright © 2023 Oranges</a>
+        
+    </div>
+  
+    
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Theme by Oranges | Powered by Hexo</a>
+        
+    </div>
+  
+  
+    <div class="footer-views">
+      
+          本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        
+      
+          本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+        
+      
+          本站访客数<span id="busuanzi_value_site_uv"></span>人
+        
+      
+    </div>
+  
+</div>
+
+      </div>
+
+      <div class="tools-bar">
+        <div class="back-to-top tools-bar-item hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+        
+  <div class="search-icon tools-bar-item" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-title">
+        <span class="search-icon-input">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-search"></i>
+          </a>
+        </span>
+        
+          <input type="text" class="search-input" id="search-input" placeholder="搜索...">
+        
+        <span class="search-close-icon" id="search-close-icon">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-close"></i>
+          </a>
+        </span>
+      </div>
+      <div class="search-result" id="search-result"></div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    inputArea.onclick = function() {
+      getSearchFile()
+      this.onclick = null
+    }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        // inputArea.focus()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'>首次搜索，正在载入索引文件，请稍后……<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'>" + orig_data_title + "</a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<p class=\"search-result-abstract\">" + match_content + "...</p>"
+                }
+                str += "</li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>没有找到内容，请尝试更换检索词。<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>未找到search.xml文件，具体请参考：<a href='https://github.com/zchengsite/hexo-theme-oranges#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>请求失败，尝试重新刷新页面或稍后重试。<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "/search.xml";
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+        
+  <div class="tools-bar-item theme-icon" id="switch-color-scheme">
+    <a href="javascript: void(0)">
+      <i id="theme-icon" class="iconfont icon-moon"></i>
+    </a>
+  </div>
+
+  
+<script src="/js/colorscheme.js"></script>
+
+
+
+
+
+        
+  
+    <div class="share-icon tools-bar-item">
+      <a href="javascript: void(0)" id="share-icon">
+        <i class="iconfont iconshare"></i>
+      </a>
+      <div class="share-content hidden">
+        
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + %E5%87%A0%E4%B8%AA%E6%9C%89%E5%85%B3%E9%9A%8F%E6%9C%BA%E6%95%B0%E7%9A%84%E6%9C%89%E8%B6%A3%E9%97%AE%E9%A2%98 + '&url=' + https%3A%2F%2Fvictory20201009.github.io%2F2023%2F01%2F20%2FRandomNumber%2F + '" target="_blank" title="Twitter">
+            <i class="iconfont icon-twitter"></i>
+          </a>
+        
+        
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=https://victory20201009.github.io/2023/01/20/RandomNumber/" target="_blank" title="Facebook">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+  
+<script src="/js/shares.js"></script>
+
+
+
+      </div>
+    </div>
+  </body>
+</html>
