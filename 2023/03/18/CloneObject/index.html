@@ -11,7 +11,7 @@
   
   <title>
     
-      链表上的荷兰国旗问题 
+      对象克隆 
       
       
       |
@@ -161,11 +161,11 @@
   <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
   <div class="container post-details" id="post-details">
     <div class="post-content">
-      <div class="post-title">链表上的荷兰国旗问题</div>
+      <div class="post-title">对象克隆</div>
       <div class="post-attach">
         <span class="post-pubtime">
           <i class="iconfont icon-updatetime mr-10" title="更新时间"></i>
-          2023-03-18 17:08:38
+          2023-03-18 21:31:17
         </span>
         
               <span class="post-categories">
@@ -178,8 +178,14 @@
                 </span>
                 
                 <span class="span--category">
-                  <a href="/categories/%E7%AE%97%E6%B3%95/%E7%BC%96%E7%A0%81%E8%83%BD%E5%8A%9B/" title="编码能力">
-                    <b>#</b> 编码能力
+                  <a href="/categories/%E7%AE%97%E6%B3%95/%E5%85%B6%E4%BB%96%E9%97%AE%E9%A2%98/" title="其他问题">
+                    <b>#</b> 其他问题
+                  </a>
+                </span>
+                
+                <span class="span--category">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/%E5%85%B6%E4%BB%96%E9%97%AE%E9%A2%98/%E7%BC%96%E7%A0%81%E6%8A%80%E5%B7%A7/" title="编码技巧">
+                    <b>#</b> 编码技巧
                   </a>
                 </span>
                 
@@ -189,14 +195,8 @@
                 <i class="iconfont icon-tags mr-10" title="标签"></i>
                 
                 <span class="span--tag mr-8">
-                  <a href="/tags/%E8%8D%B7%E5%85%B0%E5%9B%BD%E6%97%97%E9%97%AE%E9%A2%98/" title="荷兰国旗问题">
-                    #荷兰国旗问题
-                  </a>
-                </span>
-                
-                <span class="span--tag mr-8">
-                  <a href="/tags/%E9%93%BE%E8%A1%A8/" title="链表">
-                    #链表
+                  <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" title="哈希表">
+                    #哈希表
                   </a>
                 </span>
                 
@@ -204,27 +204,27 @@
           
       </div>
       <div class="markdown-body">
-        <!--toc-->
-
-<p>链表上怎么解决<a href="/2023/01/11/DutchNationalFlagProblem">荷兰国旗</a>问题呢？</p>
-<h1 id="1-使用数组"><a href="#1-使用数组" class="headerlink" title="1. 使用数组"></a>1. 使用数组</h1><p>把链表放在数组中，在数组中解决这个问题，然后再用链表串起来。这个做法比较容易，这里直接给出代码。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DutchNationalFlagProblemOnLinkedList1</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> ListNode <span class="title function_">solve</span><span class="params">(ListNode head)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">cur</span> <span class="operator">=</span> head;</span><br><span class="line">        <span class="keyword">if</span>(head == <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">for</span>(; cur != <span class="literal">null</span>; ++i, cur = cur.next);</span><br><span class="line">        <span class="type">int</span>[] help = <span class="keyword">new</span> <span class="title class_">int</span>[i];</span><br><span class="line">        <span class="keyword">for</span>(cur = head, i = <span class="number">0</span>; cur != <span class="literal">null</span>; help[i++] = cur.val, cur = cur.next);</span><br><span class="line">        <span class="type">int</span> <span class="variable">l</span> <span class="operator">=</span> -<span class="number">1</span>, r = i;</span><br><span class="line">        i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(i &lt; r) &#123;</span><br><span class="line">            <span class="keyword">if</span>(help[i] == <span class="number">0</span>) swap(i++, ++l, help);</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(help[i] == <span class="number">2</span>) swap(--r, i, help);</span><br><span class="line">            <span class="keyword">else</span> ++i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(cur = head, i = <span class="number">0</span>; cur != <span class="literal">null</span>; cur.val = help[i++], cur = cur.next);</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">swap</span><span class="params">(<span class="type">int</span> i, <span class="type">int</span> j, <span class="type">int</span>[] arr)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(i != j &amp;&amp; arr[i] != arr[j]) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">t</span> <span class="operator">=</span> arr[i];</span><br><span class="line">            arr[i] = arr[j];</span><br><span class="line">            arr[j] = t;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">ListNode</span> &#123;</span><br><span class="line">        <span class="type">int</span> val;</span><br><span class="line">        ListNode next;</span><br><span class="line">        ListNode(<span class="type">int</span> val) &#123;</span><br><span class="line">            <span class="built_in">this</span>.val = val;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这样做的空间复杂度是$O(N)$，下面介绍一种更省空间的方法。</p>
-<h1 id="2-原地调整"><a href="#2-原地调整" class="headerlink" title="2. 原地调整"></a>2. 原地调整</h1><p>我们遍历原链表，把0，1和2分别放在一个链表里，然后把这三条链表首尾连接即可。在代码里如何创建一个链表呢？如果使用<code>java.util.LinkedList;</code>的话，空间复杂度也会是$O(N)$；其实在这个题目中，表示一个链表，只需要一个首尾指针即可。如下图所示：</p>
+        <p>作为一个程序员，一定听说过“深拷贝”和“浅拷贝”的概念。我们在“深”复制一个对象的时候，不但要新建当前的对象，当前对象引用的其他对象也要新建。在这个过程中，哈希表这个数据结构起到了不可替代的作用。下面我们一起来看一下它的神奇效果吧。</p>
+<h1 id="1-复制链表"><a href="#1-复制链表" class="headerlink" title="1. 复制链表"></a>1. 复制链表</h1><p>这个题目是<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/copy-list-with-random-pointer/">leetcode138题</a>。意思是一个链表，它的每一个结点除了具有一个<code>next</code>指针以外，还有一个<code>random</code>指针，这个指针可以指向链表中的任何一个结点，也可以指向<code>null</code>，现在我们需要把这样的一个链表整体克隆下来。这个问题的关键在于如何根据原有链表结点的<code>random</code>指针的指向，找到当前对应克隆结点的<code>random</code>应该指向谁。</p>
+<p>如果我们可以把原有链表中任何一个结点和它在新的链表中的克隆结点对应起来，即我们设计一个数据结构，传入原链表的结点，就可以查询得到它在新链表中的对应的克隆结点，那么问题不就迎刃而解了吗？那么这个数据结构是啥？请大声说出他的名字。</p>
+<p><strong><font size=10 color="red">哈希表</font></strong></p>
+<p>所以我们先按照<code>next</code>指针遍历一遍，得到原有链表中所有结点的克隆结点，并把这样的对应关系存到哈希表<code>map</code>  中。然后再次遍历我们刚才克隆得到的链表，对于新链表中的每一个结点<code>nodeNew</code>，与它对应的旧链表中的结点是<code>nodeOld</code>，那么<code>nodeNew.random = map.get(nodeOld.random)</code>。如下图所示：</p>
 <img src="1.svg"/>
 
 <p>代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DutchNationalFlagProblemOnLinkedList2</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> ListNode <span class="title function_">solve</span><span class="params">(ListNode head)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(head == <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">head0</span> <span class="operator">=</span> <span class="literal">null</span>,</span><br><span class="line">        	tail0 = <span class="literal">null</span>, </span><br><span class="line">        	head1 = <span class="literal">null</span>,</span><br><span class="line">        	tail1 = <span class="literal">null</span>, </span><br><span class="line">        	head2 = <span class="literal">null</span>, </span><br><span class="line">        	tail2 = <span class="literal">null</span>,</span><br><span class="line">        	cur = head;</span><br><span class="line">        <span class="keyword">while</span>(cur != <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span>(cur.val == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span>(head0 == <span class="literal">null</span>) head0 = tail0 = cur;</span><br><span class="line">                <span class="keyword">else</span> tail0 = tail0.next = cur;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(cur.val == <span class="number">1</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span>(head1 == <span class="literal">null</span>) head1 = tail1 = cur;</span><br><span class="line">                <span class="keyword">else</span> tail1 = tail1.next = cur;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span>(head2 == <span class="literal">null</span>) head2 = tail2 = cur;</span><br><span class="line">                <span class="keyword">else</span> tail2 = tail2.next = cur;</span><br><span class="line">            &#125;</span><br><span class="line">            cur = cur.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">join</span> <span class="operator">=</span> tail0, ans = head0;</span><br><span class="line">        <span class="keyword">if</span>(join != <span class="literal">null</span>) &#123;</span><br><span class="line">            join.next = head1;</span><br><span class="line">            <span class="keyword">if</span>(head1 != <span class="literal">null</span>) join = tail1;</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            ans = head1;</span><br><span class="line">            join = tail1;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(join != <span class="literal">null</span>) join.next = head2;</span><br><span class="line">        <span class="keyword">else</span> ans = head2;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">ListNode</span> &#123;</span><br><span class="line">        <span class="type">int</span> val;</span><br><span class="line">        ListNode next;</span><br><span class="line">        ListNode(<span class="type">int</span> val) &#123;</span><br><span class="line">            <span class="built_in">this</span>.val = val;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CloneRandomList</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Node <span class="title function_">clone</span><span class="params">(Node head)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(head == <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        HashMap&lt;Node, Node&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="type">Node</span> <span class="variable">cur</span> <span class="operator">=</span> head, ans = <span class="literal">null</span>, t = <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">while</span>(cur != <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span>(t == <span class="literal">null</span>) t = ans = <span class="keyword">new</span> <span class="title class_">Node</span>(cur.val);</span><br><span class="line">            <span class="keyword">else</span> t = t.next = <span class="keyword">new</span> <span class="title class_">Node</span>(cur.val);</span><br><span class="line">            map.put(cur, t);<span class="comment">// 哈希表记录对应关系</span></span><br><span class="line">            cur = cur.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 再次遍历，填充random指针</span></span><br><span class="line">        <span class="keyword">for</span>(t = ans, cur = head; t != <span class="literal">null</span>; t = t.next, cur = cur.next) &#123;</span><br><span class="line">            <span class="keyword">if</span>(cur.random != <span class="literal">null</span>) t.random = map.get(cur.random);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">Node</span> &#123;</span><br><span class="line">        <span class="type">int</span> val;</span><br><span class="line">        Node next, random;</span><br><span class="line">        Node(<span class="type">int</span> val) &#123;</span><br><span class="line">            <span class="built_in">this</span>.val = val;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>时间复杂度$O(N)$，空间复杂度$O(1)$。</p>
+<h1 id="2-复制图"><a href="#2-复制图" class="headerlink" title="2. 复制图"></a>2. 复制图</h1><p>这个题目是<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/clone-graph/">leetcode133题</a>。给你一个使用邻接表法表示的无向连通图中的一个结点，请克隆这个图，返回所给结点的克隆结点。</p>
+<p>怎么克隆一个图呢？首先克隆题目给出的这个结点，然后克隆它的所有邻接点。我们在克隆的时候，为了避免陷入死循环，如果一个结点被克隆过，那么我们把这个结点和它对应的克隆结点放在哈希表中维护。于是代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CloneGraph</span> &#123;</span><br><span class="line">    </span><br><span class="line">    HashMap&lt;Node, Node&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Node <span class="title function_">clone</span><span class="params">(Node node)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(node == <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="type">Node</span> <span class="variable">clonedNode</span> <span class="operator">=</span> map.get(node);</span><br><span class="line">        <span class="keyword">if</span>(clonedNode != <span class="literal">null</span>) <span class="keyword">return</span> clonedNode;</span><br><span class="line">        clonedNode = <span class="keyword">new</span> <span class="title class_">Node</span>(node.val);</span><br><span class="line">        map.put(node, clonedNode);</span><br><span class="line">        <span class="comment">// 递归克隆其邻接点</span></span><br><span class="line">        <span class="keyword">for</span>(Node neighbor: node.neighbors) clonedNode.neighbors.add(clone(neighbor));</span><br><span class="line">        <span class="keyword">return</span> clonedNode;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">Node</span> &#123;</span><br><span class="line">        <span class="type">int</span> val;</span><br><span class="line">        List&lt;Node&gt; neighbors;</span><br><span class="line">        Node(<span class="type">int</span> val) &#123;</span><br><span class="line">            <span class="built_in">this</span>.val = val;</span><br><span class="line">            neighbors = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
       </div>
       
         <div class="prev-or-next">
           <div class="post-foot-next">
             
-              <a href="/2023/03/14/PalindromeLinkedList/" target="_self">
+              <a href="/2023/03/18/DutchNationalFlagProblemOnLinkedList/" target="_self">
                 <i class="iconfont icon-chevronleft"></i>
                 <span>上一页</span>
               </a>
@@ -233,7 +233,7 @@
           <div class="post-attach">
             <span class="post-pubtime">
               <i class="iconfont icon-updatetime mr-10" title="更新时间"></i>
-              2023-03-18 17:08:38
+              2023-03-18 21:31:17
             </span>
             
                   <span class="post-categories">
@@ -246,8 +246,14 @@
                     </span>
                     
                     <span class="span--category">
-                      <a href="/categories/%E7%AE%97%E6%B3%95/%E7%BC%96%E7%A0%81%E8%83%BD%E5%8A%9B/" title="编码能力">
-                        <b>#</b> 编码能力
+                      <a href="/categories/%E7%AE%97%E6%B3%95/%E5%85%B6%E4%BB%96%E9%97%AE%E9%A2%98/" title="其他问题">
+                        <b>#</b> 其他问题
+                      </a>
+                    </span>
+                    
+                    <span class="span--category">
+                      <a href="/categories/%E7%AE%97%E6%B3%95/%E5%85%B6%E4%BB%96%E9%97%AE%E9%A2%98/%E7%BC%96%E7%A0%81%E6%8A%80%E5%B7%A7/" title="编码技巧">
+                        <b>#</b> 编码技巧
                       </a>
                     </span>
                     
@@ -257,14 +263,8 @@
                     <i class="iconfont icon-tags mr-10" title="标签"></i>
                     
                     <span class="span--tag mr-8">
-                      <a href="/tags/%E8%8D%B7%E5%85%B0%E5%9B%BD%E6%97%97%E9%97%AE%E9%A2%98/" title="荷兰国旗问题">
-                        #荷兰国旗问题
-                      </a>
-                    </span>
-                    
-                    <span class="span--tag mr-8">
-                      <a href="/tags/%E9%93%BE%E8%A1%A8/" title="链表">
-                        #链表
+                      <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" title="哈希表">
+                        #哈希表
                       </a>
                     </span>
                     
@@ -272,11 +272,6 @@
               
           </div>
           <div class="post-foot-prev">
-            
-              <a href="/2023/03/18/CloneObject/" target="_self">
-                <span>下一页</span>
-                <i class="iconfont icon-chevronright"></i>
-              </a>
             
           </div>
         </div>
@@ -290,7 +285,7 @@
     <div class="title">目录</div>
     <div class="catalog-content">
       
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E4%BD%BF%E7%94%A8%E6%95%B0%E7%BB%84"><span class="toc-text">1. 使用数组</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E5%8E%9F%E5%9C%B0%E8%B0%83%E6%95%B4"><span class="toc-text">2. 原地调整</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%A4%8D%E5%88%B6%E9%93%BE%E8%A1%A8"><span class="toc-text">1. 复制链表</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E5%A4%8D%E5%88%B6%E5%9B%BE"><span class="toc-text">2. 复制图</span></a></li></ol>
       
     </div>
   </div>
@@ -615,12 +610,12 @@ proxy: "https://kaicoding.xyz/gitalk/login/oauth/access_token"
       </a>
       <div class="share-content hidden">
         
-          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + %E9%93%BE%E8%A1%A8%E4%B8%8A%E7%9A%84%E8%8D%B7%E5%85%B0%E5%9B%BD%E6%97%97%E9%97%AE%E9%A2%98 + '&url=' + https%3A%2F%2Fvictory20201009.github.io%2F2023%2F03%2F18%2FDutchNationalFlagProblemOnLinkedList%2F + '" target="_blank" title="Twitter">
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + %E5%AF%B9%E8%B1%A1%E5%85%8B%E9%9A%86 + '&url=' + https%3A%2F%2Fvictory20201009.github.io%2F2023%2F03%2F18%2FCloneObject%2F + '" target="_blank" title="Twitter">
             <i class="iconfont icon-twitter"></i>
           </a>
         
         
-          <a class="share-item" href="https://www.facebook.com/sharer.php?u=https://victory20201009.github.io/2023/03/18/DutchNationalFlagProblemOnLinkedList/" target="_blank" title="Facebook">
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=https://victory20201009.github.io/2023/03/18/CloneObject/" target="_blank" title="Facebook">
             <i class="iconfont icon-facebooksquare"></i>
           </a>
         
