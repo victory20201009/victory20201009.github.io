@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="zh-CN" color-mode="light">
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="Victory" />
+  <meta name="description" content="简单专注" />
+  
+  
+  <title>
+    
+      面试官：请找出所有的最长递增子序列，我：What？ 
+      
+      
+      |
+    
+     Victory的博客
+  </title>
+
+  
+    <link rel="apple-touch-icon" href="/images/favicon.jpg">
+    <link rel="icon" href="/images/favicon.jpg">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- hexo site css -->
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1886449_67xjft27j1l.css" />
+  <!-- 代码块风格 -->
+  
+    
+<link rel="stylesheet" href="/css/figcaption/mac-block.css">
+
+  
+
+  <!-- jquery3.3.1 -->
+  
+    <script defer type="text/javascript" src="/plugins/jquery.min.js"></script>
+  
+
+  <!-- fancybox -->
+  
+    <link href="/plugins/jquery.fancybox.min.css" rel="stylesheet">
+    <script defer type="text/javascript" src="/plugins/jquery.fancybox.min.js"></script>
+  
+  
+<script src="/js/fancybox.js"></script>
+
+
+  
+
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  <script>
+    var html = document.documentElement
+    const colorMode = localStorage.getItem('color-mode')
+    if (colorMode) {
+      document.documentElement.setAttribute('color-mode', colorMode)
+    }
+  </script>
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <div class="avatar">
+    <a href="/">
+      <!-- 头像取消懒加载，添加no-lazy -->
+      
+        <img src="/images/avatar.jpg" alt="">
+      
+    </a>
+    <div class="nickname"><a href="/">victory</a></div>
+  </div>
+  <div class="navbar">
+    <ul>
+      
+        <li class="nav-item" data-path="/">
+          <a href="/">首页</a>
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          <a href="/archives/">归档</a>
+        </li>
+      
+        <li class="nav-item" data-path="/categories/">
+          <a href="/categories/">分类</a>
+        </li>
+      
+        <li class="nav-item" data-path="/tags/">
+          <a href="/tags/">标签</a>
+        </li>
+      
+        <li class="nav-item" data-path="/friends/">
+          <a href="/friends/">友链</a>
+        </li>
+      
+        <li class="nav-item" data-path="/about/">
+          <a href="/about/">关于</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+<script src="/js/activeNav.js"></script>
+
+
+
+      <div class="flex-container">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+
+  <!-- LaTex Display -->
+
+  
+    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    }
+  </script>
+
+
+
+
+
+  <!-- clipboard -->
+
+  
+    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
+  
+  
+<script src="/js/codeCopy.js"></script>
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">面试官：请找出所有的最长递增子序列，我：What？</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime mr-10" title="更新时间"></i>
+          2023-03-25 16:45:41
+        </span>
+        
+              <span class="post-categories">
+                <i class="iconfont icon-bookmark" title="分类"></i>
+                
+                <span class="span--category">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" title="算法">
+                    <b>#</b> 算法
+                  </a>
+                </span>
+                
+                <span class="span--category">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/%E9%97%AE%E9%A2%98%E5%8E%9F%E5%9E%8B/" title="问题原型">
+                    <b>#</b> 问题原型
+                  </a>
+                </span>
+                
+              </span>
+          
+              <span class="post-tags">
+                <i class="iconfont icon-tags mr-10" title="标签"></i>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" title="二分查找">
+                    #二分查找
+                  </a>
+                </span>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="动态规划">
+                    #动态规划
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+      <div class="markdown-body">
+        <!--toc-->
+
+<p>聊一个有趣的问题，最长递增子序列。</p>
+<h1 id="1-最长递增子序列的长度"><a href="#1-最长递增子序列的长度" class="headerlink" title="1. 最长递增子序列的长度"></a>1. 最长递增子序列的长度</h1><p>即给定一个整数数组<code>arr</code>，找出数组中哪个子序列是严格递增的，且是最长的。返回它的长度。例如数组<code>&#123;1, 5, 2, 3, 4, -1&#125;</code>，它的最长子序列是<code>1, 2, 3, 4</code>，因此返回4。<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/longest-increasing-subsequence/">原题</a></p>
+<h2 id="方法1：动态规划"><a href="#方法1：动态规划" class="headerlink" title="方法1：动态规划"></a>方法1：动态规划</h2><p>任何一个子序列都有一个末尾元素，我们定义这样的一个子问题$dp[i]$，表示必须以$arr[i]$作为子序列的末尾元素，$arr[0]..arr[i]$这段数组的最长递增子序列的长度，假设数组长度为$len$，那么显然$max{dp[0],dp[1],…,dp[len-1]}$就是原问题的解。那么怎么求解$dp[i]$呢？</p>
+<ol>
+<li><p>首先当$i&#x3D;0$的时候，此时数组中只有一个数，因此最长递增子序列长度是1，即$dp[0]&#x3D;1$；</p>
+</li>
+<li><p>当$i&gt;0$的时候，我们考察$dp[0]..dp[i-1]$，需要在$arr[0]..arr[i-1]$范围内找哪些数小于$arr[i]$，对于那些小于$arr[i]$的数，因为它们排在$arr[i]$的前面，$arr[i]$都可以排在他们后面形成更长的递增子序列，即我们需要找到一个位置$j \in [0, i-1],arr[j]&lt;arr[i]$使得$dp[j]$最大。那么此时$dp[i]&#x3D;dp[j]+1$。如果我们找不到一个满足条件的位置$j$，那么$dp[i]&#x3D;1$。</p>
+</li>
+</ol>
+<blockquote>
+<p>  注意我们定义子问题的$dp[i]$的时候，为什么要求$arr[i]$必须作为末尾？</p>
+<p>  因为只有这样定义子问题，我们才能根据曾经求解过的$dp[0]..dp[i]$，来加工得到未知的子问题$dp[i+1]$的解。如果我们把子问题$dp[i]$定义为数组$arr[0]..arr[i]$的最长递增子序列的长度的话，我们发现当我们求解$dp[i+1]$的时候，因为我们只知道$arr[0]..arr[i]$最长递增子序列的长度是多少，没有末尾元素的信息，我们就求不到$dp[i+1]$的答案了。因此使用动态规划求解问题的时候，一定要注意子问题的设计。</p>
+</blockquote>
+<img src="1.svg"/>
+
+<p>代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LongestIncreasingSubSeqDp</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">lis</span><span class="params">(<span class="type">int</span>[] arr)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> <span class="number">0</span>, ans = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(arr == <span class="literal">null</span> || (len = arr.length) &lt; <span class="number">2</span>) <span class="keyword">return</span> len;</span><br><span class="line">        <span class="type">int</span>[] dp = <span class="keyword">new</span> <span class="title class_">int</span>[len];</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; len; ++i) &#123;</span><br><span class="line">            dp[i] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; i; ++j) &#123;</span><br><span class="line">                <span class="keyword">if</span>(arr[j] &lt; arr[i]) dp[i] = Math.max(dp[i], dp[j] + <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            ans = Math.max(ans, dp[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂的$O(N^2)$，空间复杂度$O(N)$。下面介绍一种更省时间的方法。</p>
+<h2 id="方法2：贪心-二分（最优解）"><a href="#方法2：贪心-二分（最优解）" class="headerlink" title="方法2：贪心+二分（最优解）"></a>方法2：贪心+二分（最优解）</h2><p>这个贪心的思路是，如果想让递增子序列更长，那么我们一定要让子序列增长的“慢”一些。啥意思呢？例如在数组<code>&#123;0, 100_0000, 2, -1, 1, 3&#125;</code>中，我们发现了递增子序列<code>&#123;0, 100_0000&#125;</code>，他的长度是2；我们继续往后遍历发现，2也能排在1的后面，形成长度为2的递增子序列。即对于长度为2的递增子序列来说，现在有两个末尾可以选择，那么我们一定要选取2而不是100_0000；因为2使得这个递增子序列增长的最慢，即对于递增子序列<code>&#123;0, 100_0000&#125;</code>和<code>&#123;0, 2&#125;</code>来说，后面的3，可以放在<code>&#123;0, 2&#125;</code>的后面形成更长的递增子序列，而<code>&#123;0, 100_0000&#125;</code>不行。所以选择更小的末尾，不会让已经发现的递增子序列错过<strong>形成更长的递增子序列的可能性</strong>。</p>
+<p>因此我们关注的一个点就是<strong>某个长度的递增子序列的最小末尾</strong>。当我们发现某个元素比最长的递增子序列的最小末尾还大的时候，那么这个元素就可以放在这个最长的递增子序列后面，形成更长的递增子序列；如果这个元素不大于最长的递增子序列的最小末尾，那么我们看它能作为哪一个长度的递增子序列的更小的末尾，然后更新它。如下图所示：</p>
+<img src="2.svg"/>
+
+<p>在遍历的过程中，我们使用一个变量维护当前发现的最长的递增子序列的长度。</p>
+<p>不难发现，minTail这个数组是递增的，即递增子序列越长，它的最小末尾也越大。</p>
+<blockquote>
+<p>  证明递增性质：</p>
+<p>  假设minTail数组不是递增，那么一定存在两个位置$i&lt;j$，且$minTail[i] \geq minTail[j]$，那么我们取长度为$j$的递增子序列中的前$i$个元素，构成的一个新的长度为$i$的递增子序列，那么这个递增子序列的末尾元素$tail_i$一定小于$minTail[j]$，同样小于$minTail[i]$，即我们发现了长度为$i$的递增子序列的一个更小的末尾，这个结论和$minTail[i]$是长度为$i$的递增子序列的最小末尾的假设前提矛盾。因此minTail数组递增。</p>
+</blockquote>
+<p>当我们遍历到一个新的元素$x$，发现$x$没有比目前已知的最长的递增子序列的最小末尾大的时候，那么此时$x$一定可以成为某个长度的递增子序列的一个更小的末尾，我们需要找到这个末尾然后用$x$去更新这个末尾。</p>
+<p>举个例子，假设某一时刻minTail数组是这样的，<code>&#123;1,2,4,6&#125;</code>，此时我们遍历到数$3$，显然这个3没有6大，</p>
+<ul>
+<li>那么这个3可以更新6吗？不行，虽然3比6小，但是长度为3的递增子序列的最小末尾是4，长度为4的递增子序列的最小末尾不可能比4小；</li>
+<li>那么这个3可以更新4吗？可以，3可以成为长度为3的递增子序列的一个更小的末尾，并且更新后不会打破minTail数组递增的性质；</li>
+</ul>
+<p>$x$要更新哪一个末尾呢？首先需要明确一点就是，被$x$更新的末尾，一定是不会比$x$更小（因为minTail数组记录的是最小末尾），所以需要被$x$更新的末尾，一定是minTail在数组中，从左往右遍历第一个不小于$x$的那个末尾。在一个有序的数组中，找到第一个不小于$x$的元素，使用<a href="/2023/02/02/BinarySearchStart/">二分查找</a>在$\log_2N$时间复杂度内就可以解决。</p>
+<p>代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LongestIncreasingSubSeqGreedy</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">lis</span><span class="params">(<span class="type">int</span>[] arr)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(arr == <span class="literal">null</span> || (len = arr.length) &lt; <span class="number">2</span>) <span class="keyword">return</span> len;</span><br><span class="line">        <span class="type">int</span>[] minTail = <span class="keyword">new</span> <span class="title class_">int</span>[len];</span><br><span class="line">        minTail[<span class="number">0</span>] = arr[<span class="number">0</span>];</span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>, j = <span class="number">0</span>;<span class="comment">// j始终记录 当前已经发现的最长的递增子序列的长度-1</span></span><br><span class="line">        <span class="keyword">for</span>(; i &lt; len; ++i) &#123;</span><br><span class="line">            <span class="comment">// 如果发现当前元素比最长的递增子序列的最小末尾还大，那么发现了一个更长的递增子序列，</span></span><br><span class="line">            <span class="comment">// arr[i]就是更长递增子序列的最小末尾</span></span><br><span class="line">            <span class="keyword">if</span>(arr[i] &gt; minTail[j]) minTail[++j] = arr[i];</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(arr[i] &lt; minTail[j]) minTail[getUpdateIndex(minTail, j, arr[i])] = arr[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> j + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">getUpdateIndex</span><span class="params">(<span class="type">int</span>[] arr, <span class="type">int</span> bound, <span class="type">int</span> target)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">lo</span> <span class="operator">=</span> <span class="number">0</span>, hi = bound, m;</span><br><span class="line">        <span class="keyword">while</span>(lo &lt; hi) &#123;<span class="comment">// 使用二分查找算法找到第一个不小于target的位置</span></span><br><span class="line">            m = (lo + hi) &gt;&gt;&gt; <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(arr[m] &lt; target) lo = m + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> hi = m;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> lo;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度$O(N\log_2N)$，空间复杂度$O(N)$。</p>
+<h1 id="2-最长递增子序列的个数"><a href="#2-最长递增子序列的个数" class="headerlink" title="2. 最长递增子序列的个数"></a>2. 最长递增子序列的个数</h1><p>这个问题在原问题的基础上，还要求有几个最长递增子序列，返回个数。<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/number-of-longest-increasing-subsequence/">原题</a></p>
+<h2 id="方法1：动态规划-1"><a href="#方法1：动态规划-1" class="headerlink" title="方法1：动态规划"></a>方法1：动态规划</h2><p>在上述使用动态规划求解最长递增子序列的过程中，我们使用一个数组$dp$来存储各个子问题的答案，且$dp[i]$表示必须以$arr[i]$作为子序列的末尾的时候，最长递增子序列的长度。我们可以在设置一个计数数组$cnt$，$cnt[i]$表示必须以$arr[i]$作为子序列的末尾的时候，最长递增子序列的个数。并使用一个变量$maxIsLen$维护最长的递增子序列的长度。</p>
+<ol>
+<li><p>当$i&#x3D;0$的时候，$dp[i]&#x3D;1,cnt[i]&#x3D;1$；</p>
+</li>
+<li><p>当$i&gt;0$的时候，初始化$dp[i]&#x3D;1,cnt[i]&#x3D;1$，我们遍历$j \in [0,i-1]$，在保证$arr[j]&lt;arr[i]$的情况下，</p>
+<p>2.1. 如果$dp[j]+1 &gt; dp[i]$，即此时我们发现了一个更长的自增子序列，那么长度和数量都更新，$dp[i]&#x3D;dp[j]+1,cnt[i]&#x3D;cnt[j]$</p>
+<p>2.2. 否则如果$dp[j]+1&#x3D;dp[i]$，即说明我们找到了相同长度的递增子序列，那么$dp[i]$不变，$cnt$累加，$cnt[i]+&#x3D;cnt[j]$。</p>
+</li>
+<li><p>最后我们需要遍历$dp$数组，找出所有的$dp[i]&#x3D;maxIsLen$，把它们的$cnt[i]$累加到答案中。</p>
+</li>
+</ol>
+<p>根据上面的逻辑，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LongestIncreasingSubSeqNumberDP</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">numberOfLis</span><span class="params">(<span class="type">int</span>[] arr)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(arr == <span class="literal">null</span> || (len = arr.length) &lt; <span class="number">2</span>) <span class="keyword">return</span> len;</span><br><span class="line">        <span class="type">int</span>[] dp = <span class="keyword">new</span> <span class="title class_">int</span>[len], cnt = <span class="keyword">new</span> <span class="title class_">int</span>[len];</span><br><span class="line">        dp[<span class="number">0</span>] = cnt[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>, j, maxIsLen = <span class="number">1</span>, ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(; i &lt; len; ++i) &#123;</span><br><span class="line">            dp[i] = cnt[i] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span>(j = <span class="number">0</span>; j &lt; i; ++j) &#123;</span><br><span class="line">                <span class="keyword">if</span>(arr[j] &lt; arr[i]) &#123;<span class="comment">// 保证这个大前提成立的情况下</span></span><br><span class="line">                    <span class="keyword">if</span>(dp[j] + <span class="number">1</span> &gt; dp[i]) &#123;<span class="comment">// 如果发现更长的，长度和数量都更新</span></span><br><span class="line">                        dp[i] = dp[j] + <span class="number">1</span>;</span><br><span class="line">                        cnt[i] = cnt[j];</span><br><span class="line">                    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(dp[j] + <span class="number">1</span> == dp[i]) &#123;<span class="comment">// 否则没发现更长的，那么当前的就是最长的，数量累加，长度不变</span></span><br><span class="line">                        cnt[i] += cnt[j];</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            maxIsLen = Math.max(maxIsLen, dp[i]);<span class="comment">// 记录最长的递增子序列的长度</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; len; ++i) &#123;<span class="comment">// 找出所有的dp[i]=maxIsLen，把它们的cnt[i]累加到答案中</span></span><br><span class="line">            <span class="keyword">if</span>(dp[i] == maxIsLen) ans += cnt[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="方法2：贪心-二分（最优解）-1"><a href="#方法2：贪心-二分（最优解）-1" class="headerlink" title="方法2：贪心+二分（最优解）"></a>方法2：贪心+二分（最优解）</h2><p>这个方法是基于求解长度的时候的二分+贪心的做法，在上面的解法中，我们使用了一个数组$minTail$来记录任何一个长度的递增子序列的最小末尾，在遍历的数组的时候，不断的更新每个长度的递增子序列的最小末尾。如果要求解最长递增子序列的个数，我们在遇到更小的末尾的时候，就不能更新了，需要把在遍历过程中，任何长度的递增子序列的所有出现的末尾，记录下来。</p>
+<p>原来的$minTail[i]$表示长度为$i+1$的递增子序列的最小末尾，现在使用$minTail[i][j]$来表示，当前所发现的长度为$i+1$的递增子序列的第$j$个末尾，我们把更新末尾的操作，变成了把更小的末尾加入$minTail[i]$列表的操作。在上面求解长度的时候，因为只有遇到更小的末尾或者相同的末尾的时候才会发生更新操作，因此可以知道$minTail[i]$列表是非增的。</p>
+<p>现在我们记录下所有的末尾了，还需要记录当$minTail[i][j]$作为长度为$i+1$的递增子序列的最小末尾的时候，此时长度为$i+1$的递增子序列有几个，这个量我们使用$cnt[i][j]$来记录。那么$cnt[i][j]$如何得到呢？此时我们就需要考察$cnt[i-1]$数组和$minTail[i-1]$数组了，我们需要遍历$minTail[i-1]$数组，对于$x \in [0, minTail[i-1].length-1]$，如果满足$minTail[i-1][x]&lt;minTail[i][j]$，那么我们就把$cnt[i-1][x]$累加到$cnt[i][j]$中去。如下图所示：</p>
+<img src="3.svg"/>
+
+<p>$cnt$中最后一个数组的累加和就是答案。根据这个逻辑，可以写出代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LongestIncreasingSubSeqNumberGreedy</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">numberOfLis</span><span class="params">(<span class="type">int</span>[] arr)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(arr == <span class="literal">null</span> || (len = arr.length) &lt; <span class="number">2</span>) <span class="keyword">return</span> len;</span><br><span class="line">        ArrayList&lt;ArrayList&lt;Integer&gt;&gt; minTail = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(), cnt = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// init</span></span><br><span class="line">        minTail.add(newListWith(arr[<span class="number">0</span>]));</span><br><span class="line">        cnt.add(newListWith(<span class="number">1</span>));</span><br><span class="line">        <span class="comment">// init</span></span><br><span class="line">        </span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(; i &lt; len; ++i) &#123;</span><br><span class="line">            <span class="comment">// 当前元素比目前已知的最长递增子序列的最小末尾还大，那么它成为更长递增子序列的最小末尾</span></span><br><span class="line">            <span class="keyword">if</span>(arr[i] &gt; lastOf(lastOf(minTail))) &#123;</span><br><span class="line">                cnt.add(newListWith(getCnt(lastOf(minTail), lastOf(cnt), arr[i])));</span><br><span class="line">                minTail.add(newListWith(arr[i]));</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;<span class="comment">// 否则我们找到一个合适的末尾列表，加入这个末尾</span></span><br><span class="line">                <span class="type">int</span> <span class="variable">addIndex</span> <span class="operator">=</span> getAddIndex(minTail, arr[i]);</span><br><span class="line">                minTail.get(addIndex).add(arr[i]);</span><br><span class="line">                cnt.get(addIndex).add(addIndex &gt; <span class="number">0</span> ? getCnt(minTail.get(addIndex - <span class="number">1</span>), cnt.get(addIndex - <span class="number">1</span>), arr[i]) : <span class="number">1</span>);</span><br><span class="line">        	&#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> <span class="variable">ans</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        ArrayList&lt;Integer&gt; lastCnt = lastOf(cnt);</span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">0</span>, len = lastCnt.size(); i &lt; len; ++i) &#123;<span class="comment">// 遍历cnt的最后一个列表，累加其中的个数</span></span><br><span class="line">            ans += lastCnt.get(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">getCnt</span><span class="params">(ArrayList&lt;Integer&gt; tails, ArrayList&lt;Integer&gt; cnt, <span class="type">int</span> target)</span> &#123;</span><br><span class="line">        <span class="comment">// 计算cnt，需要用到上一步的minTail和上一步的cnt列表</span></span><br><span class="line">        <span class="comment">// 遍历tails，只要发现当前的tail小于target，那么就把其个数累加到答案中</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">ans</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>, len = tails.size(); i &lt; len; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span>(tails.get(i) &lt; target) ans += cnt.get(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">getAddIndex</span><span class="params">(ArrayList&lt;ArrayList&lt;Integer&gt;&gt; arr, <span class="type">int</span> target)</span> &#123;</span><br><span class="line">        <span class="comment">// 使用二分查找的算法找到需要把当前的末尾加入到哪一个列表中去</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">lo</span> <span class="operator">=</span> <span class="number">0</span>, hi = arr.size() - <span class="number">1</span>, m;</span><br><span class="line">        <span class="keyword">while</span>(lo &lt; hi) &#123;</span><br><span class="line">            m = (lo + hi) &gt;&gt;&gt; <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(lastOf(arr.get(m)) &lt; target) lo = m + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> hi = m;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> lo;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">static</span> ArrayList <span class="title function_">newListWith</span><span class="params">(<span class="type">int</span> val)</span> &#123;</span><br><span class="line">        ArrayList&lt;Integer&gt; ans = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        ans.add(val);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">static</span> &lt;T&gt; T <span class="title function_">lastOf</span><span class="params">(ArrayList&lt;T&gt; list)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> list.get(list.size() - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>看到这里，你已经了解了这个方法的思想了，但是还有一个需要优化的地方，就是我们的<code>getCnt</code>方法。它在计算当前的个数的时候，需要遍历上一步的$minTail$数组。这是一个比较耗时的操作。我们知道同样长度的递增子序列的最小末尾是不增的，即有序的。因此当我们遍历$minTail[pre]$到某个位置$index$的时候，发现$minTail[pre][index]$小于当前末尾$arr[i]$，那么$minTail[pre]$中$index$后面的直到结尾的所有元素都是小于$arr[i]$的。即我们的$cnt[current][]&#x3D;cnt[pre][index]+cnt[pre][index+1]+…+cnt[pre][cnt[pre].length-1]$。</p>
+<p>可见是在$minTail[pre]$中找到第一个小于$arr[i]$的位置，然后从这个位置到结尾的$cnt[pre]$的累加和。那么我们可以把$cnt$数组中的值做成前缀和的形式，并根据$minTail[pre]$数组的有序性，我们可以使用二分查找算法，找到$minTail[pre]$中最后一个不小于$arr[i]$的位置$lastNotLessIndex$，那我们的$cnt[current][]&#x3D;cnt[pre][cnt[pre].length-1]-cnt[pre][lastNotLessIndex]+cnt[current][last]$，这里的$cnt[current][last]$是$cnt[current][]$的前一个元素。</p>
+<p>那么最后的答案就是$cnt$数组中最后一个数组的最后一个元素的值。优化后的代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LongestIncreasingSubSeqNumberGreedy2</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">numberOfLis</span><span class="params">(<span class="type">int</span>[] arr)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(arr == <span class="literal">null</span> || (len = arr.length) &lt; <span class="number">2</span>) <span class="keyword">return</span> len;</span><br><span class="line">        ArrayList&lt;ArrayList&lt;Integer&gt;&gt; minTail = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(), cnt = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// init</span></span><br><span class="line">        minTail.add(newListWith(arr[<span class="number">0</span>]));</span><br><span class="line">        cnt.add(newListWith(<span class="number">1</span>));</span><br><span class="line">        <span class="comment">// init</span></span><br><span class="line">        </span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(; i &lt; len; ++i) &#123;</span><br><span class="line">            <span class="comment">// 当前元素比目前已知的最长递增子序列的最小末尾还大，那么它成为更长递增子序列的最小末尾</span></span><br><span class="line">            <span class="keyword">if</span>(arr[i] &gt; lastOf(lastOf(minTail))) &#123;</span><br><span class="line">                cnt.add(newListWith(getCnt(lastOf(minTail), lastOf(cnt), arr[i])));</span><br><span class="line">                minTail.add(newListWith(arr[i]));</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;<span class="comment">// 否则我们找到一个合适的末尾列表，加入这个末尾</span></span><br><span class="line">                <span class="type">int</span> <span class="variable">addIndex</span> <span class="operator">=</span> getAddIndex(minTail, arr[i]);</span><br><span class="line">                minTail.get(addIndex).add(arr[i]);</span><br><span class="line">                cnt.get(addIndex).add((addIndex &gt; <span class="number">0</span> ? getCnt(minTail.get(addIndex - <span class="number">1</span>), cnt.get(addIndex - <span class="number">1</span>), arr[i]) : <span class="number">1</span>) + lastOf(cnt.get(addIndex)));</span><br><span class="line">        	&#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> lastOf(lastOf(cnt));</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">getCnt</span><span class="params">(ArrayList&lt;Integer&gt; tails, ArrayList&lt;Integer&gt; cnt, <span class="type">int</span> target)</span> &#123;</span><br><span class="line">        <span class="comment">// 计算cnt，需要用到上一步的minTail和上一步的cnt列表</span></span><br><span class="line">        <span class="comment">// 使用二分查找算法找到tails中最后一个不小于target的位置</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">lo</span> <span class="operator">=</span> -<span class="number">1</span>, hi = tails.size() - <span class="number">2</span>, m;<span class="comment">// 根据题意，我们知道tails的最后一个元素一定小于target</span></span><br><span class="line">        <span class="keyword">while</span>(lo &lt; hi) &#123;</span><br><span class="line">            m = (lo + hi + <span class="number">1</span>) &gt;&gt;&gt; <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(tails.get(m) &lt; target) hi = m - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> lo = m;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> lastOf(cnt) - (lo == -<span class="number">1</span> ? <span class="number">0</span> : cnt.get(lo));</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">getAddIndex</span><span class="params">(ArrayList&lt;ArrayList&lt;Integer&gt;&gt; arr, <span class="type">int</span> target)</span> &#123;</span><br><span class="line">        <span class="comment">// 使用二分查找的算法找到需要把当前的末尾加入到哪一个列表中去</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">lo</span> <span class="operator">=</span> <span class="number">0</span>, hi = arr.size() - <span class="number">1</span>, m;</span><br><span class="line">        <span class="keyword">while</span>(lo &lt; hi) &#123;</span><br><span class="line">            m = (lo + hi) &gt;&gt;&gt; <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(lastOf(arr.get(m)) &lt; target) lo = m + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> hi = m;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> lo;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">static</span> ArrayList <span class="title function_">newListWith</span><span class="params">(<span class="type">int</span> val)</span> &#123;</span><br><span class="line">        ArrayList&lt;Integer&gt; ans = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        ans.add(val);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">static</span> &lt;T&gt; T <span class="title function_">lastOf</span><span class="params">(ArrayList&lt;T&gt; list)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> list.get(list.size() - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度$O(N\log_2{N})$，空间复杂度$O(N)$。</p>
+<h1 id="3-找出所有的最长递增子序列"><a href="#3-找出所有的最长递增子序列" class="headerlink" title="3. 找出所有的最长递增子序列"></a>3. 找出所有的最长递增子序列</h1><p>问题再次升级，不但需要知道有几个最长递增子序列，还要找出所有的最长递增子序列（使用下标表示）。例如<code>arr=&#123;1, 2, 30, 40, 0, 2, 3, 4, -2, 5&#125;</code>，它有三个最长递增子序列，他们是<code>[[4, 5, 6, 7, 9], [0, 5, 6, 7, 9], [0, 1, 6, 7, 9]]</code>。</p>
+<h2 id="方法1：动态规划-2"><a href="#方法1：动态规划-2" class="headerlink" title="方法1：动态规划"></a>方法1：动态规划</h2><p>基于最初的动态规划，我们在求解$dp[i]$的时候，不但需要求解出$cnt[i]$，还需要记录$arr[i]$是拼到哪些数的后面， 形成了更长的递增子序列，记录这些数在数组中的下标。代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">FindAllLongestIncreasingSubSeqDP</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span>[][] findAll(<span class="type">int</span>[] arr) &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(arr == <span class="literal">null</span> || (len = arr.length) == <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">if</span>(len == <span class="number">1</span>) <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">1</span>][<span class="number">1</span>];</span><br><span class="line">        <span class="type">int</span>[] dp = <span class="keyword">new</span> <span class="title class_">int</span>[len], cnt = <span class="keyword">new</span> <span class="title class_">int</span>[len];</span><br><span class="line">        <span class="comment">// 我们记录下dp在做决策的时候的所有历史选择</span></span><br><span class="line">        ArrayList&lt;LinkedList&lt;Integer&gt;&gt; record = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(len);</span><br><span class="line">        record.add(<span class="literal">null</span>);</span><br><span class="line">        dp[<span class="number">0</span>] = cnt[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>, j, maxLen = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(; i &lt; len; ++i) &#123;</span><br><span class="line">            dp[i] = cnt[i] = <span class="number">1</span>;</span><br><span class="line">            record.add(<span class="literal">null</span>);</span><br><span class="line">            <span class="keyword">for</span>(j = <span class="number">0</span>; j &lt; i; ++j) &#123;</span><br><span class="line">                <span class="keyword">if</span>(arr[j] &lt; arr[i]) &#123;</span><br><span class="line">                    <span class="keyword">if</span>(dp[j] + <span class="number">1</span> &gt; dp[i]) &#123;</span><br><span class="line">                        dp[i] = dp[j] + <span class="number">1</span>;</span><br><span class="line">                        cnt[i] = cnt[j];</span><br><span class="line">                        LinkedList&lt;Integer&gt; rcd = record.get(i);</span><br><span class="line">                        <span class="keyword">if</span>(rcd == <span class="literal">null</span>) rcd = newListWith(j);</span><br><span class="line">                        <span class="keyword">else</span> &#123;</span><br><span class="line">                            rcd.clear();</span><br><span class="line">                            rcd.add(j);</span><br><span class="line">                        &#125;</span><br><span class="line">                        record.set(i, rcd);</span><br><span class="line">                    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(dp[j] + <span class="number">1</span> == dp[i]) &#123;</span><br><span class="line">                        cnt[i] += cnt[j];</span><br><span class="line">                        record.get(i).add(j);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            maxLen = Math.max(maxLen, dp[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> <span class="variable">maxCnt</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; len; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span>(dp[i] == maxLen) maxCnt += cnt[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span>[][] ans = <span class="keyword">new</span> <span class="title class_">int</span>[maxCnt][maxLen];</span><br><span class="line">        j = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; len; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span>(dp[i] == maxLen) &#123;<span class="comment">// 根据dp的历史选择，倒推填充答案数组</span></span><br><span class="line">                fillAns(ans, j, maxLen - <span class="number">1</span>, cnt, arr, record, i);</span><br><span class="line">                j += cnt[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; </span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">fillAns</span><span class="params">(<span class="type">int</span>[][] ans, <span class="type">int</span> row, <span class="type">int</span> col, <span class="type">int</span>[] cnt, <span class="type">int</span>[] arr, ArrayList&lt;LinkedList&lt;Integer&gt;&gt; record, <span class="type">int</span> index)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(; i &lt; cnt[index]; ++i) ans[row + i][col] = index;</span><br><span class="line">        <span class="keyword">if</span>(col == <span class="number">0</span>) <span class="keyword">return</span>;</span><br><span class="line">        LinkedList&lt;Integer&gt; pres = record.get(index);</span><br><span class="line">		i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> pre: pres) &#123;</span><br><span class="line">            fillAns(ans, row + i, col - <span class="number">1</span>, cnt, arr, record, pre);</span><br><span class="line">            i += cnt[pre];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">static</span> LinkedList <span class="title function_">newListWith</span><span class="params">(<span class="type">int</span> val)</span> &#123;</span><br><span class="line">        LinkedList&lt;Integer&gt; ans = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        ans.add(val);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="方法2：贪心-二分"><a href="#方法2：贪心-二分" class="headerlink" title="方法2：贪心+二分"></a>方法2：贪心+二分</h2><p>基于上面的二分做法，我们在求$cnt[i][j]$的时候，我们需要参考$minTail[i-1][]$和$cnt[i-1][]$，需要在$minTail[i-1][]$中找出哪些末尾是小于$minTail[i][j]$的，然后把其数量加入$cnt[i][j]$。具体求解的时候，我们使用了前缀和+二分法的做法，降低了时间复杂度。为了求出所有的递增子序列，我们的$minTail$数组不能直接存最小的末尾，而是存这个末尾在原数组中的下标；并且还需要存储在求解$cnt[i][j]$的时候，$minTail[i-1][]$中哪些末尾是小于$minTail[i][j]$的，由于$minTail$的有序性，我们可以只存一个范围。</p>
+<p>当我们遍历数组，求解得到$minTail$和$cnt$的时候，我们需要再次根据每一步的决策，反推回去，填充答案数组。代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">FindAllLongestIncreasingSubSeqGreedy</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span>[][] findAll(<span class="type">int</span>[] arr) &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(arr == <span class="literal">null</span> || (len = arr.length) == <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">if</span>(len == <span class="number">1</span>) <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">1</span>][<span class="number">1</span>];</span><br><span class="line">        ArrayList&lt;ArrayList&lt;Info&gt;&gt; infos = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        infos.add(newListWith(<span class="keyword">new</span> <span class="title class_">Info</span>(<span class="number">0</span>, <span class="number">1</span>)));</span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(; i &lt; len; ++i) &#123;</span><br><span class="line">            ArrayList&lt;Info&gt; lastInfoList = lastOf(infos);</span><br><span class="line">            <span class="type">Info</span> <span class="variable">lastInfoNode</span> <span class="operator">=</span> lastOf(lastInfoList);</span><br><span class="line">            <span class="keyword">if</span>(arr[i] &gt; arr[lastInfoNode.tailIndex]) &#123;</span><br><span class="line">                <span class="type">int</span> <span class="variable">notLessThanIndex</span> <span class="operator">=</span> getLastNotLessIndex(lastInfoList, arr[i], arr);</span><br><span class="line">                infos.add(newListWith(<span class="keyword">new</span> <span class="title class_">Info</span>(</span><br><span class="line">                    i, </span><br><span class="line">                    lastInfoNode.cnt - (notLessThanIndex == -<span class="number">1</span> ? <span class="number">0</span> : lastInfoList.get(notLessThanIndex).cnt), </span><br><span class="line">                    notLessThanIndex + <span class="number">1</span>, </span><br><span class="line">                    lastInfoList.size() - <span class="number">1</span></span><br><span class="line">                )));</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="type">int</span> <span class="variable">addIndex</span> <span class="operator">=</span> getAddIndex(infos, arr[i], arr);</span><br><span class="line">                ArrayList&lt;Info&gt; indexedInfo = infos.get(addIndex);</span><br><span class="line">                <span class="keyword">if</span>(addIndex == <span class="number">0</span>) indexedInfo.add(<span class="keyword">new</span> <span class="title class_">Info</span>(i, lastOf(indexedInfo).cnt + <span class="number">1</span>));</span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    ArrayList&lt;Info&gt; preInfo = infos.get(addIndex - <span class="number">1</span>);</span><br><span class="line">                    <span class="type">int</span> <span class="variable">notLessThanIndex</span> <span class="operator">=</span> getLastNotLessIndex(preInfo, arr[i], arr);</span><br><span class="line">                    indexedInfo.add(<span class="keyword">new</span> <span class="title class_">Info</span>(</span><br><span class="line">                        i,</span><br><span class="line">                        lastOf(preInfo).cnt - (notLessThanIndex == -<span class="number">1</span> ? <span class="number">0</span> : preInfo.get(notLessThanIndex).cnt) + lastOf(indexedInfo).cnt,</span><br><span class="line">                        notLessThanIndex + <span class="number">1</span>,</span><br><span class="line">                        preInfo.size() - <span class="number">1</span></span><br><span class="line">                    ));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> <span class="variable">maxLen</span> <span class="operator">=</span> infos.size(), cnt = lastOf(lastOf(infos));</span><br><span class="line">        <span class="type">int</span>[] ans = <span class="keyword">new</span> <span class="title class_">int</span>[cnt][maxLen];</span><br><span class="line">        i = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(Info inff: lastOf(infos)) &#123;</span><br><span class="line">            fillAns(ans, i, maxLen - <span class="number">1</span>, infos, maxLen - <span class="number">1</span>, j);</span><br><span class="line">            i += inff.cnt - (j == <span class="number">0</span> ? <span class="number">0</span> : lastOf(infos).get(j - <span class="number">1</span>).cnt);</span><br><span class="line">            ++j;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">fillAns</span><span class="params">(<span class="type">int</span>[][] ans, <span class="type">int</span> row, <span class="type">int</span> col, ArrayList&lt;ArrayList&lt;Info&gt;&gt; infos, <span class="type">int</span> x, <span class="type">int</span> y)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>, j = col;</span><br><span class="line">        ArrayList&lt;Info&gt; infoList = infos.get(x);</span><br><span class="line">        <span class="type">Info</span> <span class="variable">inf</span> <span class="operator">=</span> infoList.get(y);</span><br><span class="line">        <span class="type">int</span> <span class="variable">cnt</span> <span class="operator">=</span> inf.cnt - (y == <span class="number">0</span> ? <span class="number">0</span> : infoList.get(y - <span class="number">1</span>).cnt);</span><br><span class="line">        <span class="keyword">for</span>(; i &lt; cnt; ++i) arr[row + i][col] = inf.tailIndex;</span><br><span class="line">        <span class="keyword">if</span>(col == <span class="number">0</span>) <span class="keyword">return</span>;</span><br><span class="line">        ArrayList&lt;Info&gt; preList = infos.get(x - <span class="number">1</span>);</span><br><span class="line">        i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">m</span> <span class="operator">=</span> inf.l; m &lt;= inf.r; ++m) &#123;</span><br><span class="line">            fillAns(ans, row + i, col - <span class="number">1</span>, infos, x - <span class="number">1</span>, m);</span><br><span class="line">            i += preList.get(m).cnt - (m == <span class="number">0</span> ? <span class="number">0</span> : preList.get(m - <span class="number">1</span>).cnt);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">getAddIndex</span><span class="params">(ArrayList&lt;ArrayList&lt;Info&gt;&gt; infos, <span class="type">int</span> target, <span class="type">int</span>[] arr)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">lo</span> <span class="operator">=</span> <span class="number">0</span>, hi = infos.size() - <span class="number">1</span>, m;</span><br><span class="line">        <span class="keyword">while</span>(lo &lt; hi) &#123;</span><br><span class="line">            m = (lo + hi) &gt;&gt;&gt; <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(arr[infos.get(m).tail] &lt; target) lo = m + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> hi = m;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> lo;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">getLastNotLessIndex</span><span class="params">(ArrayList&lt;Info&gt; info, <span class="type">int</span> target, <span class="type">int</span>[] arr)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">lo</span> <span class="operator">=</span> -<span class="number">1</span>, hi = info.size() - <span class="number">2</span>, m;</span><br><span class="line">        <span class="keyword">while</span>(lo &lt; hi) &#123;</span><br><span class="line">            m = (lo + hi + <span class="number">1</span>) &gt;&gt;&gt; <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(arr[info.get(m).tail] &lt; target) hi = m - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> lo = m;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> lo;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">static</span> ArrayList <span class="title function_">newListWith</span><span class="params">(Info inf)</span> &#123;</span><br><span class="line">        ArrayList&lt;Info&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        list.add(inf);</span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">static</span> &lt;T&gt; T <span class="title function_">lastOf</span><span class="params">(ArrayList list)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> list.get(list.size() - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">Info</span> &#123;</span><br><span class="line">        <span class="comment">// tailIndex 最喜小末尾的下标</span></span><br><span class="line">        <span class="comment">// cnt 子序列出现次数</span></span><br><span class="line">        <span class="comment">// l 小于arr[tailIndex] 的下标左边界</span></span><br><span class="line">        <span class="comment">// r 小于arr[tailIndex] 的下标右边界</span></span><br><span class="line">        <span class="type">int</span> tailIndex, cnt, l, r;</span><br><span class="line">        Info(<span class="type">int</span> t, <span class="type">int</span> c) &#123;</span><br><span class="line">            tailIndex = t;</span><br><span class="line">            cnt = c;</span><br><span class="line">            l = -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        Info(<span class="type">int</span> t, <span class="type">int</span> c, <span class="type">int</span> ll, <span class="type">int</span> rr) &#123;</span><br><span class="line">            tailIndex = t;</span><br><span class="line">            cnt = c;</span><br><span class="line">            l = ll;</span><br><span class="line">            r = rr;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="4-相关题目"><a href="#4-相关题目" class="headerlink" title="4.  相关题目"></a>4.  相关题目</h1><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/russian-doll-envelopes/">俄罗斯套娃问题</a></p>
+<blockquote>
+<p>  给你一个二维整数数组 envelopes ，其中 envelopes[i] &#x3D; [wi, hi] ，表示第 i 个信封的宽度和高度。</p>
+<p>  当另一个信封的宽度和高度都比这个信封大的时候，这个信封就可以放进另一个信封里，如同俄罗斯套娃一样。</p>
+<p>  请计算 最多能有多少个 信封能组成一组“俄罗斯套娃”信封（即可以把一个信封放到另一个信封里面）。</p>
+<p>  注意：不允许旋转信封。</p>
+<p>  示例 1：</p>
+<p>  输入：envelopes &#x3D; [[5,4],[6,4],[6,7],[2,3]]<br>  输出：3<br>  解释：最多信封的个数为 3, 组合为: [2,3] &#x3D;&gt; [5,4] &#x3D;&gt; [6,7]。<br>  示例 2：</p>
+<p>  输入：envelopes &#x3D; [[1,1],[1,1],[1,1]]<br>  输出：1</p>
+<p>  提示：</p>
+<p>  1 &lt;&#x3D; envelopes.length &lt;&#x3D; 105<br>  envelopes[i].length &#x3D;&#x3D; 2<br>  1 &lt;&#x3D; wi, hi &lt;&#x3D; 105</p>
+</blockquote>
+<p>我们把<code>envelopes</code>按照其宽度从小到大排序（相同宽度的按照其高度从大到小排序），排好序后，我们求这个数组其高度纬度上的最长递增子序列的长度，即为答案。</p>
+<p>为啥呢？</p>
+<p>这个问题的本质是让我们找出最长的一个信封序列，假设长度为$len$，$[[a_1,b_1],[a_2,b_2],…,[a_{len},b_{len}]]$，那么必有：<br>$$<br>a_1&lt;a_2&lt;…&lt;a_{len},b_1&lt;b_2&lt;…&lt;b_{len}<br>$$<br>成立，即信封的宽度和高度都严格递增。我们首先固定一个变量，不妨固定宽度。我们把<code>envelopes</code>按照宽度从小到大排序得到$sortedEnvelopes$，那么显然，答案必定是$sortedEnvelopes$的一个子序列。</p>
+<p>现在问题转化为了我们需要在$sortedEnvelopes$中找到一个最长的子序列，满足信封的高度是严格递增的。此时不要忘记，我们找到的子序列中不能包含宽度相同的信封，因为宽度相同的信封不能套娃。为了避免找到的递增子序列中的宽度相同，在当初给信封的宽度排序的时候，对于宽度相同的信封，按照其高度从大到小的顺序排列。这样我们找到的高度纬度上的最长递增子序列中，宽度不可能相同。</p>
+<p>那么原问题本质上就是一个数组上的最长递增子序列问题。</p>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2023/03/19/LinkedListHavingRing/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>上一页</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime mr-10" title="更新时间"></i>
+              2023-03-25 16:45:41
+            </span>
+            
+                  <span class="post-categories">
+                    <i class="iconfont icon-bookmark" title="分类"></i>
+                    
+                    <span class="span--category">
+                      <a href="/categories/%E7%AE%97%E6%B3%95/" title="算法">
+                        <b>#</b> 算法
+                      </a>
+                    </span>
+                    
+                    <span class="span--category">
+                      <a href="/categories/%E7%AE%97%E6%B3%95/%E9%97%AE%E9%A2%98%E5%8E%9F%E5%9E%8B/" title="问题原型">
+                        <b>#</b> 问题原型
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags mr-10" title="标签"></i>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" title="二分查找">
+                        #二分查找
+                      </a>
+                    </span>
+                    
+                    <span class="span--tag mr-8">
+                      <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="动态规划">
+                        #动态规划
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+          </div>
+        </div>
+      
+    </div>
+    
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">目录</div>
+    <div class="catalog-content">
+      
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97%E7%9A%84%E9%95%BF%E5%BA%A6"><span class="toc-text">1. 最长递增子序列的长度</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%951%EF%BC%9A%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="toc-text">方法1：动态规划</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%952%EF%BC%9A%E8%B4%AA%E5%BF%83-%E4%BA%8C%E5%88%86%EF%BC%88%E6%9C%80%E4%BC%98%E8%A7%A3%EF%BC%89"><span class="toc-text">方法2：贪心+二分（最优解）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97%E7%9A%84%E4%B8%AA%E6%95%B0"><span class="toc-text">2. 最长递增子序列的个数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%951%EF%BC%9A%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-1"><span class="toc-text">方法1：动态规划</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%952%EF%BC%9A%E8%B4%AA%E5%BF%83-%E4%BA%8C%E5%88%86%EF%BC%88%E6%9C%80%E4%BC%98%E8%A7%A3%EF%BC%89-1"><span class="toc-text">方法2：贪心+二分（最优解）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E6%89%BE%E5%87%BA%E6%89%80%E6%9C%89%E7%9A%84%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97"><span class="toc-text">3. 找出所有的最长递增子序列</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%951%EF%BC%9A%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-2"><span class="toc-text">方法1：动态规划</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%952%EF%BC%9A%E8%B4%AA%E5%BF%83-%E4%BA%8C%E5%88%86"><span class="toc-text">方法2：贪心+二分</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E7%9B%B8%E5%85%B3%E9%A2%98%E7%9B%AE"><span class="toc-text">4.  相关题目</span></a></li></ol>
+      
+    </div>
+  </div>
+
+  
+<script src="/js/catalog.js"></script>
+
+
+
+
+    
+      <div class="comments-container">
+        
+
+
+
+
+   <div id="gitalk-container"></div>
+  <script>
+    function loadGitalkSuc() {
+      const gitalk = new Gitalk({
+        clientID: 'ec89f39f054b72018b04',
+        clientSecret: 'c60124d09914e1e860acd9716342e39379720b62',
+        repo: 'BlogIssues',
+        owner: 'victory20201009',
+        admin: ['victory20201009'],
+        id: location.pathname,
+        distractionFreeMode: false,
+		createIssueManually: false,
+proxy: "https://kaicoding.xyz/gitalk/login/oauth/access_token"
+      })
+	  console.log(location);
+      gitalk.render('gitalk-container')
+    }
+  </script>
+
+  
+    <link rel="stylesheet" href="/plugins/gitalk.css">
+    <script type="text/javascript" src="/plugins/gitalk.min.js" onload="loadGitalkSuc(this)"></script>
+  
+
+ 
+
+
+
+
+      </div>
+    
+  </div>
+
+
+        
+<div class="footer">
+  <div class="social">
+    <ul>
+      
+        <li>
+          <a title="github" target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">
+            <i class="iconfont icon-github"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+  
+    
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Copyright © 2023 Oranges</a>
+        
+    </div>
+  
+    
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Theme by Oranges | Powered by Hexo</a>
+        
+    </div>
+  
+  
+    <div class="footer-views">
+      
+          本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        
+      
+          本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+        
+      
+          本站访客数<span id="busuanzi_value_site_uv"></span>人
+        
+      
+    </div>
+  
+</div>
+
+      </div>
+
+      <div class="tools-bar">
+        <div class="back-to-top tools-bar-item hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
+</div>
+
+
+<script src="/js/backtotop.js"></script>
+
+
+
+        
+  <div class="search-icon tools-bar-item" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-title">
+        <span class="search-icon-input">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-search"></i>
+          </a>
+        </span>
+        
+          <input type="text" class="search-input" id="search-input" placeholder="搜索...">
+        
+        <span class="search-close-icon" id="search-close-icon">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-close"></i>
+          </a>
+        </span>
+      </div>
+      <div class="search-result" id="search-result"></div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    inputArea.onclick = function() {
+      getSearchFile()
+      this.onclick = null
+    }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        // inputArea.focus()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'>首次搜索，正在载入索引文件，请稍后……<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'>" + orig_data_title + "</a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<p class=\"search-result-abstract\">" + match_content + "...</p>"
+                }
+                str += "</li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>没有找到内容，请尝试更换检索词。<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>未找到search.xml文件，具体请参考：<a href='https://github.com/zchengsite/hexo-theme-oranges#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>请求失败，尝试重新刷新页面或稍后重试。<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "/search.xml";
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+        
+  <div class="tools-bar-item theme-icon" id="switch-color-scheme">
+    <a href="javascript: void(0)">
+      <i id="theme-icon" class="iconfont icon-moon"></i>
+    </a>
+  </div>
+
+  
+<script src="/js/colorscheme.js"></script>
+
+
+
+
+
+        
+  
+    <div class="share-icon tools-bar-item">
+      <a href="javascript: void(0)" id="share-icon">
+        <i class="iconfont iconshare"></i>
+      </a>
+      <div class="share-content hidden">
+        
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + %E9%9D%A2%E8%AF%95%E5%AE%98%EF%BC%9A%E8%AF%B7%E6%89%BE%E5%87%BA%E6%89%80%E6%9C%89%E7%9A%84%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97%EF%BC%8C%E6%88%91%EF%BC%9AWhat%EF%BC%9F + '&url=' + https%3A%2F%2Fvictory20201009.github.io%2F2023%2F03%2F25%2FLongestIncreasingSubSeq%2F + '" target="_blank" title="Twitter">
+            <i class="iconfont icon-twitter"></i>
+          </a>
+        
+        
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=https://victory20201009.github.io/2023/03/25/LongestIncreasingSubSeq/" target="_blank" title="Facebook">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+  
+<script src="/js/shares.js"></script>
+
+
+
+      </div>
+    </div>
+  </body>
+</html>
